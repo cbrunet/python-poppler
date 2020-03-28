@@ -1,0 +1,7 @@
+__pycache__
+.tox
+.venv
+.vscode
+
+*.pyc
+*.egg-info

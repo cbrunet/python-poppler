@@ -1,0 +1,19 @@
+- Test methods with wrong arguments
+- Test passwords
+- Test open modify save and reopen
+- load_from_data and load_from file pointer
+
+- README
+- Long description
+- Add documentation
+- github actions
+
+- page class
+- page_renderer
+- text_box class
+
+- toc class
+
+
+- Tools:
+- pdftk clone
