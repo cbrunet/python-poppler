@@ -18,9 +18,12 @@
 from poppler import _document
 from poppler._global import ustring
 from poppler._utilities import from_time_type, to_time_type
+from poppler.page import Page
 
 from collections import namedtuple
 from datetime import datetime
+from functools import singledispatch
+from pathlib import Path
 
 
 PDFId = namedtuple('PDFId', ["permanent_id", "update_id"])
@@ -28,8 +31,14 @@ PDFId = namedtuple('PDFId', ["permanent_id", "update_id"])
 
 class Document(object):
 
+    PageLayout = _document.page_layout_enum
+    PageMode = _document.page_mode_enum
+
     def __init__(self, poppler_document):
         self._document = poppler_document
+
+    def create_page(self, index):
+        return Page(self._document.create_page(index))
 
     @property
     def author(self):
@@ -156,9 +165,55 @@ class Document(object):
     def is_locked(self):
         return self._document.is_locked()
 
+    @property
+    def page_layout(self):
+        return self._document.page_layout()
+
+    @property
+    def page_mode(self):
+        return self._document.page_mode()
+
     def remove_info(self):
         return self._document.remove_info()
+
+    def save(self, file_name):
+        return self._document.save(str(file_name))
+
+    def save_a_copy(self, file_name):
+        return self._document.save_a_copy(str(file_name))
+
+    def unlock(self, owner_password, user_password):
+        return self._document.unlock(owner_password, user_password)
 
 
 def load_from_file(file_name, owner_password="", user_password=""):
     return Document(_document.load_from_file(str(file_name), owner_password, user_password))
+
+
+def load_from_data(file_data: bytes, owner_password="", user_password=""):
+    return Document(_document.load_from_data(file_data, owner_password, user_password))
+
+
+@singledispatch
+def load(arg, owner_password="", user_password=""):
+    try:
+        data = arg.read()
+        return load_from_data(data, owner_password, user_password)
+
+    except AttributeError:
+        raise TypeError("Load cannot be called with argument of type {}".format(type(arg)))
+
+    except UnicodeDecodeError:
+        raise TypeError("Stream must be read as bytes.")
+
+@load.register
+def _(arg: str, owner_password="", user_password=""):
+    return load_from_file(arg, owner_password, user_password)
+
+@load.register
+def _(arg: Path, owner_password="", user_password=""):
+    return load_from_file(arg, owner_password, user_password)
+
+@load.register
+def _(arg: bytes, owner_password="", user_password=""):
+    return load_from_data(arg, owner_password, user_password)

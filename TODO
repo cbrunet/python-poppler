@@ -1,5 +1,4 @@
 - Test methods with wrong arguments
-- Test passwords
 - Test open modify save and reopen
 - load_from_data and load_from file pointer
 
@@ -11,9 +10,7 @@
 - page class
 - page_renderer
 - text_box class
-
 - toc class
-
 
 - Tools:
 - pdftk clone

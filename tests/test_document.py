@@ -24,8 +24,65 @@ from datetime import datetime
 
 
 @pytest.fixture()
-def pdf_document(data_path):
-    return document.load_from_file(data_path / "document.pdf", "owner", "user")
+def locked_document(data_path):
+    return document.load_from_file(data_path / "document.pdf")
+
+
+def test_load_from_data(data_path):
+    file_data = (data_path / "document.pdf").read_bytes()
+    pdf_document = document.load_from_data(file_data, "owner", "user")
+    assert pdf_document.author == "Charles Brunet"
+
+
+def test_load_with_path(data_path):
+    pdf_document = document.load(data_path / "document.pdf", "owner", "user")
+    assert pdf_document.author == "Charles Brunet"
+
+
+def test_load_with_filename(data_path):
+    pdf_document = document.load(str(data_path / "document.pdf"), "owner", "user")
+    assert pdf_document.author == "Charles Brunet"
+
+
+def test_load_with_bytes(data_path):
+    data = (data_path / "document.pdf").read_bytes()
+    pdf_document = document.load(data, "owner", "user")
+    assert pdf_document.author == "Charles Brunet"
+
+
+def test_load_with_file(data_path):
+    with (data_path / "document.pdf").open("rb") as f:
+        pdf_document = document.load(f, "owner", "user")
+    assert pdf_document.author == "Charles Brunet"
+
+
+def test_load_with_file_not_bytes(data_path):
+    with (data_path / "document.pdf").open("r") as f:
+        with pytest.raises(TypeError):
+            document.load(f, "owner", "user")
+
+
+def test_load_with_invalid_type():
+    with pytest.raises(TypeError):
+        document.load(42)
+
+
+def test_save(pdf_document, tmp_path):
+    copy_document = tmp_path / "copy.pdf"
+    pdf_document.author = "Valérie Tremblay"
+    assert pdf_document.save(copy_document)
+
+    pdf_copy = document.load(copy_document, "owner", "user")
+    assert pdf_copy.author == "Valérie Tremblay"
+
+
+def test_save_a_copy(pdf_document, tmp_path):
+    copy_document = tmp_path / "copy.pdf"
+    pdf_document.author = "Valérie Tremblay"
+    assert pdf_document.save_a_copy(copy_document)
+
+    pdf_copy = document.load(copy_document, "owner", "user")
+    assert pdf_copy.author == "Charles Brunet"
 
 
 def test_pages(pdf_document):
@@ -195,3 +252,41 @@ def test_infos(pdf_document):
 def test_remove_info(pdf_document):
     pdf_document.remove_info()
     assert not pdf_document.infos()
+
+
+def test_page_layout(pdf_document):
+    layout = pdf_document.page_layout
+    assert layout == pdf_document.PageLayout.no_layout
+
+
+def test_page_mode(pdf_document):
+    mode = pdf_document.page_mode
+    assert mode == pdf_document.PageMode.use_none
+
+
+def test_locked_document(locked_document):
+    assert locked_document.is_locked()
+
+
+def test_unlock(locked_document):
+    result = locked_document.unlock("owner", "user")
+    assert result is False
+    assert result is locked_document.is_locked()
+
+
+def test_unlock_with_owner(locked_document):
+    result = locked_document.unlock("owner", "")
+    assert result is False
+    assert result is locked_document.is_locked()
+
+
+def test_unlock_with_user(locked_document):
+    result = locked_document.unlock("", "user")
+    assert result is False
+    assert result is locked_document.is_locked()
+
+
+def test_unlock_with_wrong_passwords(locked_document):
+    result = locked_document.unlock("abc", "def")
+    assert result is True
+    assert result is locked_document.is_locked()

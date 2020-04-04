@@ -15,18 +15,16 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-import pytest
-
-from pathlib import Path
-
-from poppler import document
+from poppler.image import Image
 
 
-@pytest.fixture(scope="session")
-def data_path():
-    return Path(__file__).parent / "data"
+def test_invalid_image():
+    image = Image()
+    assert not image.is_valid
+    assert image.format == image.Format.invalid
 
 
-@pytest.fixture()
-def pdf_document(data_path):
-    return document.load_from_file(data_path / "document.pdf", "owner", "user")
+def test_supported_image_formats():
+    formats = Image.supported_image_formats()
+    assert "png" in formats
+    assert "jpeg" in formats

@@ -49,6 +49,14 @@ PYBIND11_MODULE(_global, m)
         .value("print_high_resolution", permission_enum::perm_print_high_resolution)
         .export_values();
 
+    py::enum_<page_box_enum>(m, "page_box_enum")
+        .value("media_box", page_box_enum::media_box)
+        .value("crop_box", page_box_enum::crop_box)
+        .value("bleed_box", page_box_enum::bleed_box)
+        .value("trim_box", page_box_enum::trim_box)
+        .value("art_box", page_box_enum::art_box)
+        .export_values();
+
     py::class_<ustring>(m, "_ustring")
         .def("__str__", &from_ustring)
         ;

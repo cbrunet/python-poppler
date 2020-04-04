@@ -14,5 +14,14 @@ target_link_libraries(_version PRIVATE ${POPPLER_LIBRARIES})
 pybind11_add_module(_global src/cpp/global.cpp)
 target_link_libraries(_global PRIVATE ${POPPLER_LIBRARIES})
 
+pybind11_add_module(_rectangle src/cpp/rectangle.cpp)
+target_link_libraries(_rectangle PRIVATE ${POPPLER_LIBRARIES})
+
+pybind11_add_module(_image src/cpp/image.cpp)
+target_link_libraries(_image PRIVATE ${POPPLER_LIBRARIES})
+
 pybind11_add_module(_document src/cpp/document.cpp)
 target_link_libraries(_document PRIVATE ${POPPLER_LIBRARIES})
+
+pybind11_add_module(_page src/cpp/page.cpp)
+target_link_libraries(_page PRIVATE ${POPPLER_LIBRARIES})

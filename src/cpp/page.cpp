@@ -1,0 +1,69 @@
+/* poppler-python: python binding to the poppler-cpp pdf lib
+ * Copyright (C) 2020, Charles Brunet <charles@cbrunet.net>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <poppler/cpp/poppler-global.h>
+#include <poppler/cpp/poppler-page.h>
+#include <poppler/cpp/poppler-rectangle.h>
+
+namespace py = pybind11;
+
+namespace poppler
+{
+
+PYBIND11_MODULE(_page, m)
+{
+    py::module::import("poppler._global");
+    py::module::import("poppler._rectangle");
+
+    py::enum_<page::orientation_enum>(m, "orientation_enum")
+        .value("landscape", page::orientation_enum::landscape)
+        .value("portrait", page::orientation_enum::portrait)
+        .value("seascape", page::orientation_enum::seascape)
+        .value("upside_down", page::orientation_enum::upside_down)
+        .export_values();
+
+    py::enum_<page::text_layout_enum>(m, "text_layout_enum")
+        .value("physical_layout", page::text_layout_enum::physical_layout)
+        .value("raw_order_layout", page::text_layout_enum::raw_order_layout)
+        // .value("non_raw_non_physical_layout", page::text_layout_enum::non_raw_non_physical_layout)  //since 0.88
+        .export_values();
+
+    py::class_<text_box>(m, "text_box")
+        .def("text", &text_box::text)
+        .def("bbox", &text_box::bbox)
+        .def("rotation", &text_box::rotation)
+        .def("char_bbox", &text_box::char_bbox, py::arg("i"))
+        .def("has_space_after", &text_box::has_space_after)
+        ;
+
+    py::class_<page>(m, "page")
+        .def("duration", &page::duration)
+        .def("label", &page::label)
+        .def("orientation", &page::orientation)
+        .def("page_rect", &page::page_rect, py::arg("box")=page_box_enum::crop_box)
+        // search
+        .def("text", (ustring (page::*) (const rectf&, page::text_layout_enum) const) &page::text, py::arg("rect"), py::arg("layout_mode"))
+        .def("text", (ustring (page::*) (const rectf&) const) &page::text, py::arg("rect")=rectf())
+        .def("text_list", &page::text_list)
+        // transition
+        ;
+}
+
+}

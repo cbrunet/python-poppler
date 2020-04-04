@@ -19,41 +19,77 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <poppler/cpp/poppler-document.h>
+#include <poppler/cpp/poppler-page.h>
+
 
 namespace py = pybind11;
 
 namespace poppler
 {
 
-py::object pdf_id(const document& doc)
+namespace binding
 {
-    std::string permanent_id, update_id;
-    bool result = doc.get_pdf_id(&permanent_id, &update_id);
-    if (result)
+    py::object pdf_id(const document& doc)
     {
-        return py::make_tuple(permanent_id, update_id);
+        std::string permanent_id, update_id;
+        bool result = doc.get_pdf_id(&permanent_id, &update_id);
+        if (result)
+        {
+            return py::make_tuple(permanent_id, update_id);
+        }
+        else
+        {
+            return py::object();
+        }
     }
-    else
-    {
-        return py::object();
-    }
-}
 
-py::tuple pdf_version(const document& doc)
-{
-    int major, minor;
-    doc.get_pdf_version(&major, &minor);
-    return py::make_tuple(major, minor);
+    py::tuple pdf_version(const document& doc)
+    {
+        int major, minor;
+        doc.get_pdf_version(&major, &minor);
+        return py::make_tuple(major, minor);
+    }
+
+    document* load_from_data(py::bytes file_data, const std::string &owner_password = std::string(), const std::string &user_password = std::string())
+    {
+        char *buffer;
+        ssize_t length;
+        if (PYBIND11_BYTES_AS_STRING_AND_SIZE(file_data.ptr(), &buffer, &length))
+            pybind11::pybind11_fail("Unable to extract bytes contents!");
+        return document::load_from_raw_data(buffer, length, owner_password, user_password);
+    }
+
 }
 
 PYBIND11_MODULE(_document, m)
 {
     py::module::import("poppler._global");
+    py::module::import("poppler._page");
+
+    py::enum_<document::page_layout_enum>(m, "page_layout_enum")
+        .value("no_layout", document::page_layout_enum::no_layout)
+        .value("single_page", document::page_layout_enum::single_page)
+        .value("one_column", document::page_layout_enum::one_column)
+        .value("two_column_left", document::page_layout_enum::two_column_left)
+        .value("two_column_right", document::page_layout_enum::two_column_right)
+        .value("two_page_left", document::page_layout_enum::two_page_left)
+        .value("two_page_right", document::page_layout_enum::two_page_right)
+        .export_values();
+
+    py::enum_<document::page_mode_enum>(m, "page_mode_enum")
+        .value("use_none", document::page_mode_enum::use_none)
+        .value("use_outlines", document::page_mode_enum::use_outlines)
+        .value("use_thumbs", document::page_mode_enum::use_thumbs)
+        .value("fullscreen", document::page_mode_enum::fullscreen)
+        .value("use_oc", document::page_mode_enum::use_oc)
+        .value("use_attach", document::page_mode_enum::use_attach)
+        .export_values();
 
     py::class_<document>(m, "document")
         // create_destination_map
         // create_font_iterator
-        // create_page
+        .def("create_page", (page* (document::*)(int) const) &document::create_page, py::arg("index"))
+        .def("create_page", (page* (document::*)(const ustring&) const) &document::create_page, py::arg("label"))
         // create_toc
         // embedded_files
         // fonts
@@ -62,8 +98,8 @@ PYBIND11_MODULE(_document, m)
         .def("get_creator", &document::get_creator)
         .def("get_keywords", &document::get_keywords)
         .def("get_modification_date", &document::get_modification_date)
-        .def("get_pdf_id", &pdf_id)
-        .def("get_pdf_version", &pdf_version)
+        .def("get_pdf_id", &binding::pdf_id)
+        .def("get_pdf_version", &binding::pdf_version)
         .def("get_producer", &document::get_producer)
         .def("get_subject", &document::get_subject)
         .def("get_title", &document::get_title)
@@ -76,11 +112,12 @@ PYBIND11_MODULE(_document, m)
         .def("is_linearized", &document::is_linearized)
         .def("is_locked", &document::is_locked)
         .def("metadata", &document::metadata)
-        // page_mode
+        .def("page_layout", &document::page_layout)
+        .def("page_mode", &document::page_mode)
         .def("pages", &document::pages)
         .def("remove_info", &document::remove_info)
-        // save
-        // save_a_copy
+        .def("save", &document::save, py::arg("file_name"))
+        .def("save_a_copy", &document::save_a_copy, py::arg("file_name"))
         .def("set_author", &document::set_author, py::arg("author"))
         .def("set_creation_date", &document::set_creation_date, py::arg("creation_date"))
         .def("set_creator", &document::set_creator, py::arg("creator"))
@@ -91,12 +128,11 @@ PYBIND11_MODULE(_document, m)
         .def("set_producer", &document::set_producer, py::arg("producer"))
         .def("set_subject", &document::set_subject, py::arg("subject"))
         .def("set_title", &document::set_title, py::arg("title"))
-        // unlock
+        .def("unlock", &document::unlock, py::arg("owner_password"), py::arg("user_password"))
         ;
 
-    // m.def("load_from_data", &document::load_from_data, py::arg("file_data"), py::arg("owner_password")="", py::arg("user_password")="");
+    m.def("load_from_data", &binding::load_from_data, py::arg("file_data"), py::arg("owner_password")="", py::arg("user_password")="");
     m.def("load_from_file", &document::load_from_file, py::arg("file_name"), py::arg("owner_password")="", py::arg("user_password")="");
-    // m.def("load_from_raw_data", &document::load_from_raw_data);
 
 }
 
