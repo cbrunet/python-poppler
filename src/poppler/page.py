@@ -20,25 +20,24 @@ from poppler.rectangle import Rectangle
 
 
 class TextBox(object):
-
     def __init__(self, text_box):
         self._text_box = text_box
 
     @property
     def text(self):
         return str(self._text_box.text())
-    
+
     @property
     def bbox(self):
         return Rectangle.from_object(self._text_box.bbox())
-    
+
     @property
     def rotation(self):
         return self._text_box.rotation()
-    
+
     def char_bbox(self, i):
         return Rectangle.from_object(self._text_box.char_bbox(i))
-    
+
     @property
     def has_space_after(self):
         return self._text_box.has_space_after()
@@ -52,7 +51,7 @@ class Page(object):
 
     def __init__(self, poppler_page):
         self._page = poppler_page
-    
+
     @property
     def duration(self):
         return self._page.duration()
@@ -79,4 +78,3 @@ class Page(object):
 
     def text_list(self):
         return [TextBox(b) for b in self._page.text_list()]
-        

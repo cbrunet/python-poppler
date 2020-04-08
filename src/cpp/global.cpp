@@ -57,6 +57,13 @@ PYBIND11_MODULE(_global, m)
         .value("art_box", page_box_enum::art_box)
         .export_values();
 
+    py::enum_<rotation_enum>(m, "rotation_enum")
+        .value("rotate_0", rotation_enum::rotate_0)
+        .value("rotate_90", rotation_enum::rotate_90)
+        .value("rotate18_0", rotation_enum::rotate_180)
+        .value("rotate27_0", rotation_enum::rotate_270)
+        .export_values();
+
     py::class_<ustring>(m, "_ustring")
         .def("__str__", &from_ustring)
         ;

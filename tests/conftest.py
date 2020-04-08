@@ -30,3 +30,8 @@ def data_path():
 @pytest.fixture()
 def pdf_document(data_path):
     return document.load_from_file(data_path / "document.pdf", "owner", "user")
+
+
+@pytest.fixture
+def pdf_page(pdf_document):
+    return pdf_document.create_page(0)

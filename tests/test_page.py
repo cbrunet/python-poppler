@@ -20,11 +20,6 @@ import pytest
 from poppler.page import Page
 
 
-@pytest.fixture
-def pdf_page(pdf_document):
-    return pdf_document.create_page(0)
-
-
 def test_page_duration(pdf_page):
     assert pdf_page.duration == -1.0
 
@@ -42,13 +37,16 @@ def test_page_rect(pdf_page):
     assert r.as_tuple() == (0.0, 0.0, 612.0, 792.0)
 
 
-@pytest.mark.parametrize("box", [
-    Page.PageBox.media_box,
-    Page.PageBox.crop_box,
-    Page.PageBox.bleed_box,
-    Page.PageBox.trim_box,
-    Page.PageBox.art_box
-])
+@pytest.mark.parametrize(
+    "box",
+    [
+        Page.PageBox.media_box,
+        Page.PageBox.crop_box,
+        Page.PageBox.bleed_box,
+        Page.PageBox.trim_box,
+        Page.PageBox.art_box,
+    ],
+)
 def test_page_rect_box(pdf_page, box):
     r = pdf_page.page_rect(box)
     assert r.as_tuple() == (0.0, 0.0, 612.0, 792.0)
@@ -67,5 +65,10 @@ def test_text_list(pdf_page):
     assert text_box.text == "Page"
     assert pytest.approx(text_box.bbox.as_tuple(), abs=0.1) == (56.8, 57.2, 80.1, 70.5)
     assert text_box.rotation == 0
-    assert pytest.approx(text_box.char_bbox(0).as_tuple(), abs=0.1) == (56.8, 57.2, 63.5, 70.5)
+    assert pytest.approx(text_box.char_bbox(0).as_tuple(), abs=0.1) == (
+        56.8,
+        57.2,
+        63.5,
+        70.5,
+    )
     assert text_box.has_space_after is True

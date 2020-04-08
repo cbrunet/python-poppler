@@ -70,4 +70,3 @@ def test_rect_as_tuple():
     rectangle = Rectangle(10, 20, 30, 40)
     t = rectangle.as_tuple()
     assert t == (10, 20, 40, 60)
-    

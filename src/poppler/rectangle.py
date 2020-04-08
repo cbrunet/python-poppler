@@ -19,7 +19,6 @@ from poppler import _rectangle
 
 
 class Rectangle(object):
-
     def __init__(self, x=0, y=0, w=0, h=0, poppler_object=None):
         if poppler_object:
             self._rect = poppler_object
@@ -27,7 +26,7 @@ class Rectangle(object):
             self._rect = _rectangle.rect(int(x), int(y), int(w), int(h))
         else:
             self._rect = _rectangle.rectf(float(x), float(y), float(w), float(h))
-    
+
     @classmethod
     def from_object(cls, poppler_object):
         return cls(poppler_object=poppler_object)
@@ -35,14 +34,14 @@ class Rectangle(object):
     @property
     def x(self):
         return self._rect.x()
-    
+
     @property
     def y(self):
         return self._rect.y()
 
     def is_empty(self):
         return self._rect.is_empty()
-    
+
     @property
     def height(self):
         return self._rect.height()
@@ -54,15 +53,15 @@ class Rectangle(object):
     @property
     def bottom(self):
         return self._rect.bottom()
-    
+
     @bottom.setter
     def bottom(self, value):
         self._rect.set_bottom(value)
-    
+
     @property
     def left(self):
         return self._rect.left()
-    
+
     @left.setter
     def left(self, value):
         self._rect.set_left(value)
@@ -70,7 +69,7 @@ class Rectangle(object):
     @property
     def right(self):
         return self._rect.right()
-    
+
     @right.setter
     def right(self, value):
         self._rect.set_right(value)
@@ -78,7 +77,7 @@ class Rectangle(object):
     @property
     def top(self):
         return self._rect.top()
-    
+
     @top.setter
     def top(self, value):
         self._rect.set_top(value)

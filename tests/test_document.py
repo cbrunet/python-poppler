@@ -159,7 +159,7 @@ def test_info_key(pdf_document):
 
 def test_info_keys(pdf_document):
     keys = pdf_document.info_keys()
-    assert keys == ['Author', 'Creator', 'Producer', 'CreationDate']
+    assert keys == ["Author", "Creator", "Producer", "CreationDate"]
 
 
 def test_is_encrypted(pdf_document):

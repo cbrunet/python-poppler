@@ -21,15 +21,18 @@ from poppler import _version
 def version():
     return _version.version_major(), _version.version_minor(), _version.version_micro()
 
+
 def major():
     return _version.version_major()
+
 
 def minor():
     return _version.version_minor()
 
+
 def micro():
     return _version.version_micro()
 
+
 def string():
     return _version.version_string()
-    

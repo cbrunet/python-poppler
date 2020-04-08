@@ -18,3 +18,4 @@
 from poppler import _global
 
 Permission = _global.permission_enum
+Rotation = _global.rotation_enum

@@ -1,16 +1,14 @@
 - Test methods with wrong arguments
-- Test open modify save and reopen
-- load_from_data and load_from file pointer
 
 - README
 - Long description
 - Add documentation
 - github actions
 
-- page class
 - page_renderer
-- text_box class
 - toc class
+
+- compile poppler on windows
 
 - Tools:
 - pdftk clone

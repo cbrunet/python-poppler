@@ -21,12 +21,11 @@ from poppler._utilities import from_time_type, to_time_type
 from poppler.page import Page
 
 from collections import namedtuple
-from datetime import datetime
 from functools import singledispatch
 from pathlib import Path
 
 
-PDFId = namedtuple('PDFId', ["permanent_id", "update_id"])
+PDFId = namedtuple("PDFId", ["permanent_id", "update_id"])
 
 
 class Document(object):
@@ -52,7 +51,7 @@ class Document(object):
     def creation_date(self):
         timestamp = self._document.get_creation_date()
         return from_time_type(timestamp)
-    
+
     @creation_date.setter
     def creation_date(self, creation_date):
         self._document.set_creation_date(to_time_type(creation_date))
@@ -60,7 +59,7 @@ class Document(object):
     @property
     def creator(self):
         return str(self._document.get_creator())
-    
+
     @creator.setter
     def creator(self, creator):
         self._document.set_creator(ustring(creator))
@@ -68,7 +67,7 @@ class Document(object):
     @property
     def keywords(self):
         return str(self._document.get_keywords())
-    
+
     @keywords.setter
     def keywords(self, keywords):
         self._document.set_keywords(ustring(keywords))
@@ -82,7 +81,7 @@ class Document(object):
     def modification_date(self):
         timestamp = self._document.get_modification_date()
         return from_time_type(timestamp)
-    
+
     @modification_date.setter
     def modification_date(self, modification_date):
         self._document.set_modification_date(to_time_type(modification_date))
@@ -90,31 +89,31 @@ class Document(object):
     @property
     def pdf_id(self):
         return PDFId(*self._document.get_pdf_id())
-        
+
     @property
     def pdf_version(self):
         return self._document.get_pdf_version()
-    
+
     @property
     def producer(self):
         return str(self._document.get_producer())
-    
+
     @producer.setter
     def producer(self, producer):
         self._document.set_producer(ustring(producer))
-    
+
     @property
     def subject(self):
         return str(self._document.get_subject())
-    
+
     @subject.setter
     def subject(self, subject):
         self._document.set_subject(ustring(subject))
-    
+
     @property
     def title(self):
         return str(self._document.get_title())
-    
+
     @title.setter
     def title(self, title):
         self._document.set_title(ustring(title))
@@ -187,7 +186,9 @@ class Document(object):
 
 
 def load_from_file(file_name, owner_password="", user_password=""):
-    return Document(_document.load_from_file(str(file_name), owner_password, user_password))
+    return Document(
+        _document.load_from_file(str(file_name), owner_password, user_password)
+    )
 
 
 def load_from_data(file_data: bytes, owner_password="", user_password=""):
@@ -201,18 +202,23 @@ def load(arg, owner_password="", user_password=""):
         return load_from_data(data, owner_password, user_password)
 
     except AttributeError:
-        raise TypeError("Load cannot be called with argument of type {}".format(type(arg)))
+        raise TypeError(
+            "Load cannot be called with argument of type {}".format(type(arg))
+        )
 
     except UnicodeDecodeError:
         raise TypeError("Stream must be read as bytes.")
+
 
 @load.register
 def _(arg: str, owner_password="", user_password=""):
     return load_from_file(arg, owner_password, user_password)
 
+
 @load.register
 def _(arg: Path, owner_password="", user_password=""):
     return load_from_file(arg, owner_password, user_password)
+
 
 @load.register
 def _(arg: bytes, owner_password="", user_password=""):

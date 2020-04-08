@@ -23,7 +23,9 @@ class Image(object):
 
     Format = _image.format_enum
 
-    def __init__(self, width=0, height=0, iformat=Format.invalid, data=None, poppler_object=None):
+    def __init__(
+        self, width=0, height=0, iformat=Format.invalid, data=None, poppler_object=None
+    ):
         if poppler_object is not None:
             self._image = poppler_object
         elif data is not None:
@@ -36,11 +38,11 @@ class Image(object):
     @classmethod
     def from_object(cls, poppler_object):
         return cls(poppler_object=poppler_object)
-    
+
     @property
     def bytes_per_row(self):
         return self._image.bytes_per_row()
-    
+
     @property
     def const_data(self):
         return self._image.const_data()
@@ -48,7 +50,7 @@ class Image(object):
     def copy(self, rect=None):
         image = self._image.copy(rect or Rectangle()._rect)
         return Image.from_object(image)
-    
+
     @property
     def data(self):
         return self._image.data()

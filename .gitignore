@@ -1,3 +1,4 @@
+/build
 __pycache__
 .tox
 .venv
@@ -5,3 +6,4 @@ __pycache__
 
 *.pyc
 *.egg-info
+*.so

@@ -15,14 +15,29 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from datetime import datetime
+from poppler._page_renderer import page_renderer, can_render
+from poppler import Rotation
+from poppler.image import Image
 
 
-def from_time_type(timestamp):
-    if timestamp == 2 ** 32 - 1:
-        return None
-    return datetime.fromtimestamp(timestamp)
+class PageRenderer(object):
+    def __init__(self):
+        self._renderer = page_renderer()
 
+    def render_page(
+        self,
+        page,
+        xres=72.0,
+        yres=72.0,
+        x=-1,
+        y=-1,
+        w=-1,
+        h=-1,
+        rotate=Rotation.rotate_0,
+    ):
+        img = self._renderer.render_page(page._page, xres, yres, x, y, w, h, rotate)
+        return Image.from_object(img)
 
-def to_time_type(date_time):
-    return int(date_time.timestamp()) if date_time else 2 ** 32 - 1
+    @staticmethod
+    def can_render():
+        return can_render()

@@ -25,3 +25,6 @@ target_link_libraries(_document PRIVATE ${POPPLER_LIBRARIES})
 
 pybind11_add_module(_page src/cpp/page.cpp)
 target_link_libraries(_page PRIVATE ${POPPLER_LIBRARIES})
+
+pybind11_add_module(_page_renderer src/cpp/page_renderer.cpp)
+target_link_libraries(_page_renderer PRIVATE ${POPPLER_LIBRARIES})
