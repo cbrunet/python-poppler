@@ -34,9 +34,30 @@ PYBIND11_MODULE(_page_renderer, m)
     py::module::import("poppler._image");
     py::module::import("poppler._page");
 
+    py::enum_<page_renderer::line_mode_enum>(m, "line_mode_enum")
+        .value("default", page_renderer::line_mode_enum::line_default)
+        .value("solid", page_renderer::line_mode_enum::line_solid)
+        .value("shape ", page_renderer::line_mode_enum::line_shape)
+        .export_values();
+
+    py::enum_<page_renderer::render_hint>(m, "render_hint", py::arithmetic())
+        .value("antialiasing", page_renderer::render_hint::antialiasing)
+        .value("text_antialiasing", page_renderer::render_hint::text_antialiasing)
+        .value("text_hinting", page_renderer::render_hint::text_hinting)
+        .export_values();
+
     py::class_<page_renderer>(m, "page_renderer")
         .def(py::init<>())
+        .def("image_format", &page_renderer::image_format)
+        .def("line_mode", &page_renderer::line_mode)
+        .def("paper_color", &page_renderer::paper_color)
+        .def("render_hints", &page_renderer::render_hints)
         .def("render_page", &page_renderer::render_page, py::arg("p"), py::arg("xres")=72.0, py::arg("yres")=72.0, py::arg("x")=-1, py::arg("y")=-1, py::arg("w")=-1, py::arg("h")=-1, py::arg("rotate")=rotation_enum::rotate_0)
+        .def("set_image_format", &page_renderer::set_image_format, py::arg("format"))
+        .def("set_line_mode", &page_renderer::set_line_mode, py::arg("mode"))
+        .def("set_paper_color", &page_renderer::set_paper_color, py::arg("color"))
+        .def("set_render_hint", &page_renderer::set_render_hint, py::arg("hint"), py::arg("on")=true)
+        .def("set_render_hints", &page_renderer::set_render_hints, py::arg("hints"))
         ;
 
     m.def("can_render", &page_renderer::can_render);

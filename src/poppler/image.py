@@ -45,7 +45,7 @@ class Image(object):
 
     @property
     def const_data(self):
-        return self._image.const_data()
+        return self._image.data()
 
     def copy(self, rect=None):
         image = self._image.copy(rect or Rectangle()._rect)

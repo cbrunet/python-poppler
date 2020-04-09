@@ -15,14 +15,50 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler._page_renderer import page_renderer, can_render
+from poppler import _page_renderer
 from poppler import Rotation
 from poppler.image import Image
 
 
 class PageRenderer(object):
+
+    LineMode = _page_renderer.line_mode_enum
+    RenderHint = _page_renderer.render_hint
+
     def __init__(self):
-        self._renderer = page_renderer()
+        self._renderer = _page_renderer.page_renderer()
+
+    @property
+    def image_format(self):
+        return self._renderer.image_format()
+
+    @image_format.setter
+    def image_format(self, format):
+        self._renderer.set_image_format(format)
+
+    @property
+    def line_mode(self):
+        return self._renderer.line_mode()
+
+    @line_mode.setter
+    def line_mode(self, mode):
+        self._renderer.set_line_mode(mode)
+
+    @property
+    def paper_color(self):
+        return self._renderer.paper_color()
+
+    @paper_color.setter
+    def paper_color(self, color):
+        self._renderer.set_paper_color(color)
+
+    @property
+    def render_hints(self):
+        return self._renderer.render_hints()
+
+    @render_hints.setter
+    def render_hints(self, hints):
+        self._renderer.set_render_hints(hints)
 
     def render_page(
         self,
@@ -38,6 +74,9 @@ class PageRenderer(object):
         img = self._renderer.render_page(page._page, xres, yres, x, y, w, h, rotate)
         return Image.from_object(img)
 
+    def set_render_hint(self, hint, on=True):
+        self._renderer.set_render_hint(hint, on)
+
     @staticmethod
     def can_render():
-        return can_render()
+        return _page_renderer.can_render()

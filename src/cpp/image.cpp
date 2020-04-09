@@ -32,6 +32,12 @@ namespace poppler
         img_data = data;
     }
 
+    py::bytes data(image& img)
+    {
+        char* img_data = img.data();
+        return py::bytes(img_data);
+    }
+
 PYBIND11_MODULE(_image, m)
 {
     py::enum_<image::format_enum>(m, "format_enum")
@@ -48,9 +54,9 @@ PYBIND11_MODULE(_image, m)
         .def(py::init<char*, int, int, image::format_enum>(), py::arg("idata"), py::arg("iwidth"), py::arg("iheight"), py::arg("iformat"))
         .def(py::init<int, int, image::format_enum>(), py::arg("iwidth"), py::arg("iheight"), py::arg("iformat"))
         .def("bytes_per_row", &image::bytes_per_row)
-        .def("const_data", &image::const_data)
+        // .def("const_data", &image::const_data)
         .def("copy", &image::copy, py::arg("rect")=rect())
-        .def("data", &image::data)
+        .def("data", &data)
         .def("set_data", &set_data)
         .def("format", &image::format)
         .def("height", &image::height)
