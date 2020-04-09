@@ -38,6 +38,11 @@ namespace poppler
 
 PYBIND11_MODULE(_global, m)
 {
+    py::enum_<case_sensitivity_enum>(m, "case_sensitivity_enum")
+        .value("case_sensitive", case_sensitivity_enum::case_sensitive)
+        .value("case_insensitive", case_sensitivity_enum::case_insensitive)
+        .export_values();
+
     py::enum_<permission_enum>(m, "permission_enum")
         .value("print", permission_enum::perm_print)
         .value("change", permission_enum::perm_change)

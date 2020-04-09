@@ -16,6 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from poppler import _page, _global
+from poppler import Rotation
 from poppler.rectangle import Rectangle
 
 
@@ -47,6 +48,7 @@ class Page(object):
 
     Orientation = _page.orientation_enum
     PageBox = _global.page_box_enum
+    SearchDirection = _page.search_direction_enum
     TextLayout = _page.text_layout_enum
 
     def __init__(self, poppler_page):
@@ -67,6 +69,15 @@ class Page(object):
     def page_rect(self, box=PageBox.crop_box):
         rectf = self._page.page_rect(box)
         return Rectangle.from_object(rectf)
+
+    def search(self, text, r, direction, case_sensitivity, rotation=Rotation.rotate_0):
+        utext = _global.ustring(text)
+        found, found_rect = self._page.search(
+            utext, r._rect, direction, case_sensitivity, rotation
+        )
+        if found:
+            return Rectangle.from_object(found_rect)
+        return None
 
     def text(self, rect=None, layout_mode=None):
         r = rect or Rectangle(0.0, 0.0, 0.0, 0.0)

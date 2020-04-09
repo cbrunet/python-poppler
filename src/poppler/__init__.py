@@ -17,5 +17,6 @@
 
 from poppler import _global
 
+CaseSensitivity = _global.case_sensitivity_enum
 Permission = _global.permission_enum
 Rotation = _global.rotation_enum
