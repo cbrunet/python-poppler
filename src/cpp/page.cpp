@@ -20,6 +20,7 @@
 #include <pybind11/stl.h>
 #include <poppler/cpp/poppler-global.h>
 #include <poppler/cpp/poppler-page.h>
+#include <poppler/cpp/poppler-page-transition.h>
 #include <poppler/cpp/poppler-rectangle.h>
 
 namespace py = pybind11;
@@ -37,6 +38,7 @@ namespace poppler
 PYBIND11_MODULE(_page, m)
 {
     py::module::import("poppler._global");
+    py::module::import("poppler._page_transition");
     py::module::import("poppler._rectangle");
 
     py::enum_<page::orientation_enum>(m, "orientation_enum")
@@ -75,7 +77,7 @@ PYBIND11_MODULE(_page, m)
         .def("text", (ustring (page::*) (const rectf&, page::text_layout_enum) const) &page::text, py::arg("rect"), py::arg("layout_mode"))
         .def("text", (ustring (page::*) (const rectf&) const) &page::text, py::arg("rect")=rectf())
         .def("text_list", &page::text_list)
-        // transition
+        .def("transition", &page::transition)
         ;
 }
 

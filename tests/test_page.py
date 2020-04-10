@@ -92,3 +92,7 @@ def test_search_not_found(pdf_page):
     )
 
     assert result is None
+
+
+def test_page_transition(pdf_page):
+    assert pdf_page.transition() is None

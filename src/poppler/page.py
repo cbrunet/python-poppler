@@ -17,6 +17,7 @@
 
 from poppler import _page, _global
 from poppler import Rotation
+from poppler.pagetransition import PageTransition
 from poppler.rectangle import Rectangle
 
 
@@ -89,3 +90,7 @@ class Page(object):
 
     def text_list(self):
         return [TextBox(b) for b in self._page.text_list()]
+
+    def transition(self):
+        transition = self._page.transition()
+        return PageTransition(transition) if transition else None
