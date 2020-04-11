@@ -31,3 +31,6 @@ target_link_libraries(_page_renderer PRIVATE ${POPPLER_LIBRARIES})
 
 pybind11_add_module(_page_transition src/cpp/page_transition.cpp)
 target_link_libraries(_page_transition PRIVATE ${POPPLER_LIBRARIES})
+
+pybind11_add_module(_embedded_file src/cpp/embedded_file.cpp)
+target_link_libraries(_embedded_file PRIVATE ${POPPLER_LIBRARIES})

@@ -35,3 +35,8 @@ def pdf_document(data_path):
 @pytest.fixture
 def pdf_page(pdf_document):
     return pdf_document.create_page(0)
+
+
+@pytest.fixture(scope="session")
+def sample_document(data_path):
+    return document.load_from_file(data_path / "sample.pdf")

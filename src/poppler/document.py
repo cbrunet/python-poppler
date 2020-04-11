@@ -18,6 +18,7 @@
 from poppler import _document
 from poppler._global import ustring
 from poppler._utilities import from_time_type, to_time_type
+from poppler.embeddedfile import EmbeddedFile
 from poppler.page import Page
 
 from collections import namedtuple
@@ -121,6 +122,9 @@ class Document(object):
     @property
     def pages(self):
         return self._document.pages()
+
+    def embedded_files(self):
+        return [EmbeddedFile(f) for f in self._document.embedded_files()]
 
     def has_embedded_files(self):
         return self._document.has_embedded_files()

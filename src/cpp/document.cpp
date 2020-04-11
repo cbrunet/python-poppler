@@ -19,6 +19,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <poppler/cpp/poppler-document.h>
+#include <poppler/cpp/poppler-embedded-file.h>
 #include <poppler/cpp/poppler-page.h>
 
 
@@ -63,6 +64,7 @@ namespace binding
 
 PYBIND11_MODULE(_document, m)
 {
+    py::module::import("poppler._embedded_file");
     py::module::import("poppler._global");
     py::module::import("poppler._page");
 
@@ -91,7 +93,7 @@ PYBIND11_MODULE(_document, m)
         .def("create_page", (page* (document::*)(int) const) &document::create_page, py::arg("index"))
         .def("create_page", (page* (document::*)(const ustring&) const) &document::create_page, py::arg("label"))
         // create_toc
-        // embedded_files
+        .def("embedded_files", &document::embedded_files)
         // fonts
         .def("get_author", &document::get_author)
         .def("get_creation_date", &document::get_creation_date)

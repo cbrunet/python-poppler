@@ -27,7 +27,6 @@ namespace py = pybind11;
 
 namespace poppler
 {
-
     py::tuple search(const page& p, const ustring &text, rectf &r, page::search_direction_enum direction, case_sensitivity_enum case_sensitivity, rotation_enum rotation=rotation_enum::rotate_0)
     {
         bool result = p.search(text, r, direction, case_sensitivity, rotation);
@@ -77,7 +76,7 @@ PYBIND11_MODULE(_page, m)
         .def("text", (ustring (page::*) (const rectf&, page::text_layout_enum) const) &page::text, py::arg("rect"), py::arg("layout_mode"))
         .def("text", (ustring (page::*) (const rectf&) const) &page::text, py::arg("rect")=rectf())
         .def("text_list", &page::text_list)
-        .def("transition", &page::transition)
+        .def("transition", &page::transition, py::return_value_policy::reference)
         ;
 }
 

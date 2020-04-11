@@ -12,12 +12,3 @@
 
 - Tools:
 - pdftk clone
-
-- Test page transition (need pdf document with transitions)
-    # assert transition.alignment == PageTransition.Alignment.horizontal
-    # assert transition.angle == 0
-    # assert transition.direction == PageTransition.Direction.inward
-    # assert transition.duration == 0
-    # assert transition.is_rectangular is True
-    # assert transition.scale == 1.0
-    # assert transition.type == PageTransition.Type.replace

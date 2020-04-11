@@ -89,6 +89,10 @@ def test_pages(pdf_document):
     assert pdf_document.pages == 3
 
 
+def test_embedded_file(pdf_document):
+    assert pdf_document.embedded_files() == []
+
+
 def test_get_author(pdf_document):
     assert pdf_document.author == "Charles Brunet"
 
