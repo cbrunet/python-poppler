@@ -6,7 +6,8 @@ pkg_check_modules(POPPLER REQUIRED poppler-cpp>=0.62.0)
 include_directories(${POPPLER_INCLUDE_DIRS})
 link_directories(${POPPLER_LIBRARY_DIRS})
 
-find_package(pybind11)
+# find_package(pybind11)
+add_subdirectory(pybind11)
 
 pybind11_add_module(_version src/cpp/version.cpp)
 target_link_libraries(_version PRIVATE ${POPPLER_LIBRARIES})

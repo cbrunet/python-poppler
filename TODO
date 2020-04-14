@@ -1,13 +1,15 @@
 - Test methods with wrong arguments
 - test embedded file
 
+- toc class
+- font class
+
 - README
 - Long description
 - Add documentation
 - github actions
-
-- toc class
-- font class
+  - poppler as subrepo?
+- send to PyPI
 
 - compile poppler on windows
 
