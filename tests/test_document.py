@@ -138,6 +138,7 @@ def test_get_title(pdf_document):
 
 def test_has_embedded_files(pdf_document):
     assert pdf_document.has_embedded_files() is False
+    assert not pdf_document.embedded_files()
 
 
 def test_has_permission(pdf_document):
@@ -294,3 +295,7 @@ def test_unlock_with_wrong_passwords(locked_document):
     result = locked_document.unlock("abc", "def")
     assert result is True
     assert result is locked_document.is_locked()
+
+
+def test_create_destination_map(pdf_document):
+    assert not pdf_document.create_destination_map()

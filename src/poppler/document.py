@@ -18,6 +18,7 @@
 from poppler import _document
 from poppler._global import ustring
 from poppler._utilities import from_time_type, to_time_type
+from poppler.destination import Destination
 from poppler.embeddedfile import EmbeddedFile
 from poppler.page import Page
 
@@ -122,6 +123,12 @@ class Document(object):
     @property
     def pages(self):
         return self._document.pages()
+
+    def create_destination_map(self):
+        return {
+            name: Destination(destination)
+            for name, destination in self._document.create_destination_map().items()
+        }
 
     def embedded_files(self):
         return [EmbeddedFile(f) for f in self._document.embedded_files()]

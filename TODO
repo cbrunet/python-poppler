@@ -1,12 +1,13 @@
 - Test methods with wrong arguments
+- test embedded file
 
 - README
 - Long description
 - Add documentation
 - github actions
 
-- page_renderer
 - toc class
+- font class
 
 - compile poppler on windows
 

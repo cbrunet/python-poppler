@@ -18,6 +18,7 @@
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <poppler/cpp/poppler-destination.h>
 #include <poppler/cpp/poppler-document.h>
 #include <poppler/cpp/poppler-embedded-file.h>
 #include <poppler/cpp/poppler-page.h>
@@ -64,6 +65,7 @@ namespace binding
 
 PYBIND11_MODULE(_document, m)
 {
+    py::module::import("poppler._destination");
     py::module::import("poppler._embedded_file");
     py::module::import("poppler._global");
     py::module::import("poppler._page");
@@ -88,7 +90,7 @@ PYBIND11_MODULE(_document, m)
         .export_values();
 
     py::class_<document>(m, "document")
-        // create_destination_map
+        .def("create_destination_map", &document::create_destination_map)
         // create_font_iterator
         .def("create_page", (page* (document::*)(int) const) &document::create_page, py::arg("index"))
         .def("create_page", (page* (document::*)(const ustring&) const) &document::create_page, py::arg("label"))
