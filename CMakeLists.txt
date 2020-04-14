@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(python-poppler)
 
 find_package(PkgConfig)
-pkg_check_modules(POPPLER REQUIRED poppler-cpp>=0.86.0)
+pkg_check_modules(POPPLER REQUIRED poppler-cpp>=0.62.0)
 include_directories(${POPPLER_INCLUDE_DIRS})
 link_directories(${POPPLER_LIBRARY_DIRS})
 
