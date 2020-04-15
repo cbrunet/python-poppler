@@ -18,6 +18,7 @@
 from poppler import _page_renderer
 from poppler import Rotation
 from poppler.image import Image
+from poppler.version import ensure_version
 
 
 class PageRenderer(object):
@@ -29,18 +30,22 @@ class PageRenderer(object):
         self._renderer = _page_renderer.page_renderer()
 
     @property
+    @ensure_version(0, 65)
     def image_format(self):
         return self._renderer.image_format()
 
     @image_format.setter
+    @ensure_version(0, 65)
     def image_format(self, format):
         self._renderer.set_image_format(format)
 
     @property
+    @ensure_version(0, 65)
     def line_mode(self):
         return self._renderer.line_mode()
 
     @line_mode.setter
+    @ensure_version(0, 65)
     def line_mode(self, mode):
         self._renderer.set_line_mode(mode)
 

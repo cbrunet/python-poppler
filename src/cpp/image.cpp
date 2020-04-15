@@ -16,6 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include "version.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <poppler/cpp/poppler-image.h>
@@ -45,8 +46,10 @@ PYBIND11_MODULE(_image, m)
         .value("mono", image::format_enum::format_mono)
         .value("rgb24", image::format_enum::format_rgb24)
         .value("argb32", image::format_enum::format_argb32)
+#if HAS_VERSION(0, 65)
         .value("gray8", image::format_enum::format_gray8)
         .value("bgr24", image::format_enum::format_bgr24)
+#endif
         .export_values();
 
     py::class_<image>(m, "image")

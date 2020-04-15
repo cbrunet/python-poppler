@@ -16,6 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include "version.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <poppler/cpp/poppler-global.h>
@@ -27,12 +28,11 @@ namespace py = pybind11;
 
 namespace poppler
 {
-    py::tuple search(const page& p, const ustring &text, rectf &r, page::search_direction_enum direction, case_sensitivity_enum case_sensitivity, rotation_enum rotation=rotation_enum::rotate_0)
-    {
-        bool result = p.search(text, r, direction, case_sensitivity, rotation);
-        return py::make_tuple(result, r);
-    }
-
+py::tuple search(const page &p, const ustring &text, rectf &r, page::search_direction_enum direction, case_sensitivity_enum case_sensitivity, rotation_enum rotation = rotation_enum::rotate_0)
+{
+    bool result = p.search(text, r, direction, case_sensitivity, rotation);
+    return py::make_tuple(result, r);
+}
 
 PYBIND11_MODULE(_page, m)
 {
@@ -59,25 +59,29 @@ PYBIND11_MODULE(_page, m)
         .value("previous_result", page::search_direction_enum::search_previous_result)
         .export_values();
 
+#if HAS_VERSION(0, 63)
     py::class_<text_box>(m, "text_box")
         .def("text", &text_box::text)
         .def("bbox", &text_box::bbox)
+#if HAS_VERSION(0, 68)
         .def("rotation", &text_box::rotation)
+#endif
         .def("char_bbox", &text_box::char_bbox, py::arg("i"))
-        .def("has_space_after", &text_box::has_space_after)
-        ;
+        .def("has_space_after", &text_box::has_space_after);
+#endif
 
     py::class_<page>(m, "page")
         .def("duration", &page::duration)
         .def("label", &page::label)
         .def("orientation", &page::orientation)
-        .def("page_rect", &page::page_rect, py::arg("box")=page_box_enum::crop_box)
-        .def("search", &search, py::arg("text"), py::arg("r"), py::arg("direction"), py::arg("case_sensitivity"), py::arg("rotatin")=rotation_enum::rotate_0)
-        .def("text", (ustring (page::*) (const rectf&, page::text_layout_enum) const) &page::text, py::arg("rect"), py::arg("layout_mode"))
-        .def("text", (ustring (page::*) (const rectf&) const) &page::text, py::arg("rect")=rectf())
+        .def("page_rect", &page::page_rect, py::arg("box") = page_box_enum::crop_box)
+        .def("search", &search, py::arg("text"), py::arg("r"), py::arg("direction"), py::arg("case_sensitivity"), py::arg("rotatin") = rotation_enum::rotate_0)
+        .def("text", (ustring(page::*)(const rectf &, page::text_layout_enum) const) & page::text, py::arg("rect"), py::arg("layout_mode"))
+        .def("text", (ustring(page::*)(const rectf &) const) & page::text, py::arg("rect") = rectf())
+#if HAS_VERSION(0, 63)
         .def("text_list", &page::text_list)
-        .def("transition", &page::transition, py::return_value_policy::reference)
-        ;
+#endif
+        .def("transition", &page::transition, py::return_value_policy::reference);
 }
 
-}
+} // namespace poppler

@@ -15,20 +15,25 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+import pytest
+
 from poppler.pagerenderer import PageRenderer
 from poppler.image import Image
+from poppler.version import version
 
 
 def test_can_render():
     assert PageRenderer.can_render() is True
 
 
+@pytest.mark.skipif(version() < (0, 65, 0), reason="Requires at least Poppler 0.65.0")
 def test_image_format():
     renderer = PageRenderer()
 
     assert renderer.image_format == Image.Format.argb32
 
 
+@pytest.mark.skipif(version() < (0, 65, 0), reason="Requires at least Poppler 0.65.0")
 def test_set_image_format():
     renderer = PageRenderer()
     renderer.image_format = Image.Format.mono
@@ -36,12 +41,14 @@ def test_set_image_format():
     assert renderer.image_format == Image.Format.mono
 
 
+@pytest.mark.skipif(version() < (0, 65, 0), reason="Requires at least Poppler 0.65.0")
 def test_line_mode():
     renderer = PageRenderer()
 
     assert renderer.line_mode == PageRenderer.LineMode.default
 
 
+@pytest.mark.skipif(version() < (0, 65, 0), reason="Requires at least Poppler 0.65.0")
 def test_set_line_mode():
     renderer = PageRenderer()
     renderer.line_mode = PageRenderer.LineMode.solid

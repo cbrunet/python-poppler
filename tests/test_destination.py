@@ -15,7 +15,14 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+import pytest
+
 from poppler.destination import Destination
+from poppler.version import version
+
+pytestmark = pytest.mark.skipif(
+    version() < (0, 74, 0), reason="Requires at least Poppler 0.74.0"
+)
 
 
 def test_destination_map_keys(sample_document):

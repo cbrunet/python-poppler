@@ -19,6 +19,7 @@ import pytest
 
 from poppler.page import Page
 from poppler.rectangle import Rectangle
+from poppler.version import version
 from poppler import CaseSensitivity
 
 
@@ -59,6 +60,7 @@ def test_text(pdf_page):
     assert text == "Page 1"
 
 
+@pytest.mark.skipif(version() < (0, 63, 0), reason="Requires at least Poppler 0.63.0")
 def test_text_list(pdf_page):
     text_list = pdf_page.text_list()
     assert len(text_list) == 2
@@ -66,7 +68,8 @@ def test_text_list(pdf_page):
     text_box = text_list[0]
     assert text_box.text == "Page"
     assert pytest.approx(text_box.bbox.as_tuple(), abs=0.1) == (56.8, 57.2, 80.1, 70.5)
-    assert text_box.rotation == 0
+    if version() >= (0, 68, 0):
+        assert text_box.rotation == 0
     assert pytest.approx(text_box.char_bbox(0).as_tuple(), abs=0.1) == (
         56.8,
         57.2,

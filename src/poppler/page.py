@@ -19,8 +19,10 @@ from poppler import _page, _global
 from poppler import Rotation
 from poppler.pagetransition import PageTransition
 from poppler.rectangle import Rectangle
+from poppler.version import ensure_version
 
 
+@ensure_version(0, 63)
 class TextBox(object):
     def __init__(self, text_box):
         self._text_box = text_box
@@ -34,6 +36,7 @@ class TextBox(object):
         return Rectangle.from_object(self._text_box.bbox())
 
     @property
+    @ensure_version(0, 68)
     def rotation(self):
         return self._text_box.rotation()
 
@@ -88,6 +91,7 @@ class Page(object):
             t = self._page.text(r._rect, layout_mode)
         return str(t)
 
+    @ensure_version(0, 63)
     def text_list(self):
         return [TextBox(b) for b in self._page.text_list()]
 

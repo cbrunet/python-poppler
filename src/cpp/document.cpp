@@ -16,13 +16,15 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include "version.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#if HAS_VERSION(0, 74)
 #include <poppler/cpp/poppler-destination.h>
+#endif
 #include <poppler/cpp/poppler-document.h>
 #include <poppler/cpp/poppler-embedded-file.h>
 #include <poppler/cpp/poppler-page.h>
-
 
 namespace py = pybind11;
 
@@ -31,41 +33,43 @@ namespace poppler
 
 namespace binding
 {
-    py::object pdf_id(const document& doc)
+py::object pdf_id(const document &doc)
+{
+    std::string permanent_id, update_id;
+    bool result = doc.get_pdf_id(&permanent_id, &update_id);
+    if (result)
     {
-        std::string permanent_id, update_id;
-        bool result = doc.get_pdf_id(&permanent_id, &update_id);
-        if (result)
-        {
-            return py::make_tuple(permanent_id, update_id);
-        }
-        else
-        {
-            return py::object();
-        }
+        return py::make_tuple(permanent_id, update_id);
     }
-
-    py::tuple pdf_version(const document& doc)
+    else
     {
-        int major, minor;
-        doc.get_pdf_version(&major, &minor);
-        return py::make_tuple(major, minor);
+        return py::object();
     }
-
-    document* load_from_data(py::bytes file_data, const std::string &owner_password = std::string(), const std::string &user_password = std::string())
-    {
-        char *buffer;
-        ssize_t length;
-        if (PYBIND11_BYTES_AS_STRING_AND_SIZE(file_data.ptr(), &buffer, &length))
-            pybind11::pybind11_fail("Unable to extract bytes contents!");
-        return document::load_from_raw_data(buffer, length, owner_password, user_password);
-    }
-
 }
+
+py::tuple pdf_version(const document &doc)
+{
+    int major, minor;
+    doc.get_pdf_version(&major, &minor);
+    return py::make_tuple(major, minor);
+}
+
+document *load_from_data(py::bytes file_data, const std::string &owner_password = std::string(), const std::string &user_password = std::string())
+{
+    char *buffer;
+    ssize_t length;
+    if (PYBIND11_BYTES_AS_STRING_AND_SIZE(file_data.ptr(), &buffer, &length))
+        pybind11::pybind11_fail("Unable to extract bytes contents!");
+    return document::load_from_raw_data(buffer, length, owner_password, user_password);
+}
+
+} // namespace binding
 
 PYBIND11_MODULE(_document, m)
 {
+#if HAS_VERSION(0, 74)
     py::module::import("poppler._destination");
+#endif
     py::module::import("poppler._embedded_file");
     py::module::import("poppler._global");
     py::module::import("poppler._page");
@@ -90,10 +94,12 @@ PYBIND11_MODULE(_document, m)
         .export_values();
 
     py::class_<document>(m, "document")
+#if HAS_VERSION(0, 74)
         .def("create_destination_map", &document::create_destination_map)
+#endif
         // create_font_iterator
-        .def("create_page", (page* (document::*)(int) const) &document::create_page, py::arg("index"))
-        .def("create_page", (page* (document::*)(const ustring&) const) &document::create_page, py::arg("label"))
+        .def("create_page", (page * (document::*)(int)const) & document::create_page, py::arg("index"))
+        .def("create_page", (page * (document::*)(const ustring &)const) & document::create_page, py::arg("label"))
         // create_toc
         .def("embedded_files", &document::embedded_files)
         // fonts
@@ -132,12 +138,10 @@ PYBIND11_MODULE(_document, m)
         .def("set_producer", &document::set_producer, py::arg("producer"))
         .def("set_subject", &document::set_subject, py::arg("subject"))
         .def("set_title", &document::set_title, py::arg("title"))
-        .def("unlock", &document::unlock, py::arg("owner_password"), py::arg("user_password"))
-        ;
+        .def("unlock", &document::unlock, py::arg("owner_password"), py::arg("user_password"));
 
-    m.def("load_from_data", &binding::load_from_data, py::arg("file_data"), py::arg("owner_password")="", py::arg("user_password")="");
-    m.def("load_from_file", &document::load_from_file, py::arg("file_name"), py::arg("owner_password")="", py::arg("user_password")="");
-
+    m.def("load_from_data", &binding::load_from_data, py::arg("file_data"), py::arg("owner_password") = "", py::arg("user_password") = "");
+    m.def("load_from_file", &document::load_from_file, py::arg("file_name"), py::arg("owner_password") = "", py::arg("user_password") = "");
 }
 
 } // namespace poppler

@@ -15,6 +15,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+import functools
+
 from poppler import _version
 
 
@@ -36,3 +38,20 @@ def micro():
 
 def string():
     return _version.version_string()
+
+
+def ensure_version(maj, min):
+    def wrapper(fct):
+        @functools.wraps(fct)
+        def wrapped(*args, **kwargs):
+            if version() < (maj, min, 0):
+                raise NotImplementedError(
+                    "This functionality requires at least Poppler version {}".format(
+                        ".".join(map(str, (maj, min, 0)))
+                    )
+                )
+            return fct(*args, **kwargs)
+
+        return wrapped
+
+    return wrapper

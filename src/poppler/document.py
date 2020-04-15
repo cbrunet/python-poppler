@@ -21,6 +21,7 @@ from poppler._utilities import from_time_type, to_time_type
 from poppler.destination import Destination
 from poppler.embeddedfile import EmbeddedFile
 from poppler.page import Page
+from poppler.version import ensure_version
 
 from collections import namedtuple
 from functools import singledispatch
@@ -124,6 +125,7 @@ class Document(object):
     def pages(self):
         return self._document.pages()
 
+    @ensure_version(0, 74)
     def create_destination_map(self):
         return {
             name: Destination(destination)

@@ -15,6 +15,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+import pytest
+
 from poppler import version
 
 
@@ -24,3 +26,21 @@ def test_versions():
 
 def test_version_string():
     assert version.string() == ".".join(map(str, version.version()))
+
+
+def test_ensure_version_fct():
+    @version.ensure_version(99, 99)
+    def fct():
+        pass
+
+    with pytest.raises(NotImplementedError):
+        fct()
+
+
+def test_ensure_version_cls():
+    @version.ensure_version(99, 99)
+    class cls:
+        pass
+
+    with pytest.raises(NotImplementedError):
+        cls()
