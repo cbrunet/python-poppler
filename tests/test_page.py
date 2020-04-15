@@ -80,7 +80,7 @@ def test_text_list(pdf_page):
 
 
 def test_search_found(pdf_page):
-    r = Rectangle(0.0, 0.0, 0.0, 0.0)
+    r = Rectangle(0.0, 0.0, 612.0, 792.0)
     result = pdf_page.search(
         "Page", r, Page.SearchDirection.from_top, CaseSensitivity.case_sensitive
     )
@@ -90,7 +90,7 @@ def test_search_found(pdf_page):
 
 
 def test_search_not_found(pdf_page):
-    r = Rectangle(0.0, 0.0, 0.0, 0.0)
+    r = Rectangle(0.0, 0.0, 612.0, 792.0)
     result = pdf_page.search(
         "Stchroumph", r, Page.SearchDirection.from_top, CaseSensitivity.case_sensitive
     )
