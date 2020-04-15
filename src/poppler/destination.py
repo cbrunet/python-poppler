@@ -18,13 +18,11 @@
 from poppler.version import version, ensure_version
 
 if version() >= (0, 74, 0):
-    from poppler._destination import type_enum
+    from poppler._destination import type_enum as Type  # noqa
 
 
 @ensure_version(0, 74)
 class Destination(object):
-
-    Type = type_enum
 
     def __init__(self, destination):
         self._destination = destination

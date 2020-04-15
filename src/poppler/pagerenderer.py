@@ -27,7 +27,6 @@ RenderHint = _page_renderer.render_hint
 
 
 class PageRenderer(object):
-
     def __init__(self):
         self._renderer = _page_renderer.page_renderer()
 

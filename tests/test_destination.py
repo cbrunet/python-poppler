@@ -17,8 +17,10 @@
 
 import pytest
 
-from poppler.destination import Destination
 from poppler.version import version
+
+if version() >= (0, 74, 0):
+    from poppler.destination import Type
 
 pytestmark = pytest.mark.skipif(
     version() < (0, 74, 0), reason="Requires at least Poppler 0.74.0"
@@ -51,7 +53,7 @@ def test_destination_map_properties(sample_document):
     assert destination.left == 28.346
     assert destination.right == 0.0
     assert destination.zoom == 0.0
-    assert destination.type == Destination.Type.xyz
+    assert destination.type == Type.xyz
     assert destination.is_change_left
     assert destination.is_change_top
     assert not destination.is_change_zoom
