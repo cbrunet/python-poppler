@@ -79,8 +79,9 @@ def test_text_list(pdf_page):
     assert text_box.has_space_after is True
 
 
+@pytest.mark.xfail(version() <= (0, 62, 0), reason="Is it a bug in Poppler 0.62?")
 def test_search_found(pdf_page):
-    r = Rectangle(0.0, 0.0, 612.0, 792.0)
+    r = Rectangle(0.0, 0.0, 0.0, 0.0)
     result = pdf_page.search(
         "Page", r, Page.SearchDirection.from_top, CaseSensitivity.case_sensitive
     )
