@@ -15,10 +15,13 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+from poppler.version import version, ensure_version
 
-from poppler._destination import type_enum
+if version() >= (0, 74, 0):
+    from poppler._destination import type_enum
 
 
+@ensure_version(0, 74)
 class Destination(object):
 
     Type = type_enum

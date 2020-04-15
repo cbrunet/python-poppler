@@ -16,8 +16,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include "version.h"
 #include <pybind11/pybind11.h>
+#if HAS_VERSION(0, 74)
 #include <poppler/cpp/poppler-destination.h>
+#endif
 
 namespace py = pybind11;
 
@@ -26,6 +29,7 @@ namespace poppler
 
 PYBIND11_MODULE(_destination, m)
 {
+#if HAS_VERSION(0, 74)
     py::enum_<destination::type_enum>(m, "type_enum")
         .value("unknown", destination::type_enum::unknown)
         .value("xyz", destination::type_enum::xyz)
@@ -48,8 +52,8 @@ PYBIND11_MODULE(_destination, m)
         .def("right", &destination::right)
         .def("top", &destination::top)
         .def("type", &destination::type)
-        .def("zoom", &destination::zoom)
-        ;
+        .def("zoom", &destination::zoom);
+#endif
 }
 
-}
+} // namespace poppler
