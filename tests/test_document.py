@@ -21,7 +21,7 @@ from poppler.version import version
 
 import pytest
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 @pytest.fixture()
@@ -99,7 +99,9 @@ def test_get_author(pdf_document):
 
 
 def test_get_creation_date(pdf_document):
-    assert pdf_document.creation_date == datetime(2020, 3, 25, 21, 19, 50)
+    assert pdf_document.creation_date.astimezone(timezone.utc) == datetime(
+        2020, 3, 26, 1, 19, 50, tzinfo=timezone.utc
+    )
 
 
 def test_get_creator(pdf_document):
@@ -155,7 +157,9 @@ def test_has_permission(pdf_document):
 
 def test_info_date(pdf_document):
     date = pdf_document.info_date("CreationDate")
-    assert date == datetime(2020, 3, 25, 21, 19, 50)
+    assert date.astimezone(timezone.utc) == datetime(
+        2020, 3, 26, 1, 19, 50, tzinfo=timezone.utc
+    )
 
 
 def test_info_key(pdf_document):

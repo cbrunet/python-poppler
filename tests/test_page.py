@@ -82,10 +82,11 @@ def test_text_list(pdf_page):
 def test_search_found(pdf_page):
     r = Rectangle(0.0, 0.0, 0.0, 0.0)
     result = pdf_page.search(
-        "Page 1", r, Page.SearchDirection.from_top, CaseSensitivity.case_sensitive
+        "Page", r, Page.SearchDirection.from_top, CaseSensitivity.case_sensitive
     )
 
-    assert pytest.approx(result.as_tuple(), abs=0.1) == (56.8, 57.2, 89.2, 70.5)
+    assert isinstance(result, Rectangle)
+    assert pytest.approx(result.as_tuple(), abs=0.1) == (56.8, 57.2, 80.1, 70.5)
 
 
 def test_search_not_found(pdf_page):

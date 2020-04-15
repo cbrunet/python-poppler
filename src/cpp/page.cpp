@@ -50,7 +50,9 @@ PYBIND11_MODULE(_page, m)
     py::enum_<page::text_layout_enum>(m, "text_layout_enum")
         .value("physical_layout", page::text_layout_enum::physical_layout)
         .value("raw_order_layout", page::text_layout_enum::raw_order_layout)
-        // .value("non_raw_non_physical_layout", page::text_layout_enum::non_raw_non_physical_layout)  //since 0.88
+#if HAS_VERSION(0, 88)
+        .value("non_raw_non_physical_layout", page::text_layout_enum::non_raw_non_physical_layout)
+#endif
         .export_values();
 
     py::enum_<page::search_direction_enum>(m, "search_direction_enum")
