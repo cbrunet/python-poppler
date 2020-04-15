@@ -17,6 +17,7 @@
 
 import pytest
 
+from poppler import pagerenderer
 from poppler.pagerenderer import PageRenderer
 from poppler.image import Image
 from poppler.version import version
@@ -45,15 +46,15 @@ def test_set_image_format():
 def test_line_mode():
     renderer = PageRenderer()
 
-    assert renderer.line_mode == PageRenderer.LineMode.default
+    assert renderer.line_mode == pagerenderer.LineMode.default
 
 
 @pytest.mark.skipif(version() < (0, 65, 0), reason="Requires at least Poppler 0.65.0")
 def test_set_line_mode():
     renderer = PageRenderer()
-    renderer.line_mode = PageRenderer.LineMode.solid
+    renderer.line_mode = pagerenderer.LineMode.solid
 
-    assert renderer.line_mode == PageRenderer.LineMode.solid
+    assert renderer.line_mode == pagerenderer.LineMode.solid
 
 
 def test_paper_color():
@@ -78,9 +79,9 @@ def test_render_hints():
 def test_set_render_hints():
     renderer = PageRenderer()
     renderer.render_hints = (
-        PageRenderer.RenderHint.antialiasing
-        | PageRenderer.RenderHint.text_antialiasing
-        | PageRenderer.RenderHint.text_hinting
+        pagerenderer.RenderHint.antialiasing
+        | pagerenderer.RenderHint.text_antialiasing
+        | pagerenderer.RenderHint.text_hinting
     )
 
     assert renderer.render_hints == 7
@@ -89,7 +90,7 @@ def test_set_render_hints():
 def test_set_render_hint():
     renderer = PageRenderer()
     renderer.render_hints = 7
-    renderer.set_render_hint(PageRenderer.RenderHint.antialiasing, False)
+    renderer.set_render_hint(pagerenderer.RenderHint.antialiasing, False)
 
     assert renderer.render_hints == 6
 

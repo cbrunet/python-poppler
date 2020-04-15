@@ -34,11 +34,13 @@ PYBIND11_MODULE(_page_renderer, m)
     py::module::import("poppler._image");
     py::module::import("poppler._page");
 
+#if HAS_VERSION(0, 65)
     py::enum_<page_renderer::line_mode_enum>(m, "line_mode_enum")
         .value("default", page_renderer::line_mode_enum::line_default)
         .value("solid", page_renderer::line_mode_enum::line_solid)
         .value("shape ", page_renderer::line_mode_enum::line_shape)
         .export_values();
+#endif
 
     py::enum_<page_renderer::render_hint>(m, "render_hint", py::arithmetic())
         .value("antialiasing", page_renderer::render_hint::antialiasing)

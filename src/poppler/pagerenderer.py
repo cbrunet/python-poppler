@@ -18,13 +18,15 @@
 from poppler import _page_renderer
 from poppler import Rotation
 from poppler.image import Image
-from poppler.version import ensure_version
+from poppler.version import version, ensure_version
+
+if version() >= (0, 65, 0):
+    LineMode = _page_renderer.line_mode_enum
+
+RenderHint = _page_renderer.render_hint
 
 
 class PageRenderer(object):
-
-    LineMode = _page_renderer.line_mode_enum
-    RenderHint = _page_renderer.render_hint
 
     def __init__(self):
         self._renderer = _page_renderer.page_renderer()
