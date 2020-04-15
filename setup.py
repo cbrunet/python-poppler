@@ -75,7 +75,7 @@ setup(
     version="0.1.0",
     author="Charles Brunet",
     author_email="charles@cbrunet.net",
-    # url
+    url="https://github.com/cbrunet/python-poppler",
     description="A Python binding to poppler-cpp",
     long_description="",
     license="GPLv2",
@@ -83,10 +83,16 @@ setup(
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
-        "Requires-Python: >=3",
+        "Requires-Python: >=3.6",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
     ],
     # keywords
-    # project_urls
+    project_urls={
+        "Source": "https://github.com/cbrunet/python-poppler",
+        "Tracker": "https://github.com/cbrunet/python-poppler/issues",
+    },
     packages=find_packages("src"),
     package_dir={"": "src"},
     include_package_data=True,
