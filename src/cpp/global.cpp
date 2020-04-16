@@ -18,23 +18,24 @@
 
 #include <pybind11/pybind11.h>
 #include <poppler/cpp/poppler-global.h>
+#include <algorithm>
 
 namespace py = pybind11;
 
 namespace poppler
 {
 
-    std::string from_ustring(poppler::ustring str)
-    {
-        auto a = str.to_utf8();
-        return std::string(a.begin(), a.end());
-    }
+std::string from_ustring(poppler::ustring str)
+{
+    auto a = str.to_utf8();
+    auto end = std::find(a.begin(), a.end(), '\0');
+    return std::string(a.begin(), end);
+}
 
-    poppler::ustring to_ustring(std::string str)
-    {
-        return poppler::ustring::from_utf8(str.data(), str.size());
-    }
-
+poppler::ustring to_ustring(std::string str)
+{
+    return poppler::ustring::from_utf8(str.data(), str.size());
+}
 
 PYBIND11_MODULE(_global, m)
 {
@@ -70,8 +71,7 @@ PYBIND11_MODULE(_global, m)
         .export_values();
 
     py::class_<ustring>(m, "_ustring")
-        .def("__str__", &from_ustring)
-        ;
+        .def("__str__", &from_ustring);
 
     m.def("ustring", &to_ustring);
 }
