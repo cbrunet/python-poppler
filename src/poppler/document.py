@@ -21,6 +21,7 @@ from poppler._utilities import from_time_type, to_time_type
 from poppler.destination import Destination
 from poppler.embeddedfile import EmbeddedFile
 from poppler.page import Page
+from poppler.toc import Toc
 from poppler.version import ensure_version
 
 from collections import namedtuple
@@ -38,6 +39,10 @@ class Document(object):
 
     def __init__(self, poppler_document):
         self._document = poppler_document
+
+    def create_toc(self):
+        t = self._document.create_toc()
+        return Toc(t) if t else None
 
     def create_page(self, index):
         return Page(self._document.create_page(index))

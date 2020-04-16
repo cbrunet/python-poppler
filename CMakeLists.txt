@@ -38,3 +38,6 @@ target_link_libraries(_embedded_file PRIVATE ${POPPLER_LIBRARIES})
 
 pybind11_add_module(_destination src/cpp/destination.cpp)
 target_link_libraries(_destination PRIVATE ${POPPLER_LIBRARIES})
+
+pybind11_add_module(_toc src/cpp/toc.cpp)
+target_link_libraries(_toc PRIVATE ${POPPLER_LIBRARIES})

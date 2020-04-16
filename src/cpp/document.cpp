@@ -25,6 +25,7 @@
 #include <poppler/cpp/poppler-document.h>
 #include <poppler/cpp/poppler-embedded-file.h>
 #include <poppler/cpp/poppler-page.h>
+#include <poppler/cpp/poppler-toc.h>
 
 namespace py = pybind11;
 
@@ -73,6 +74,7 @@ PYBIND11_MODULE(_document, m)
     py::module::import("poppler._embedded_file");
     py::module::import("poppler._global");
     py::module::import("poppler._page");
+    py::module::import("poppler._toc");
 
     py::enum_<document::page_layout_enum>(m, "page_layout_enum")
         .value("no_layout", document::page_layout_enum::no_layout)
@@ -100,7 +102,7 @@ PYBIND11_MODULE(_document, m)
         // create_font_iterator
         .def("create_page", (page * (document::*)(int)const) & document::create_page, py::arg("index"))
         .def("create_page", (page * (document::*)(const ustring &)const) & document::create_page, py::arg("label"))
-        // create_toc
+        .def("create_toc", &document::create_toc)
         .def("embedded_files", &document::embedded_files)
         // fonts
         .def("get_author", &document::get_author)

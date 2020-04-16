@@ -305,3 +305,7 @@ def test_unlock_with_wrong_passwords(locked_document):
 @pytest.mark.skipif(version() < (0, 74, 0), reason="Requires at least Poppler 0.74.0")
 def test_create_destination_map(pdf_document):
     assert not pdf_document.create_destination_map()
+
+
+def test_create_toc(pdf_document):
+    assert pdf_document.create_toc() is None

@@ -16,9 +16,31 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#pragma once
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <poppler/cpp/poppler-global.h>
+#include <poppler/cpp/poppler-toc.h>
 
-#include <poppler/cpp/poppler-version.h>
+namespace py = pybind11;
 
+namespace poppler
+{
 
-#define HAS_VERSION(major,minor) (POPPLER_VERSION_MAJOR > major) || (POPPLER_VERSION_MAJOR == major && POPPLER_VERSION_MINOR >= minor)
+PYBIND11_MODULE(_toc, m)
+{
+    py::module::import("poppler._global");
+
+    py::class_<toc_item>(m, "toc_item")
+        .def("children", &toc_item::children)
+        .def("__iter__", [](const toc_item &item) {
+                return py::make_iterator(item.children_begin(), item.children_end());
+            },
+            py::keep_alive<0, 1>())
+        .def("is_open", &toc_item::is_open)
+        .def("title", &toc_item::title);
+
+    py::class_<toc>(m, "toc")
+        .def("root", &toc::root, py::return_value_policy::reference);
+}
+
+} // namespace poppler
