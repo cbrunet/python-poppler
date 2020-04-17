@@ -16,6 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include "version.h"
 #include <pybind11/pybind11.h>
 #include <poppler/cpp/poppler-global.h>
 #include <algorithm>
@@ -75,6 +76,10 @@ PYBIND11_MODULE(_global, m)
         .def("__str__", &from_ustring);
 
     m.def("ustring", &to_ustring);
+
+#if HAS_VERSION(0, 73)
+    m.def("set_data_dir", &set_data_dir, py::arg("new_data_dir"));
+#endif
 }
 
 } // namespace poppler

@@ -16,6 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from poppler import _global
+from poppler._global import set_data_dir  # noqa
 
 CaseSensitivity = _global.case_sensitivity_enum
 Permission = _global.permission_enum
