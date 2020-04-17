@@ -309,3 +309,16 @@ def test_create_destination_map(pdf_document):
 
 def test_create_toc(pdf_document):
     assert pdf_document.create_toc() is None
+
+
+@pytest.mark.parametrize("page", range(3))
+def test_create_font_iterator(pdf_document, page):
+    font_iterator = pdf_document.create_font_iterator(page)
+
+    assert font_iterator.current_page == page
+
+
+def test_fonts(pdf_document):
+    fonts = pdf_document.fonts()
+
+    assert len(fonts) == 1

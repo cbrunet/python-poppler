@@ -20,6 +20,7 @@ from poppler._global import ustring
 from poppler._utilities import from_time_type, to_time_type
 from poppler.destination import Destination
 from poppler.embeddedfile import EmbeddedFile
+from poppler.font import FontInfo, FontIterator
 from poppler.page import Page
 from poppler.toc import Toc
 from poppler.version import ensure_version
@@ -39,6 +40,9 @@ class Document(object):
 
     def __init__(self, poppler_document):
         self._document = poppler_document
+
+    def create_font_iterator(self, page=0):
+        return FontIterator(self._document.create_font_iterator(page))
 
     def create_toc(self):
         t = self._document.create_toc()
@@ -139,6 +143,9 @@ class Document(object):
 
     def embedded_files(self):
         return [EmbeddedFile(f) for f in self._document.embedded_files()]
+
+    def fonts(self):
+        return [FontInfo(i) for i in self._document.fonts()]
 
     def has_embedded_files(self):
         return self._document.has_embedded_files()

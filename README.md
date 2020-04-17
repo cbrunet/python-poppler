@@ -18,6 +18,12 @@ $ python setup.py install
 
 This will compile the binary packages, and install the library.
 
+Tests are run using [tox](https://tox.readthedocs.io/en/latest/):
+
+```
+$ tox
+```
+
 
 # Usage
 

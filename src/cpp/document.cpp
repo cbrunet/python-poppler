@@ -24,6 +24,7 @@
 #endif
 #include <poppler/cpp/poppler-document.h>
 #include <poppler/cpp/poppler-embedded-file.h>
+#include <poppler/cpp/poppler-font.h>
 #include <poppler/cpp/poppler-page.h>
 #include <poppler/cpp/poppler-toc.h>
 
@@ -72,6 +73,7 @@ PYBIND11_MODULE(_document, m)
     py::module::import("poppler._destination");
 #endif
     py::module::import("poppler._embedded_file");
+    py::module::import("poppler._font");
     py::module::import("poppler._global");
     py::module::import("poppler._page");
     py::module::import("poppler._toc");
@@ -99,12 +101,12 @@ PYBIND11_MODULE(_document, m)
 #if HAS_VERSION(0, 74)
         .def("create_destination_map", &document::create_destination_map)
 #endif
-        // create_font_iterator
+        .def("create_font_iterator", &document::create_font_iterator, py::arg("start_page")=0)
         .def("create_page", (page * (document::*)(int)const) & document::create_page, py::arg("index"))
         .def("create_page", (page * (document::*)(const ustring &)const) & document::create_page, py::arg("label"))
         .def("create_toc", &document::create_toc)
         .def("embedded_files", &document::embedded_files)
-        // fonts
+        .def("fonts", &document::fonts)
         .def("get_author", &document::get_author)
         .def("get_creation_date", &document::get_creation_date)
         .def("get_creator", &document::get_creator)
