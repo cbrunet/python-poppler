@@ -28,6 +28,7 @@ namespace poppler
 std::string from_ustring(poppler::ustring str)
 {
     auto a = str.to_utf8();
+    // The following line is for a bug that was probably fixed in 0.73:
     auto end = std::find(a.begin(), a.end(), '\0');
     return std::string(a.begin(), end);
 }
