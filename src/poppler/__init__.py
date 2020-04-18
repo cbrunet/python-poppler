@@ -70,12 +70,12 @@ __all__ = [
 ]
 
 if version() >= (0, 65, 0):
-    from poppler.cpp.page_renderer import line_mode_enum as LineMode  # noqa/
+    from poppler.cpp.page_renderer import line_mode_enum as LineMode  # noqa
 
     __all__.append("LineMode")
 
 if version() >= (0, 73, 0):
-    from poppler.cpp.global_ import set_data_dir
+    from poppler.cpp.global_ import set_data_dir  # noqa
 
     __all__.append("set_data_dir")
 
