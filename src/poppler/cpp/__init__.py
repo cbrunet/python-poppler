@@ -14,30 +14,3 @@
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-import pytest
-
-from poppler import version, version_string
-from poppler.utilities import since
-
-
-def test_version_string():
-    assert version_string() == ".".join(map(str, version()))
-
-
-def test_since_fct():
-    @since(99, 99)
-    def fct():
-        pass
-
-    with pytest.raises(NotImplementedError):
-        fct()
-
-
-def test_since_cls():
-    @since(99, 99)
-    class cls:
-        pass
-
-    with pytest.raises(NotImplementedError):
-        cls()

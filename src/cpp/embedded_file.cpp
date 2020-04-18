@@ -25,7 +25,7 @@ namespace py = pybind11;
 namespace poppler
 {
 
-PYBIND11_MODULE(_embedded_file, m)
+PYBIND11_MODULE(embedded_file, m)
 {
     py::class_<embedded_file>(m, "embedded_file")
         .def("checksum", &embedded_file::checksum)

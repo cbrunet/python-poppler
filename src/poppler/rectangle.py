@@ -15,7 +15,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler import _rectangle
+from poppler.cpp import rectangle
 
 
 class Rectangle:
@@ -23,9 +23,9 @@ class Rectangle:
         if poppler_object:
             self._rect = poppler_object
         elif all(map(lambda i: isinstance(i, int), (x, y, w, h))):
-            self._rect = _rectangle.rect(int(x), int(y), int(w), int(h))
+            self._rect = rectangle.rect(int(x), int(y), int(w), int(h))
         else:
-            self._rect = _rectangle.rectf(float(x), float(y), float(w), float(h))
+            self._rect = rectangle.rectf(float(x), float(y), float(w), float(h))
 
     @classmethod
     def from_object(cls, poppler_object):

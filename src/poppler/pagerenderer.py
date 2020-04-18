@@ -15,20 +15,20 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler import _page_renderer
-from poppler._global import rotation_enum as Rotation
+from poppler.cpp import page_renderer
+from poppler.cpp.global_ import rotation_enum as Rotation
 from poppler.image import Image
-from poppler._utilities import version, since
+from poppler.utilities import version, since
 
 if version() >= (0, 65, 0):
-    LineMode = _page_renderer.line_mode_enum
+    LineMode = page_renderer.line_mode_enum
 
-RenderHint = _page_renderer.render_hint
+RenderHint = page_renderer.render_hint
 
 
 class PageRenderer:
     def __init__(self):
-        self._renderer = _page_renderer.page_renderer()
+        self._renderer = page_renderer.page_renderer()
 
     @property
     @since(0, 65)
@@ -85,4 +85,4 @@ class PageRenderer:
 
     @staticmethod
     def can_render():
-        return _page_renderer.can_render()
+        return page_renderer.can_render()

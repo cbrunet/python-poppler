@@ -28,11 +28,11 @@ namespace py = pybind11;
 namespace poppler
 {
 
-PYBIND11_MODULE(_page_renderer, m)
+PYBIND11_MODULE(page_renderer, m)
 {
-    py::module::import("poppler._global");
-    py::module::import("poppler._image");
-    py::module::import("poppler._page");
+    py::module::import("poppler.cpp.global_");
+    py::module::import("poppler.cpp.image");
+    py::module::import("poppler.cpp.page");
 
 #if HAS_VERSION(0, 65)
     py::enum_<page_renderer::line_mode_enum>(m, "line_mode_enum")

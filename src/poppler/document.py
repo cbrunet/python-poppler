@@ -15,15 +15,15 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler import _document
-from poppler._global import ustring
-from poppler._utilities import from_time_type, to_time_type
+from poppler.cpp import document
+from poppler.cpp.global_ import ustring
+from poppler.utilities import from_time_type, to_time_type
 from poppler.destination import Destination
 from poppler.embeddedfile import EmbeddedFile
 from poppler.font import FontInfo, FontIterator
 from poppler.page import Page
 from poppler.toc import Toc
-from poppler._utilities import since
+from poppler.utilities import since
 
 from collections import namedtuple
 from functools import singledispatch
@@ -35,8 +35,8 @@ PDFId = namedtuple("PDFId", ["permanent_id", "update_id"])
 
 class Document:
 
-    PageLayout = _document.page_layout_enum
-    PageMode = _document.page_mode_enum
+    PageLayout = document.page_layout_enum
+    PageMode = document.page_mode_enum
 
     def __init__(self, poppler_document):
         self._document = poppler_document
@@ -212,12 +212,12 @@ class Document:
 
 def load_from_file(file_name, owner_password="", user_password=""):
     return Document(
-        _document.load_from_file(str(file_name), owner_password, user_password)
+        document.load_from_file(str(file_name), owner_password, user_password)
     )
 
 
 def load_from_data(file_data: bytes, owner_password="", user_password=""):
-    return Document(_document.load_from_data(file_data, owner_password, user_password))
+    return Document(document.load_from_data(file_data, owner_password, user_password))
 
 
 @singledispatch

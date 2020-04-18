@@ -25,7 +25,7 @@ namespace py = pybind11;
 namespace poppler
 {
 
-PYBIND11_MODULE(_font, m)
+PYBIND11_MODULE(font, m)
 {
     py::enum_<font_info::type_enum>(m, "type_enum")
         .value("unknown", font_info::type_enum::unknown)

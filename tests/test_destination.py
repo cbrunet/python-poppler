@@ -20,7 +20,7 @@ import pytest
 from poppler import version
 
 if version() >= (0, 74, 0):
-    from poppler._destination import type_enum as DestinationType  # noqa
+    from poppler import DestinationType
 
 pytestmark = pytest.mark.skipif(
     version() < (0, 74, 0), reason="Requires at least Poppler 0.74.0"

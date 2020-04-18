@@ -34,11 +34,11 @@ py::tuple search(const page &p, const ustring &text, rectf &r, page::search_dire
     return py::make_tuple(result, r);
 }
 
-PYBIND11_MODULE(_page, m)
+PYBIND11_MODULE(page, m)
 {
-    py::module::import("poppler._global");
-    py::module::import("poppler._page_transition");
-    py::module::import("poppler._rectangle");
+    py::module::import("poppler.cpp.global_");
+    py::module::import("poppler.cpp.page_transition");
+    py::module::import("poppler.cpp.rectangle");
 
     py::enum_<page::orientation_enum>(m, "orientation_enum")
         .value("landscape", page::orientation_enum::landscape)

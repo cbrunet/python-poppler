@@ -26,9 +26,9 @@ namespace py = pybind11;
 namespace poppler
 {
 
-PYBIND11_MODULE(_toc, m)
+PYBIND11_MODULE(toc, m)
 {
-    py::module::import("poppler._global");
+    py::module::import("poppler.cpp.global_");
 
     py::class_<toc_item>(m, "toc_item")
         .def("children", &toc_item::children)

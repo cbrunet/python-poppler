@@ -16,14 +16,14 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
-from poppler import _page_transition
+from poppler.cpp import page_transition
 
 
 class PageTransition:
 
-    Alignment = _page_transition.alignment_enum
-    Direction = _page_transition.direction_enum
-    Type = _page_transition.type_enum
+    Alignment = page_transition.alignment_enum
+    Direction = page_transition.direction_enum
+    Type = page_transition.type_enum
 
     def __init__(self, transition):
         self._transition = transition

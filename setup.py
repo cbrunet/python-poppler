@@ -97,7 +97,7 @@ setup(
     packages=find_packages("src"),
     package_dir={"": "src"},
     include_package_data=True,
-    ext_modules=[CMakeExtension("poppler.modules")],
+    ext_modules=[CMakeExtension("poppler.cpp.modules")],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
     # python_requires

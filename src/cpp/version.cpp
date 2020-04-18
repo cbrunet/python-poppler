@@ -22,7 +22,7 @@
 namespace poppler::version
 {
 
-PYBIND11_MODULE(_version, m)
+PYBIND11_MODULE(version, m)
 {
     m.def("version_string", &version_string);
     m.def("version_major", &version_major);

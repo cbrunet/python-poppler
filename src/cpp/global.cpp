@@ -39,7 +39,7 @@ poppler::ustring to_ustring(std::string str)
     return poppler::ustring::from_utf8(str.data(), str.size());
 }
 
-PYBIND11_MODULE(_global, m)
+PYBIND11_MODULE(global_, m)
 {
     py::enum_<case_sensitivity_enum>(m, "case_sensitivity_enum")
         .value("case_sensitive", case_sensitivity_enum::case_sensitive)

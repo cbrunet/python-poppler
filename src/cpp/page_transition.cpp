@@ -24,7 +24,7 @@ namespace py = pybind11;
 namespace poppler
 {
 
-PYBIND11_MODULE(_page_transition, m)
+PYBIND11_MODULE(page_transition, m)
 {
     py::enum_<page_transition::alignment_enum>(m, "alignment_enum")
         .value("horizontal", page_transition::alignment_enum::horizontal)

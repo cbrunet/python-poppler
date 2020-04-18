@@ -39,7 +39,7 @@ namespace poppler
         return py::bytes(img_data);
     }
 
-PYBIND11_MODULE(_image, m)
+PYBIND11_MODULE(image, m)
 {
     py::enum_<image::format_enum>(m, "format_enum")
         .value("invalid", image::format_enum::format_invalid)

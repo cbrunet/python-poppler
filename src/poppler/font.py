@@ -15,8 +15,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler._font import font_info
-from poppler._font import type_enum as FontType  # noqa
+from poppler.cpp.font import font_info
+from poppler.cpp.font import type_enum as FontType  # noqa
 
 
 class FontInfo:

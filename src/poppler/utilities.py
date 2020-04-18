@@ -18,7 +18,7 @@
 from datetime import datetime
 import functools
 
-from poppler._version import version_major, version_minor, version_micro
+from poppler.cpp.version import version_major, version_minor, version_micro
 
 
 def from_time_type(timestamp):

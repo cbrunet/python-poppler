@@ -15,13 +15,13 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler import _image
+from poppler.cpp import image
 from poppler.rectangle import Rectangle
 
 
 class Image:
 
-    Format = _image.format_enum
+    Format = image.format_enum
 
     def __init__(
         self, width=0, height=0, iformat=Format.invalid, data=None, poppler_object=None
@@ -29,11 +29,11 @@ class Image:
         if poppler_object is not None:
             self._image = poppler_object
         elif data is not None:
-            self._image = _image.image(data, width, height, iformat)
+            self._image = image.image(data, width, height, iformat)
         elif width > 0:
-            self._image = _image.image(width, height, iformat)
+            self._image = image.image(width, height, iformat)
         else:
-            self._image = _image.image()
+            self._image = image.image()
 
     @classmethod
     def from_object(cls, poppler_object):
@@ -80,4 +80,4 @@ class Image:
 
     @staticmethod
     def supported_image_formats():
-        return _image.supported_image_formats()
+        return image.supported_image_formats()

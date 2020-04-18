@@ -67,16 +67,16 @@ document *load_from_data(py::bytes file_data, const std::string &owner_password 
 
 } // namespace binding
 
-PYBIND11_MODULE(_document, m)
+PYBIND11_MODULE(document, m)
 {
 #if HAS_VERSION(0, 74)
-    py::module::import("poppler._destination");
+    py::module::import("poppler.cpp.destination");
 #endif
-    py::module::import("poppler._embedded_file");
-    py::module::import("poppler._font");
-    py::module::import("poppler._global");
-    py::module::import("poppler._page");
-    py::module::import("poppler._toc");
+    py::module::import("poppler.cpp.embedded_file");
+    py::module::import("poppler.cpp.font");
+    py::module::import("poppler.cpp.global_");
+    py::module::import("poppler.cpp.page");
+    py::module::import("poppler.cpp.toc");
 
     py::enum_<document::page_layout_enum>(m, "page_layout_enum")
         .value("no_layout", document::page_layout_enum::no_layout)

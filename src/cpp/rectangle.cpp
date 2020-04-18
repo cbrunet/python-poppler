@@ -25,7 +25,7 @@ namespace poppler
 {
 
 
-PYBIND11_MODULE(_rectangle, m)
+PYBIND11_MODULE(rectangle, m)
 {
     py::class_<rect>(m, "rect")
         .def(py::init<int, int, int, int>(), py::arg("x"), py::arg("y"), py::arg("w"), py::arg("h"))

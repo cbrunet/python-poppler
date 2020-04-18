@@ -27,7 +27,7 @@ namespace py = pybind11;
 namespace poppler
 {
 
-PYBIND11_MODULE(_destination, m)
+PYBIND11_MODULE(destination, m)
 {
 #if HAS_VERSION(0, 74)
     py::enum_<destination::type_enum>(m, "type_enum")
