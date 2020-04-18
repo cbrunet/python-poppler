@@ -23,7 +23,7 @@ from poppler.embeddedfile import EmbeddedFile
 from poppler.font import FontInfo, FontIterator
 from poppler.page import Page
 from poppler.toc import Toc
-from poppler.version import ensure_version
+from poppler._utilities import since
 
 from collections import namedtuple
 from functools import singledispatch
@@ -134,7 +134,7 @@ class Document(object):
     def pages(self):
         return self._document.pages()
 
-    @ensure_version(0, 74)
+    @since(0, 74)
     def create_destination_map(self):
         return {
             name: Destination(destination)

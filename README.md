@@ -33,8 +33,7 @@ The package is installed as `poppler`. It follows the interface of `poppler-cpp`
 Example:
 
 ```python
-from poppler.document import load_from_file
-from poppler.pagerenderer import PageRenderer
+from poppler import load_from_file, PageRenderer
 
 pdf_document = load_from_file("sample.pdf")
 page_1 = pdf_document.create_page(0)

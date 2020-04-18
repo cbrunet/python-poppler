@@ -1,7 +1,13 @@
 - Test methods with wrong arguments
 - test embedded file
+- test set_data_dir
 
-- Long description
+- move binary packages to submodule
+- remove inheritance from object
+
+- implement set_debug_error_function
+  - redirect to logger?
+
 - Add documentation
 - github actions
   - poppler as subrepo?

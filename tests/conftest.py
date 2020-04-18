@@ -19,7 +19,7 @@ import pytest
 
 from pathlib import Path
 
-from poppler import document
+from poppler import load_from_file
 
 
 @pytest.fixture(scope="session")
@@ -29,7 +29,7 @@ def data_path():
 
 @pytest.fixture()
 def pdf_document(data_path):
-    return document.load_from_file(data_path / "document.pdf", "owner", "user")
+    return load_from_file(data_path / "document.pdf", "owner", "user")
 
 
 @pytest.fixture
@@ -39,4 +39,4 @@ def pdf_page(pdf_document):
 
 @pytest.fixture(scope="session")
 def sample_document(data_path):
-    return document.load_from_file(data_path / "sample.pdf")
+    return load_from_file(data_path / "sample.pdf")

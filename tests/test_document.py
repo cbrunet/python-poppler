@@ -17,7 +17,7 @@
 
 from poppler import Permission
 from poppler import document
-from poppler.version import version
+from poppler import version
 
 import pytest
 

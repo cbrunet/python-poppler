@@ -15,13 +15,13 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler.font import FontInfo, Type
+from poppler.font import FontInfo, FontType
 
 
 def test_invalid_font_info():
     font_info = FontInfo()
 
-    assert font_info.type == Type.unknown
+    assert font_info.type == FontType.unknown
 
 
 def test_font_iterator(sample_document):
@@ -51,4 +51,4 @@ def test_font_info(sample_document):
     assert font.is_embedded
     assert font.is_subset
     assert font.name == "SBNSFQ+CMSS8"
-    assert font.type == Type.type1
+    assert font.type == FontType.type1

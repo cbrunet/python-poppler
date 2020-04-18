@@ -15,13 +15,13 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler.version import version, ensure_version
+from poppler._utilities import version, since
 
 if version() >= (0, 74, 0):
-    from poppler._destination import type_enum as Type  # noqa
+    from poppler._destination import type_enum as DestinationType  # noqa
 
 
-@ensure_version(0, 74)
+@since(0, 74)
 class Destination(object):
 
     def __init__(self, destination):

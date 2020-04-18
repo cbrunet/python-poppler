@@ -19,7 +19,7 @@ import pytest
 
 from poppler.pagerenderer import PageRenderer, RenderHint
 from poppler.image import Image
-from poppler.version import version
+from poppler import version
 
 if version() >= (0, 65, 0):
     from poppler.pagerenderer import LineMode

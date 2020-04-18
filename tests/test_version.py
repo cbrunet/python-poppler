@@ -17,19 +17,16 @@
 
 import pytest
 
-from poppler import version
-
-
-def test_versions():
-    assert version.version() == (version.major(), version.minor(), version.micro())
+from poppler import version, version_string
+from poppler._utilities import since
 
 
 def test_version_string():
-    assert version.string() == ".".join(map(str, version.version()))
+    assert version_string() == ".".join(map(str, version()))
 
 
-def test_ensure_version_fct():
-    @version.ensure_version(99, 99)
+def test_since_fct():
+    @since(99, 99)
     def fct():
         pass
 
@@ -37,8 +34,8 @@ def test_ensure_version_fct():
         fct()
 
 
-def test_ensure_version_cls():
-    @version.ensure_version(99, 99)
+def test_since_cls():
+    @since(99, 99)
     class cls:
         pass
 

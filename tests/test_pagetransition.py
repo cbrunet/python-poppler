@@ -17,11 +17,8 @@
 
 import pytest
 
-from poppler.pagetransition import PageTransition
-
-Type = PageTransition.Type
-Alignment = PageTransition.Alignment
-Direction = PageTransition.Direction
+from poppler import TransitionType as Type
+from poppler import Alignment, Direction
 
 
 @pytest.mark.parametrize(

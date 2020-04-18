@@ -16,7 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from poppler._font import font_info
-from poppler._font import type_enum as Type  # noqa
+from poppler._font import type_enum as FontType  # noqa
 
 
 class FontInfo(object):

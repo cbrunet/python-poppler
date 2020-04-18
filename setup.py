@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+from pathlib import Path
 import platform
 import subprocess
 
@@ -77,7 +78,8 @@ setup(
     author_email="charles@cbrunet.net",
     url="https://github.com/cbrunet/python-poppler",
     description="A Python binding to poppler-cpp",
-    long_description="",
+    long_description=(Path(__file__).parent / "README.md").read_text(),
+    long_description_content_type="text/markdown",
     license="GPLv2",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

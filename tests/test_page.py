@@ -19,7 +19,7 @@ import pytest
 
 from poppler.page import Page
 from poppler.rectangle import Rectangle
-from poppler.version import version
+from poppler import version
 from poppler import CaseSensitivity
 
 
