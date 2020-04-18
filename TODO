@@ -2,8 +2,6 @@
 - test embedded file
 - test set_data_dir
 
-- move binary packages to submodule
-
 - implement set_debug_error_function
   - redirect to logger?
 

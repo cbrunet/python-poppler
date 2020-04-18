@@ -15,7 +15,6 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from poppler.cpp.global_ import set_data_dir
 from poppler.utilities import version
 from poppler.cpp.version import version_string
 from poppler.document import load, load_from_file, load_from_data
@@ -48,7 +47,6 @@ from poppler.cpp.page_transition import type_enum as TransitionType
 __all__ = [
     "version",
     "version_string",
-    "set_data_dir",
     "load",
     "load_from_data",
     "load_from_file",
@@ -75,6 +73,11 @@ if version() >= (0, 65, 0):
     from poppler.cpp.page_renderer import line_mode_enum as LineMode  # noqa/
 
     __all__.append("LineMode")
+
+if version() >= (0, 73, 0):
+    from poppler.cpp.global_ import set_data_dir
+
+    __all__.append("set_data_dir")
 
 if version() >= (0, 74, 0):
     from poppler.cpp.destination import type_enum as DestinationType  # noqa
