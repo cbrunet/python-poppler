@@ -23,7 +23,7 @@ from poppler._utilities import since
 
 
 @since(0, 63)
-class TextBox(object):
+class TextBox:
     def __init__(self, text_box):
         self._text_box = text_box
 
@@ -48,7 +48,7 @@ class TextBox(object):
         return self._text_box.has_space_after()
 
 
-class Page(object):
+class Page:
 
     Orientation = _page.orientation_enum
     PageBox = _global.page_box_enum

@@ -19,7 +19,7 @@ from poppler._font import font_info
 from poppler._font import type_enum as FontType  # noqa
 
 
-class FontInfo(object):
+class FontInfo:
     def __init__(self, info=None):
         self._info = info or font_info()
 
@@ -44,7 +44,7 @@ class FontInfo(object):
         return self._info.type()
 
 
-class FontIterator(object):
+class FontIterator:
     def __init__(self, it):
         self._it = it
 

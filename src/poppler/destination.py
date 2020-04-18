@@ -22,7 +22,7 @@ if version() >= (0, 74, 0):
 
 
 @since(0, 74)
-class Destination(object):
+class Destination:
 
     def __init__(self, destination):
         self._destination = destination

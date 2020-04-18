@@ -26,7 +26,7 @@ if version() >= (0, 65, 0):
 RenderHint = _page_renderer.render_hint
 
 
-class PageRenderer(object):
+class PageRenderer:
     def __init__(self):
         self._renderer = _page_renderer.page_renderer()
 

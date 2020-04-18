@@ -18,7 +18,7 @@
 from poppler import _rectangle
 
 
-class Rectangle(object):
+class Rectangle:
     def __init__(self, x=0, y=0, w=0, h=0, poppler_object=None):
         if poppler_object:
             self._rect = poppler_object

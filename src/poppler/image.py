@@ -19,7 +19,7 @@ from poppler import _image
 from poppler.rectangle import Rectangle
 
 
-class Image(object):
+class Image:
 
     Format = _image.format_enum
 

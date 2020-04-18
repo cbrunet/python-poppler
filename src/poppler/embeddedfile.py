@@ -18,7 +18,7 @@
 from poppler._utilities import from_time_type
 
 
-class EmbeddedFile(object):
+class EmbeddedFile:
     def __init__(self, file):
         self._file = file
 

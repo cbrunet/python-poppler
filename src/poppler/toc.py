@@ -16,7 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
-class TocItem(object):
+class TocItem:
     def __init__(self, toc_item):
         self._item = toc_item
 
@@ -36,7 +36,7 @@ class TocItem(object):
         return str(self._item.title())
 
 
-class Toc(object):
+class Toc:
     def __init__(self, toc):
         self._toc = toc
 

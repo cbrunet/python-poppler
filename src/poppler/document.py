@@ -33,7 +33,7 @@ from pathlib import Path
 PDFId = namedtuple("PDFId", ["permanent_id", "update_id"])
 
 
-class Document(object):
+class Document:
 
     PageLayout = _document.page_layout_enum
     PageMode = _document.page_mode_enum

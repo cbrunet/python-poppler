@@ -19,7 +19,7 @@
 from poppler import _page_transition
 
 
-class PageTransition(object):
+class PageTransition:
 
     Alignment = _page_transition.alignment_enum
     Direction = _page_transition.direction_enum
