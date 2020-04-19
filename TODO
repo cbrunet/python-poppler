@@ -7,8 +7,6 @@
 
 - Add documentation
 - github actions
-  - keep log files as artifacts (on fail...)
-  - publish on PyPI
   - poppler as subrepo?
 - send to PyPI
 
