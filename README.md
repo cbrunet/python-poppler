@@ -2,7 +2,25 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 
+# python-poppler
+
+**python-poppler** is a Python binding to the poppler-cpp library. It allows to read, render, or modify PDF documents.
+More specifically, it currently allows to:
+- read an modify document meta data;
+- list and read embedded documents;
+- list the fonts used by the document;
+- search or extract text on a given page of the document;
+- render a page to a raw image;
+- get info about transitions effects between the pages;
+- read the table of contents of the document.
+
+
+
 # How to build
+
+This package is currently distributed as source only, and is currently tested on Linux only.
+It requires poppler 0.62 or higher (but 0.87 is recommended).
+I will provide a WIndows build once I figure out how to compile poppler for Windows.
 
 You need poppler-cpp with headers, python (3.7 or 3.8) with headers, and cmake.
 On Arch linux, you need the [poppler](https://security.archlinux.org/package/poppler) package.

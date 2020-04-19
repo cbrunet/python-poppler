@@ -85,7 +85,6 @@ setup(
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
-        "Requires-Python: >=3.7",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
@@ -94,11 +93,11 @@ setup(
         "Source": "https://github.com/cbrunet/python-poppler",
         "Tracker": "https://github.com/cbrunet/python-poppler/issues",
     },
+    python_requires=">=3.7",
     packages=find_packages("src"),
     package_dir={"": "src"},
     include_package_data=True,
     ext_modules=[CMakeExtension("poppler.cpp.modules")],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
-    # python_requires
 )
