@@ -210,18 +210,18 @@ class Document:
         return self._document.unlock(owner_password, user_password)
 
 
-def load_from_file(file_name, owner_password="", user_password=""):
+def load_from_file(file_name, owner_password=None, user_password=None):
     return Document(
-        document.load_from_file(str(file_name), owner_password, user_password)
+        document.load_from_file(str(file_name), owner_password or "", user_password or "")
     )
 
 
-def load_from_data(file_data: bytes, owner_password="", user_password=""):
-    return Document(document.load_from_data(file_data, owner_password, user_password))
+def load_from_data(file_data: bytes, owner_password=None, user_password=None):
+    return Document(document.load_from_data(file_data, owner_password or "", user_password or ""))
 
 
 @singledispatch
-def load(arg, owner_password="", user_password=""):
+def load(arg, owner_password=None, user_password=None):
     try:
         data = arg.read()
         return load_from_data(data, owner_password, user_password)
@@ -236,15 +236,15 @@ def load(arg, owner_password="", user_password=""):
 
 
 @load.register
-def _(arg: str, owner_password="", user_password=""):
+def _(arg: str, owner_password=None, user_password=None):
     return load_from_file(arg, owner_password, user_password)
 
 
 @load.register
-def _(arg: Path, owner_password="", user_password=""):
+def _(arg: Path, owner_password=None, user_password=None):
     return load_from_file(arg, owner_password, user_password)
 
 
 @load.register
-def _(arg: bytes, owner_password="", user_password=""):
+def _(arg: bytes, owner_password=None, user_password=None):
     return load_from_data(arg, owner_password, user_password)
