@@ -16,6 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from poppler.image import Image
+from poppler import PageRenderer
 
 
 def test_invalid_image():
@@ -28,3 +29,11 @@ def test_supported_image_formats():
     formats = Image.supported_image_formats()
     assert "png" in formats
     assert "jpeg" in formats
+
+
+def test_data_size(pdf_page):
+    renderer = PageRenderer()
+    image = renderer.render_page(pdf_page)
+    data = image.data
+
+    assert len(data) == image.bytes_per_row * image.height

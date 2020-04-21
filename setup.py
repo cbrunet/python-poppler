@@ -73,7 +73,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name="python-poppler",
-    version="0.1.2",
+    version="0.1.3",
     author="Charles Brunet",
     author_email="charles@cbrunet.net",
     url="https://github.com/cbrunet/python-poppler",

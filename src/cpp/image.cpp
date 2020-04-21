@@ -35,8 +35,9 @@ namespace poppler
 
     py::bytes data(image& img)
     {
+        size_t size = img.bytes_per_row() * img.height();
         char* img_data = img.data();
-        return py::bytes(img_data);
+        return py::bytes(img_data, size);
     }
 
 PYBIND11_MODULE(image, m)
