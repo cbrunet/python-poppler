@@ -73,7 +73,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name="python-poppler",
-    version="0.2.0",
+    version="0.1.1",
     author="Charles Brunet",
     author_email="charles@cbrunet.net",
     url="https://github.com/cbrunet/python-poppler",
@@ -82,7 +82,7 @@ setup(
     long_description_content_type="text/markdown",
     license="GPLv2",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
         "Programming Language :: Python :: 3.7",
@@ -96,6 +96,7 @@ setup(
     python_requires=">=3.7",
     packages=find_packages("src"),
     package_dir={"": "src"},
+    package_data={"": ["pybind11"]},
     include_package_data=True,
     ext_modules=[CMakeExtension("poppler.cpp.modules")],
     cmdclass=dict(build_ext=CMakeBuild),
