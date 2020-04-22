@@ -212,12 +212,16 @@ class Document:
 
 def load_from_file(file_name, owner_password=None, user_password=None):
     return Document(
-        document.load_from_file(str(file_name), owner_password or "", user_password or "")
+        document.load_from_file(
+            str(file_name), owner_password or "", user_password or ""
+        )
     )
 
 
 def load_from_data(file_data: bytes, owner_password=None, user_password=None):
-    return Document(document.load_from_data(file_data, owner_password or "", user_password or ""))
+    return Document(
+        document.load_from_data(file_data, owner_password or "", user_password or "")
+    )
 
 
 @singledispatch
