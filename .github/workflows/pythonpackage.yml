@@ -37,11 +37,11 @@ jobs:
     - name: Test with tox
       run: |
         tox -e py
+    - name: Archive logs
+      run: zip -r logs.zip .tox/log .tox/py/log
     - name: Upload logs
       uses: actions/upload-artifact@master
       with:
         name: tox-logs-${{ matrix.python-version }}
-        path: |
-          .tox/log/*.log
-          .tox/py/log/*.log
+        path: logs.zip
       if: failure()
