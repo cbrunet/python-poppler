@@ -78,6 +78,9 @@ class Image:
     def width(self):
         return self._image.width()
 
+    def memoryview(self):
+        return memoryview(self._image)
+
     @staticmethod
     def supported_image_formats():
         return image.supported_image_formats()

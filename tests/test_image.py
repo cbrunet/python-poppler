@@ -37,3 +37,20 @@ def test_data_size(pdf_page):
     data = image.data
 
     assert len(data) == image.bytes_per_row * image.height
+
+
+def test_image_format_to_str():
+    assert str(Image.Format.argb32) == "ARGB"
+    assert str(Image.Format.invalid) == ""
+
+
+def test_image_memory_view(pdf_page):
+    renderer = PageRenderer()
+    image = renderer.render_page(pdf_page)
+
+    v = image.memoryview()
+
+    assert v.ndim == 3
+    assert v.shape == (image.height, image.width, 4)
+    assert v.contiguous is True
+    assert v.tobytes() == image.data
