@@ -9,6 +9,8 @@ from setuptools import setup, Extension, find_packages
 from setuptools.command.build_ext import build_ext
 from distutils.version import LooseVersion
 
+exec(Path("src/poppler/_version.py").read_text())
+
 
 class CMakeExtension(Extension):
     def __init__(self, name, sourcedir=""):
@@ -73,8 +75,8 @@ class CMakeBuild(build_ext):
 
 setup(
     name="python-poppler",
-    version="0.2.0",
-    author="Charles Brunet",
+    version=__version__,  # noqa
+    author=__author__,  # noqa
     author_email="charles@cbrunet.net",
     url="https://github.com/cbrunet/python-poppler",
     description="A Python binding to poppler-cpp",

@@ -15,6 +15,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+from poppler._version import *  # noqa
+
 from poppler.utilities import version
 from poppler.cpp.version import version_string
 from poppler.document import load, load_from_file, load_from_data
