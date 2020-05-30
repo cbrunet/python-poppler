@@ -57,7 +57,8 @@ def test_page_rect_box(pdf_page, box):
 
 def test_text(pdf_page):
     text = pdf_page.text()
-    assert text == "Page 1"
+    expected = "Page 1" if version() < (0, 88, 0) else "Page 1\n\x0c"
+    assert text == expected
 
 
 @pytest.mark.skipif(version() < (0, 63, 0), reason="Requires at least Poppler 0.63.0")
