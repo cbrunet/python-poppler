@@ -1,6 +1,7 @@
 /build
 /dist
 __pycache__
+.idea
 .tox
 .venv
 .vscode
