@@ -98,7 +98,6 @@ setup(
     python_requires=">=3.7",
     packages=find_packages("src"),
     package_dir={"": "src"},
-    package_data={"": ["pybind11"]},
     include_package_data=True,
     ext_modules=[CMakeExtension("poppler.cpp.modules")],
     cmdclass=dict(build_ext=CMakeBuild),
