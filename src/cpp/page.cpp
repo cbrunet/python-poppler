@@ -81,7 +81,7 @@ PYBIND11_MODULE(page, m)
         .def("text", (ustring(page::*)(const rectf &, page::text_layout_enum) const) & page::text, py::arg("rect"), py::arg("layout_mode"))
         .def("text", (ustring(page::*)(const rectf &) const) & page::text, py::arg("rect") = rectf())
 #if HAS_VERSION(0, 63)
-        .def("text_list", &page::text_list)
+        .def("text_list", (std::vector<text_box>(page::*)() const) & page::text_list)
 #endif
         .def("transition", &page::transition, py::return_value_policy::reference);
 }
