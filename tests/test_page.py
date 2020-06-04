@@ -102,3 +102,14 @@ def test_search_not_found(pdf_page):
 
 def test_page_transition(pdf_page):
     assert pdf_page.transition() is None
+
+
+@pytest.mark.skipif(version() < (0, 89, 0), reason="Requires at least Poppler 0.89.0")
+def test_text_box_font_info(pdf_page):
+    boxes = pdf_page.text_list(pdf_page.TextListOption.text_list_include_font)
+    box = boxes[0]
+
+    assert box.has_font_info
+    assert box.get_font_name().endswith("LiberationSerif")
+    assert pytest.approx(box.get_font_size(), abs=0.1) == 12.0
+    assert box.get_wmode() == box.WritingMode.horizontal_wmode

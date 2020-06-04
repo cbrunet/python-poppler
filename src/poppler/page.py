@@ -19,11 +19,18 @@ from poppler.cpp import page, global_
 from poppler.cpp.global_ import rotation_enum as Rotation
 from poppler.pagetransition import PageTransition
 from poppler.rectangle import Rectangle
-from poppler.utilities import since
+from poppler.utilities import since, version
+
+
+class _MetaTextBox(type):
+    def __new__(mcs, classname, bases, dictionary):
+        if version() >= (0, 89, 0):
+            dictionary["WritingMode"] = page.writing_mode_enum
+        return type.__new__(mcs, classname, bases, dictionary)
 
 
 @since(0, 63)
-class TextBox:
+class TextBox(metaclass=_MetaTextBox):
     def __init__(self, text_box):
         self._text_box = text_box
 
@@ -47,8 +54,32 @@ class TextBox:
     def has_space_after(self):
         return self._text_box.has_space_after()
 
+    @property
+    @since(0, 89)
+    def has_font_info(self):
+        return self._text_box.has_font_info()
 
-class Page:
+    @since(0, 89)
+    def get_font_name(self, i=0):
+        return self._text_box.get_font_name(i)
+
+    @since(0, 89)
+    def get_font_size(self):
+        return self._text_box.get_font_size()
+
+    @since(0, 89)
+    def get_wmode(self, i=0):
+        return self._text_box.get_wmode(i)
+
+
+class _MetaPage(type):
+    def __new__(mcs, classname, bases, dictionary):
+        if version() >= (0, 89, 0):
+            dictionary["TextListOption"] = page.text_list_option_enum
+        return type.__new__(mcs, classname, bases, dictionary)
+
+
+class Page(metaclass=_MetaPage):
 
     Orientation = page.orientation_enum
     PageBox = global_.page_box_enum
@@ -92,8 +123,12 @@ class Page:
         return str(t)
 
     @since(0, 63)
-    def text_list(self):
-        return [TextBox(b) for b in self._page.text_list()]
+    def text_list(self, opt_flag=None):
+        if opt_flag is not None and version() >= (0, 89, 0):
+            boxes = self._page.text_list(opt_flag)
+        else:
+            boxes = self._page.text_list()
+        return [TextBox(b) for b in boxes]
 
     def transition(self):
         transition = self._page.transition()

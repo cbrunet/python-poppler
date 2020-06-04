@@ -61,6 +61,14 @@ PYBIND11_MODULE(page, m)
         .value("previous_result", page::search_direction_enum::search_previous_result)
         .export_values();
 
+#if HAS_VERSION(0, 89)
+    py::enum_<text_box::writing_mode_enum>(m, "writing_mode_enum")
+        .value("invalid_wmode", text_box::writing_mode_enum::invalid_wmode)
+        .value("horizontal_wmode", text_box::writing_mode_enum::horizontal_wmode)
+        .value("vertical_wmode", text_box::writing_mode_enum::vertical_wmode)
+        .export_values();
+#endif
+
 #if HAS_VERSION(0, 63)
     py::class_<text_box>(m, "text_box")
         .def("text", &text_box::text)
@@ -69,7 +77,20 @@ PYBIND11_MODULE(page, m)
         .def("rotation", &text_box::rotation)
 #endif
         .def("char_bbox", &text_box::char_bbox, py::arg("i"))
-        .def("has_space_after", &text_box::has_space_after);
+        .def("has_space_after", &text_box::has_space_after)
+#endif
+#if HAS_VERSION(0, 89)
+        .def("get_font_name", &text_box::get_font_name, py::arg("i")=0)
+        .def("get_font_size", &text_box::get_font_size)
+        .def("get_wmode", &text_box::get_wmode, py::arg("i")=0)
+        .def("has_font_info", &text_box::has_font_info)
+#endif
+        ;
+
+#if HAS_VERSION(0, 89)
+    py::enum_<page::text_list_option_enum>(m, "text_list_option_enum")
+        .value("text_list_include_font", page::text_list_option_enum::text_list_include_font)
+        .export_values();
 #endif
 
     py::class_<page>(m, "page")
@@ -82,6 +103,9 @@ PYBIND11_MODULE(page, m)
         .def("text", (ustring(page::*)(const rectf &) const) & page::text, py::arg("rect") = rectf())
 #if HAS_VERSION(0, 63)
         .def("text_list", (std::vector<text_box>(page::*)() const) & page::text_list)
+#endif
+#if HAS_VERSION(0, 89)
+        .def("text_list", (std::vector<text_box>(page::*)(int) const) & page::text_list, py::arg("opt_flag"))
 #endif
         .def("transition", &page::transition, py::return_value_policy::reference);
 }
