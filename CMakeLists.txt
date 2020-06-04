@@ -2,7 +2,20 @@ cmake_minimum_required(VERSION 2.8.12)
 project(python-poppler)
 
 find_package(PkgConfig)
-pkg_check_modules(POPPLER REQUIRED poppler-cpp>=0.62.0)
+
+if (DEFINED ENV{POPPLER_DIR})
+    set(POPPLER_INCLUDE_DIRS "$ENV{POPPLER_DIR}/include")
+    if (EXISTS "$ENV{POPPLER_DIR/lib}")
+        set(POPPLER_LIBRARY_DIRS "$ENV{POPPLER_DIR}/lib")
+    elseif (EXISTS "$ENV{POPPLER_DIR}/usr/lib")
+        set(POPPLER_LIBRARY_DIRS "$ENV{POPPLER_DIR}/usr/lib")
+    endif ()
+
+    set(POPPLER_LIBRARIES "poppler-cpp")
+else ()
+    pkg_check_modules(POPPLER REQUIRED poppler-cpp>=0.62.0)
+endif ()
+
 include_directories(${POPPLER_INCLUDE_DIRS})
 link_directories(${POPPLER_LIBRARY_DIRS})
 
