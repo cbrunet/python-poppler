@@ -1,0 +1,7 @@
+Changelog
+
+0.2.0
+- Added __version__ to the Python package
+- Added buffer interface to Image
+- Added __str__ method to Image.Format enum, for interoperability with pillow
+- Bugfix: fixed the size of Image.data
