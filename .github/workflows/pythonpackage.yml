@@ -33,13 +33,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
     - name: clone poppler
+      if: matrix.poppler-version != 'ubuntu'
       run: |
         git clone https://gitlab.freedesktop.org/poppler/poppler.git
         cd poppler
         git fetch
         git checkout ${{ matrix.poppler-version }}
-      if: ${{ matrix.poppler-version }} != "ubuntu"
     - name: compile poppler
+      if: matrix.poppler-version != 'ubuntu'
       run: |
         cd poppler
         mkdir build
@@ -61,7 +62,6 @@ jobs:
         make
         sudo make install
         echo '::set-env name=POPPLER_DIR::/usr/local'
-      if: ${{ matrix.poppler-version }} != "ubuntu"
     - name: Lint with flake8
       run: |
         tox -e lint
