@@ -5,9 +5,9 @@ name: Python build and tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ compile_poppler ]
   pull_request:
-    branches: [ master ]
+    branches: [ compile_poppler ]
 
 jobs:
   build:
@@ -16,6 +16,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8]
+        poppler-version: [ubuntu, poppler-0.89.0, master]
 
     steps:
     - uses: actions/checkout@v2
@@ -31,10 +32,47 @@ jobs:
         sudo apt-get install libpoppler-cpp-dev
         python -m pip install --upgrade pip
         pip install tox
+    - name: clone poppler
+      run: |
+        git clone https://gitlab.freedesktop.org/poppler/poppler.git
+        cd poppler
+        git fetch
+        git checkout ${{ matrix.poppler-version }}
+      if: ${{ matrix.poppler-version }} != "ubuntu"
+    - name: compile poppler
+      run: |
+        cd poppler
+        mkdir build
+        cd build
+        cmake \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX:PATH=/usr/local \
+          -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
+          -DBUILD_GTK_TESTS=OFF \
+          -DBUILD_QT5_TESTS=OFF \
+          -DBUILD_CPP_TESTS=OFF \
+          -DENABLE_CPP=ON \
+          -DENABLE_GLIB=OFF \
+          -DENABLE_GOBJECT_INTROSPECTION=OFF \
+          -DENABLE_GTK_DOC=OFF \
+          -DENABLE_QT5=OFF \
+          -DBUILD_SHARED_LIBS=ON \
+          ..
+        make
+        sudo make install
+        echo '::set-env name=POPPLER_DIR::/usr/local'
+      if: ${{ matrix.poppler-version }} != "ubuntu"
     - name: Lint with flake8
       run: |
         tox -e lint
+    - name: Print version
+      env:
+        LD_LIBRARY_PATH: /usr/local/lib
+      run: |
+        tox -e printver
     - name: Test with tox
+      env:
+        LD_LIBRARY_PATH: /usr/local/lib
       run: |
         tox -e py
     - name: Archive logs
