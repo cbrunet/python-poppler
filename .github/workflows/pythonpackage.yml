@@ -77,6 +77,7 @@ jobs:
         tox -e py
     - name: Archive logs
       run: zip -r logs.zip .tox/log .tox/py/log
+      if: failure()
     - name: Upload logs
       uses: actions/upload-artifact@master
       with:
