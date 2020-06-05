@@ -70,6 +70,9 @@ jobs:
         LD_LIBRARY_PATH: /usr/local/lib
       run: |
         tox -vvv -e printver
+    - name: Debug LDD
+      run: ldd .tox/printver/lib/python${{matrix.python-version}}/site-packages/poppler/cpp/*.so
+      if: failure()
     - name: Test with tox
       env:
         LD_LIBRARY_PATH: /usr/local/lib
