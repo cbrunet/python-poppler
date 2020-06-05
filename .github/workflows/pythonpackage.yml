@@ -69,14 +69,14 @@ jobs:
       env:
         LD_LIBRARY_PATH: /usr/local/lib
       run: |
-        tox -e printver
+        tox -vvv -e printver
     - name: Test with tox
       env:
         LD_LIBRARY_PATH: /usr/local/lib
       run: |
         tox -e py
     - name: Archive logs
-      run: zip -r logs.zip .tox/log .tox/py/log
+      run: zip -r logs.zip .tox/log .tox/*/log
       if: failure()
     - name: Upload logs
       uses: actions/upload-artifact@master
