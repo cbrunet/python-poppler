@@ -18,9 +18,6 @@ jobs:
         python-version: [3.7, 3.8]
         poppler-version: [ubuntu, poppler-0.89.0, master]
 
-    env:
-      PKG_CONFIG_PATH: /usr/local/lib/pkgconfig:${{env.PKG_CONFIG_PATH}}
-
     steps:
     - uses: actions/checkout@v2
     - name: Update submodules
@@ -64,6 +61,7 @@ jobs:
           ..
         make
         sudo make install
+        echo '::set-env name=PKG_CONFIG_PATH::/usr/local/lib/pkgconfig'
     - name: Lint with flake8
       run: |
         tox -e lint
