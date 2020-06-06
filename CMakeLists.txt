@@ -11,7 +11,7 @@ add_subdirectory(pybind11)
 
 
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(POPPLER REQUIRED IMPORTED_TARGET poppler-cpp>=0.62.0)
+pkg_check_modules(POPPLER REQUIRED IMPORTED_TARGET poppler-cpp>=0.62.0 poppler)
 
 add_library(global_ MODULE src/cpp/global.cpp)
 target_include_directories(global_ BEFORE PRIVATE ${POPPLER_INCLUDEDIR})
