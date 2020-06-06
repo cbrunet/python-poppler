@@ -1,59 +1,28 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.6)
 project(python-poppler)
 
-find_package(PkgConfig)
+list(APPEND Targets "version" "rectangle" "image" "document" "page")
+list(APPEND Targets "page_renderer" "page_transition")
+list(APPEND Targets "embedded_file" "destination" "toc" "font")
 
-if (DEFINED ENV{POPPLER_DIR})
-    set(POPPLER_INCLUDE_DIRS "$ENV{POPPLER_DIR}/include")
-    if (EXISTS "$ENV{POPPLER_DIR/lib}")
-        set(POPPLER_LIBRARY_DIRS "$ENV{POPPLER_DIR}/lib")
-    elseif (EXISTS "$ENV{POPPLER_DIR}/usr/lib")
-        set(POPPLER_LIBRARY_DIRS "$ENV{POPPLER_DIR}/usr/lib")
-    endif ()
-
-    set(POPPLER_LIBRARIES "poppler-cpp")
-else ()
-    pkg_check_modules(POPPLER REQUIRED poppler-cpp>=0.62.0)
-endif ()
-
-include_directories(${POPPLER_INCLUDE_DIRS})
-link_directories(${POPPLER_LIBRARY_DIRS})
 
 # find_package(pybind11)
 add_subdirectory(pybind11)
 
-pybind11_add_module(version src/cpp/version.cpp)
-target_link_libraries(version PRIVATE ${POPPLER_LIBRARIES})
 
-pybind11_add_module(global_ src/cpp/global.cpp)
-target_link_libraries(global_ PRIVATE ${POPPLER_LIBRARIES})
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(POPPLER REQUIRED IMPORTED_TARGET poppler-cpp>=0.89.0)
 
-pybind11_add_module(rectangle src/cpp/rectangle.cpp)
-target_link_libraries(rectangle PRIVATE ${POPPLER_LIBRARIES})
+add_library(global_ MODULE src/cpp/global.cpp)
+target_include_directories(global_ BEFORE PRIVATE ${POPPLER_INCLUDEDIR})
+target_link_libraries(global_ PRIVATE pybind11::module PkgConfig::POPPLER )
+set_target_properties(global_ PROPERTIES PREFIX "${PYTHON_MODULE_PREFIX}"
+                                         SUFFIX "${PYTHON_MODULE_EXTENSION}")
 
-pybind11_add_module(image src/cpp/image.cpp)
-target_link_libraries(image PRIVATE ${POPPLER_LIBRARIES})
-
-pybind11_add_module(document src/cpp/document.cpp)
-target_link_libraries(document PRIVATE ${POPPLER_LIBRARIES})
-
-pybind11_add_module(page src/cpp/page.cpp)
-target_link_libraries(page PRIVATE ${POPPLER_LIBRARIES})
-
-pybind11_add_module(page_renderer src/cpp/page_renderer.cpp)
-target_link_libraries(page_renderer PRIVATE ${POPPLER_LIBRARIES})
-
-pybind11_add_module(page_transition src/cpp/page_transition.cpp)
-target_link_libraries(page_transition PRIVATE ${POPPLER_LIBRARIES})
-
-pybind11_add_module(embedded_file src/cpp/embedded_file.cpp)
-target_link_libraries(embedded_file PRIVATE ${POPPLER_LIBRARIES})
-
-pybind11_add_module(destination src/cpp/destination.cpp)
-target_link_libraries(destination PRIVATE ${POPPLER_LIBRARIES})
-
-pybind11_add_module(toc src/cpp/toc.cpp)
-target_link_libraries(toc PRIVATE ${POPPLER_LIBRARIES})
-
-pybind11_add_module(font src/cpp/font.cpp)
-target_link_libraries(font PRIVATE ${POPPLER_LIBRARIES})
+foreach (Target ${Targets})
+    add_library(${Target} MODULE src/cpp/${Target}.cpp)
+    target_include_directories(${Target} BEFORE PRIVATE ${POPPLER_INCLUDEDIR})
+    target_link_libraries(${Target} PRIVATE pybind11::module PkgConfig::POPPLER )
+    set_target_properties(${Target} PROPERTIES PREFIX "${PYTHON_MODULE_PREFIX}"
+                                               SUFFIX "${PYTHON_MODULE_EXTENSION}")
+endforeach ()

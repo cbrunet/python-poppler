@@ -18,6 +18,9 @@ jobs:
         python-version: [3.7, 3.8]
         poppler-version: [ubuntu, poppler-0.89.0, master]
 
+    env:
+      PKG_CONFIG_PATH: /usr/local/lib/pkgconfig:${{env.PKG_CONFIG_PATH}}
+
     steps:
     - uses: actions/checkout@v2
     - name: Update submodules
@@ -61,21 +64,16 @@ jobs:
           ..
         make
         sudo make install
-        echo '::set-env name=POPPLER_DIR::/usr/local'
     - name: Lint with flake8
       run: |
         tox -e lint
     - name: Print version
-      env:
-        LD_LIBRARY_PATH: /usr/local/lib
       run: |
         tox -vvv -e printver
     - name: Debug LDD
       run: ldd .tox/printver/lib/python${{matrix.python-version}}/site-packages/poppler/cpp/*.so
       if: failure()
     - name: Test with tox
-      env:
-        LD_LIBRARY_PATH: /usr/local/lib
       run: |
         tox -e py
     - name: Archive logs
