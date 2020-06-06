@@ -62,6 +62,7 @@ jobs:
         make
         sudo make install
         echo '::set-env name=PKG_CONFIG_PATH::/usr/local/lib/pkgconfig'
+        echo '::set-env name=LD_LIBRARY_PATH::/usr/local/lib'
     - name: Lint with flake8
       run: |
         tox -e lint
