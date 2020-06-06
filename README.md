@@ -15,8 +15,12 @@ More specifically, it currently allows to:
 - read the table of contents of the document.
 
 
+# Download
 
-# How to build
+## Requirements
+
+You nedd Python version 3.7 or 3.8.
+You will also need the usual build tools (cmake, gcc...)
 
 This package is currently distributed as source only, and is currently tested on Linux only.
 It requires poppler 0.62 or higher (but 0.87 or higher is recommended).
@@ -26,7 +30,39 @@ You need poppler-cpp with headers, python (3.7 or 3.8) with headers, and cmake.
 On Arch linux, you need the [poppler](https://security.archlinux.org/package/poppler) package.
 On Ubuntu, you need to install [libpoppler-cpp-dev](https://packages.ubuntu.com/bionic/libpoppler-cpp-dev).
 
+
+## Install from PyPI
+
+Package is [available on PyPI](https://pypi.org/project/python-poppler/).
+To install, you simply need to issue the following command, preferabily in a python virtual environment:
+
+```
+$ pip install python-poppler
+```
+
+## Install from git sources
+
+Sources are [available on GitHub](https://github.com/cbrunet/python-poppler):
+
+```
+git clone --recurse-submodules https://github.com/cbrunet/python-poppler.git
+```
+
+[pybind11](https://pybind11.readthedocs.io/en/stable/) sources are included as submodule.
+If you cloned the repository without the submodules, you can
+get them with the command
+
+```
+git submodule update --init --recurse
+```
+
+If you want to use an installed version of pybind11
+instead of the submodule, you can replace `add_subdirectory(pybind11)`
+by `find_package(pybind11)` in the [CMakeLists.txt] file.
+
 The whole build process is handled by the `setup.py` file.
+It will invoke the needed cmake commands, and install the files
+at the right place.
 
 For instance, to install in the current environment:
 
@@ -53,7 +89,7 @@ $ mkdir build
 $ cd build
 $ cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX:PATH=/ \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr/local \
     -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
     -DBUILD_GTK_TESTS=OFF \
     -DBUILD_QT5_TESTS=OFF \
@@ -67,20 +103,16 @@ $ cmake \
     ..
 $ make
 $ mkdir ../dist
-$ make DESTDIR=../dist install
+$ sudo make install
 ```
 
 You can omit the `git checkout` step if you want to work on HEAD.
-Instead of using a custom `DESTDIR`, you could also install to `/usr/local`
-by omiting the `CMAKE_INSTALL_PREFIX` option and using `sudo make install`
-to install it.
 
-To compile python-poppler using a custom location for Poppler,
-set the env var `POPPLER_DIR` to the installation prefix you used.
-In our example, it would be something like:
+To find the right version of poppler when compiling python-poppler,
+you can set the `PKG_CONFIG_PATH` env var:
 
 ```
-$ export POPPLER_DIR=/path/to/poppler/dist
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 $ cd python-poppler
 $ python setup.py bdist_wheel
 ```
@@ -89,10 +121,11 @@ To build the wheel, you need the `wheel` package, if not already installed.
 Alternatively, you could simply do `python setup.py install`, preferabily
 in a virtual environment.
 
-You now need to tell the system where to find the Poppler shared libraries.
+You may need to tell the system where to find the Poppler shared libraries,
+by setting the `LD_LIBRARY_PATH` env var:
 
 ```
-$ export LD_LIBRARY_PATH=/path/to/poppler/dist/usr/lib:$LD_LIBRARY_PATH
+$ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 $ python
 >>> import poppler
 >>> poppler.version()
@@ -118,3 +151,26 @@ renderer = PageRenderer()
 image = renderer.render_page(page_1)
 image_data = image.data
 ```
+
+
+# Contributing
+
+Contributions are welcome.
+
+Please use the [GitHub issue tracker](https://github.com/cbrunet/python-poppler/issues)
+to report bugs or request features.
+You can also submit Pull requests.
+
+Code is formatted using [black](https://github.com/psf/black).
+Ensure that everything is well formatted. You can use
+
+```
+tox -e lint
+```
+
+to lint your code.
+
+Please ensure that all tests pass, by running `tox`.
+
+Please provide unit tests covering the new feature, or prooving
+that a bug is corrected, when possible.

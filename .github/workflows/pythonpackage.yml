@@ -16,6 +16,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8]
+        poppler-version: [ubuntu, poppler-0.89.0, master]
 
     steps:
     - uses: actions/checkout@v2
@@ -28,17 +29,55 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        sudo apt-get install libpoppler-cpp-dev
+        sudo apt-get install libpoppler-cpp-dev libopenjp2-7-dev
         python -m pip install --upgrade pip
         pip install tox
+    - name: clone poppler
+      if: matrix.poppler-version != 'ubuntu'
+      run: |
+        git clone https://gitlab.freedesktop.org/poppler/poppler.git
+        cd poppler
+        git fetch
+        git checkout ${{ matrix.poppler-version }}
+    - name: compile poppler
+      if: matrix.poppler-version != 'ubuntu'
+      run: |
+        cd poppler
+        mkdir build
+        cd build
+        cmake \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX:PATH=/usr/local \
+          -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
+          -DBUILD_GTK_TESTS=OFF \
+          -DBUILD_QT5_TESTS=OFF \
+          -DBUILD_CPP_TESTS=OFF \
+          -DENABLE_CPP=ON \
+          -DENABLE_GLIB=OFF \
+          -DENABLE_GOBJECT_INTROSPECTION=OFF \
+          -DENABLE_GTK_DOC=OFF \
+          -DENABLE_QT5=OFF \
+          -DBUILD_SHARED_LIBS=ON \
+          ..
+        make
+        sudo make install
+        echo '::set-env name=PKG_CONFIG_PATH::/usr/local/lib/pkgconfig'
+        echo '::set-env name=LD_LIBRARY_PATH::/usr/local/lib'
     - name: Lint with flake8
       run: |
         tox -e lint
+    - name: Print version
+      run: |
+        tox -vvv -e printver
+    - name: Debug LDD
+      run: ldd .tox/printver/lib/python${{matrix.python-version}}/site-packages/poppler/cpp/*.so
+      if: failure()
     - name: Test with tox
       run: |
         tox -e py
     - name: Archive logs
-      run: zip -r logs.zip .tox/log .tox/py/log
+      run: zip -r logs.zip .tox/log .tox/*/log
+      if: failure()
     - name: Upload logs
       uses: actions/upload-artifact@master
       with:
