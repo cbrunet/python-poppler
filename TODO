@@ -6,9 +6,6 @@
   - redirect to logger?
 
 - Add documentation
-- github actions
-  - poppler as subrepo?
-- send to PyPI
 
 - compile poppler on windows
 

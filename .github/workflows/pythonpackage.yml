@@ -5,9 +5,9 @@ name: Python build and tests
 
 on:
   push:
-    branches: [ compile_poppler ]
+    branches: [ master ]
   pull_request:
-    branches: [ compile_poppler ]
+    branches: [ master ]
 
 jobs:
   build:
