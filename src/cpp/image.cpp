@@ -62,17 +62,17 @@ py::str format_to_str(image::format_enum format)
         return py::str("1");
 
     case image::format_enum::format_rgb24:
-        return py::str("RGB");
+        return py::str("BGR");
 
     case image::format_enum::format_argb32:
-        return py::str("ARGB");
+        return py::str("BGRA");
 
 #if HAS_VERSION(0, 65)
     case image::format_enum::format_gray8:
         return py::str("L");
 
     case image::format_enum::format_bgr24:
-        return py::str("BGR");
+        return py::str("RGB");
 #endif
 
     case image::format_enum::format_invalid:

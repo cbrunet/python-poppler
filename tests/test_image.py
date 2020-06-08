@@ -40,7 +40,7 @@ def test_data_size(pdf_page):
 
 
 def test_image_format_to_str():
-    assert str(Image.Format.argb32) == "ARGB"
+    assert str(Image.Format.argb32) == "BGRA"
     assert str(Image.Format.invalid) == ""
 
 
