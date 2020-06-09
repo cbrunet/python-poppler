@@ -29,6 +29,7 @@ author = 'Charles Brunet'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
 ]
 

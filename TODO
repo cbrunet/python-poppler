@@ -1,11 +1,15 @@
+- Documentation:
+  - propagate version
+  - publish to github pages
+  - sync README and index
+
+
 - Test methods with wrong arguments
 - test embedded file
 - test set_data_dir
 
 - implement set_debug_error_function
   - redirect to logger?
-
-- Add documentation
 
 - compile poppler on windows
 
