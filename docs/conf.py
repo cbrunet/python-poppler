@@ -52,3 +52,14 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_theme_options = {
+    'description': "Python binding to poppler-cpp library, to read and render PDF documents.",
+    'github_button': True,
+    'github_user': 'cbrunet',
+    'github_repo': 'python-poppler',
+    'badge_branch': 'master',
+    'extra_nav_links': {
+        "PyPI": "https://pypi.org/project/python-poppler/",
+    }
+}
