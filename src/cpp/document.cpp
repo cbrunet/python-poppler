@@ -20,13 +20,13 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #if HAS_VERSION(0, 74)
-#include <poppler/cpp/poppler-destination.h>
+#include <poppler-destination.h>
 #endif
-#include <poppler/cpp/poppler-document.h>
-#include <poppler/cpp/poppler-embedded-file.h>
-#include <poppler/cpp/poppler-font.h>
-#include <poppler/cpp/poppler-page.h>
-#include <poppler/cpp/poppler-toc.h>
+#include <poppler-document.h>
+#include <poppler-embedded-file.h>
+#include <poppler-font.h>
+#include <poppler-page.h>
+#include <poppler-toc.h>
 
 namespace py = pybind11;
 

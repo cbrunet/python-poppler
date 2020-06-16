@@ -18,8 +18,8 @@
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include <poppler/cpp/poppler-global.h>
-#include <poppler/cpp/poppler-toc.h>
+#include <poppler-global.h>
+#include <poppler-toc.h>
 
 namespace py = pybind11;
 

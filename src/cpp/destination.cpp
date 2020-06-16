@@ -19,7 +19,7 @@
 #include "version.h"
 #include <pybind11/pybind11.h>
 #if HAS_VERSION(0, 74)
-#include <poppler/cpp/poppler-destination.h>
+#include <poppler-destination.h>
 #endif
 
 namespace py = pybind11;
