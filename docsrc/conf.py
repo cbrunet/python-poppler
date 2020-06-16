@@ -12,7 +12,8 @@
 #
 # import os
 # import sys
-# sys.path.insert(0, os.path.abspath('.'))
+# sys.path.insert(0, os.path.abspath('../src'))
+# print(os.path.abspath("../src"))
 
 
 # -- Project information -----------------------------------------------------
@@ -61,6 +62,8 @@ html_theme_options = {
     'github_repo': 'python-poppler',
     'badge_branch': 'master',
     'extra_nav_links': {
+        "GitHub": "https://github.com/cbrunet/python-poppler",
+        "Issues tracker": "https://github.com/cbrunet/python-poppler/issues",
         "PyPI": "https://pypi.org/project/python-poppler/",
     }
 }

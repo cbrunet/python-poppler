@@ -2,6 +2,7 @@
   - propagate version
   - publish to github pages
   - sync README and index
+  - custom directive for min poppler version, using @since decorator
 
 
 - Test methods with wrong arguments

@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using python-poppler &#8212; python-poppler  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="modules.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="using-python-poppler">
+<span id="usage"></span><h1>Using python-poppler<a class="headerlink" href="#using-python-poppler" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">poppler</span> <span class="kn">import</span> <span class="n">load_from_file</span><span class="p">,</span> <span class="n">PageRenderer</span>
+
+<span class="n">pdf_document</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s2">&quot;sample.pdf&quot;</span><span class="p">)</span>
+<span class="n">page_1</span> <span class="o">=</span> <span class="n">pdf_document</span><span class="o">.</span><span class="n">create_page</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">page_1_text</span> <span class="o">=</span> <span class="n">page_1</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+
+<span class="n">renderer</span> <span class="o">=</span> <span class="n">PageRenderer</span><span class="p">()</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render_page</span><span class="p">(</span><span class="n">page_1</span><span class="p">)</span>
+<span class="n">image_data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>The pdf file is loaded into a <a class="reference internal" href="poppler.html#poppler.document.Document" title="poppler.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>.
+From the <a class="reference internal" href="poppler.html#poppler.document.Document" title="poppler.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>, you can extract general infos
+such as propertise and font infos.
+You can also extract <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> objects, using the <a class="reference internal" href="poppler.html#poppler.document.Document.create_page" title="poppler.document.Document.create_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.create_page()</span></code></a>
+method.</p>
+<p>From the <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a>, you get informations about transitions and page orientation,
+and various methods to extract texts.</p>
+<p>Using a <a class="reference internal" href="poppler.html#poppler.PageRenderer" title="poppler.PageRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageRenderer</span></code></a>, you can convert a <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> to an <a class="reference internal" href="poppler.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.</p>
+<p>Most used classes and functions are aliased directly in the <a class="reference internal" href="poppler.html#module-poppler" title="poppler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">poppler</span></code></a> module.
+Therefore, you usually do not need to import anything else than <a class="reference internal" href="poppler.html#module-poppler" title="poppler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">poppler</span></code></a>.</p>
+</div>
+<div class="section" id="loading-document">
+<h2>Loading Document<a class="headerlink" href="#loading-document" title="Permalink to this headline">¶</a></h2>
+<p>A poppler <a class="reference internal" href="poppler.html#poppler.document.Document" title="poppler.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> can be created from a file path
+using <a class="reference internal" href="poppler.html#poppler.load_from_file" title="poppler.load_from_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_from_file()</span></code></a>, from binary data using
+<a class="reference internal" href="poppler.html#poppler.load_from_data" title="poppler.load_from_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_from_data()</span></code></a>. There is also a more general <a class="reference internal" href="poppler.html#poppler.load" title="poppler.load"><code class="xref py py-func docutils literal notranslate"><span class="pre">load()</span></code></a>
+function, which can take either a file path, binary data, or a
+file-like object as argument.</p>
+<p>Encrypted document</p>
+<p>Document properties</p>
+<p>Loading page</p>
+<p>Extracting text</p>
+<p>Rendering image</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">python-poppler</a></h1>
+
+
+
+<p class="blurb">Python binding to poppler-cpp library, to read and render PDF documents.</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=cbrunet&repo=python-poppler&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using python-poppler</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-document">Loading Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler">GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler/issues">Issue tracker</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.org/project/python-poppler/">PyPI</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="modules.html" title="next chapter">API Reference</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Charles Brunet.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

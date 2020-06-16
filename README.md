@@ -53,7 +53,7 @@ If you cloned the repository without the submodules, you can
 get them with the command
 
 ```
-git submodule update --init --recurse
+git submodule update --init --recursive
 ```
 
 If you want to use an installed version of pybind11
@@ -102,7 +102,6 @@ $ cmake \
     -DBUILD_SHARED_LIBS=ON \
     ..
 $ make
-$ mkdir ../dist
 $ sudo make install
 ```
 

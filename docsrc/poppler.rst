@@ -1,13 +1,16 @@
 poppler package
 ===============
 
-Subpackages
------------
+Module contents
+---------------
 
-.. toctree::
-   :maxdepth: 4
+.. automodule:: poppler
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-   poppler.cpp
+
+
 
 Submodules
 ----------
@@ -101,10 +104,10 @@ poppler.utilities module
    :show-inheritance:
 
 
-Module contents
----------------
+Subpackages
+-----------
 
-.. automodule:: poppler
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. toctree::
+   :maxdepth: 4
+
+   poppler.cpp

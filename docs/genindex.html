@@ -70,9 +70,11 @@
       </ul></li>
       <li><a href="poppler.html#poppler.pagetransition.PageTransition.alignment">alignment() (poppler.pagetransition.PageTransition property)</a>
 </li>
+      <li><a href="poppler.html#poppler.pagetransition.PageTransition.angle">angle() (poppler.pagetransition.PageTransition property)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="poppler.html#poppler.pagetransition.PageTransition.angle">angle() (poppler.pagetransition.PageTransition property)</a>
+      <li><a href="poppler.cpp.html#poppler.cpp.page_renderer.render_hint.antialiasing">antialiasing (poppler.cpp.page_renderer.render_hint attribute)</a>
 </li>
       <li><a href="poppler.html#poppler.Rectangle.as_tuple">as_tuple() (poppler.Rectangle method)</a>
 
@@ -368,6 +370,8 @@
 </li>
         <li><a href="poppler.cpp.html#module-poppler.cpp">poppler.cpp</a>
 </li>
+        <li><a href="poppler.cpp.html#module-poppler.cpp.page_renderer">poppler.cpp.page_renderer</a>
+</li>
         <li><a href="poppler.html#module-poppler.destination">poppler.destination</a>
 </li>
         <li><a href="poppler.html#module-poppler.document">poppler.document</a>
@@ -433,6 +437,8 @@
 </li>
       <li><a href="poppler.html#poppler.page.Page.page_rect">page_rect() (poppler.page.Page method)</a>
 </li>
+      <li><a href="poppler.cpp.html#poppler.cpp.page_renderer.page_renderer">page_renderer (class in poppler.cpp.page_renderer)</a>
+</li>
       <li><a href="poppler.html#poppler.PageBox">PageBox (in module poppler)</a>
 
       <ul>
@@ -486,13 +492,20 @@
         <li><a href="poppler.html#module-poppler">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     poppler.cpp
 
       <ul>
         <li><a href="poppler.cpp.html#module-poppler.cpp">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    poppler.cpp.page_renderer
+
+      <ul>
+        <li><a href="poppler.cpp.html#module-poppler.cpp.page_renderer">module</a>
 </li>
       </ul></li>
       <li>
@@ -588,22 +601,30 @@
       </ul></li>
       <li><a href="poppler.html#poppler.document.Document.remove_info">remove_info() (poppler.document.Document method)</a>
 </li>
+      <li><a href="poppler.cpp.html#poppler.cpp.page_renderer.render_hint">render_hint (class in poppler.cpp.page_renderer)</a>
+</li>
       <li><a href="poppler.html#poppler.PageRenderer.render_hints">render_hints() (poppler.PageRenderer property)</a>
 
       <ul>
         <li><a href="poppler.html#poppler.pagerenderer.PageRenderer.render_hints">(poppler.pagerenderer.PageRenderer property)</a>
 </li>
       </ul></li>
-      <li><a href="poppler.html#poppler.PageRenderer.render_page">render_page() (poppler.PageRenderer method)</a>
+      <li><a href="poppler.cpp.html#poppler.cpp.page_renderer.page_renderer.render_page">render_page() (poppler.cpp.page_renderer.page_renderer method)</a>
 
       <ul>
+        <li><a href="poppler.html#poppler.PageRenderer.render_page">(poppler.PageRenderer method)</a>
+</li>
         <li><a href="poppler.html#poppler.pagerenderer.PageRenderer.render_page">(poppler.pagerenderer.PageRenderer method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="poppler.html#poppler.RenderHint">RenderHint (in module poppler)</a>
+
+      <ul>
+        <li><a href="poppler.html#poppler.pagerenderer.RenderHint">(in module poppler.pagerenderer)</a>
 </li>
+      </ul></li>
       <li><a href="poppler.html#poppler.Rectangle.right">right() (poppler.Rectangle property)</a>
 
       <ul>
@@ -668,6 +689,10 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="poppler.html#poppler.page.Page.text">text() (poppler.page.Page method)</a>
 </li>
+      <li><a href="poppler.cpp.html#poppler.cpp.page_renderer.render_hint.text_antialiasing">text_antialiasing (poppler.cpp.page_renderer.render_hint attribute)</a>
+</li>
+      <li><a href="poppler.cpp.html#poppler.cpp.page_renderer.render_hint.text_hinting">text_hinting (poppler.cpp.page_renderer.render_hint attribute)</a>
+</li>
       <li><a href="poppler.html#poppler.page.Page.text_list">text_list() (poppler.page.Page method)</a>
 </li>
       <li><a href="poppler.html#poppler.TextLayout">TextLayout (in module poppler)</a>
@@ -684,10 +709,10 @@
         <li><a href="poppler.html#poppler.toc.TocItem.title">(poppler.toc.TocItem property)</a>
 </li>
       </ul></li>
-      <li><a href="poppler.html#poppler.utilities.to_time_type">to_time_type() (in module poppler.utilities)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="poppler.html#poppler.utilities.to_time_type">to_time_type() (in module poppler.utilities)</a>
+</li>
       <li><a href="poppler.html#poppler.toc.Toc">Toc (class in poppler.toc)</a>
 </li>
       <li><a href="poppler.html#poppler.toc.TocItem">TocItem (class in poppler.toc)</a>
@@ -806,15 +831,19 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">poppler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using python-poppler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
 </ul>
 
 
 <hr />
 <ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler">GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler/issues">Issue tracker</a></li>
     
     <li class="toctree-l1"><a href="https://pypi.org/project/python-poppler/">PyPI</a></li>
     

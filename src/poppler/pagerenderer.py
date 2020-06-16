@@ -24,9 +24,17 @@ if version() >= (0, 65, 0):
     LineMode = page_renderer.line_mode_enum
 
 RenderHint = page_renderer.render_hint
+"""A flag of an option taken into account when rendering"""
 
 
 class PageRenderer:
+    """:class:`PageRenderer` allows to render a :class:`.Page` object
+    to an :class:`.Image`.
+
+    It is a wrapper for :class:`poppler.cpp.page_renderer.page_renderer`.
+
+    """
+
     def __init__(self):
         self._renderer = page_renderer.page_renderer()
 
@@ -85,4 +93,14 @@ class PageRenderer:
 
     @staticmethod
     def can_render():
+        """Tell whether poppler was compiled with the Splash render backend.
+
+        This should always return True. If it returns False,
+        :meth:`.render_page` will systematically return
+        an invalid :class:`.Image`.
+
+        Returns:
+            bool: whether a render backend was compiled with poppler.
+
+        """
         return page_renderer.can_render()
