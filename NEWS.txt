@@ -1,7 +1,8 @@
 Changelog
 
-NEXT RELEASE
-- Fixed byte order in image format string used for Pillow
+0.2.1
+- Bugfix: Fixed byte order in image format string used for Pillow
+- Bugfix: Prevent segmentation fault when performing some operations on locked documents (fixes #4)
 
 0.2.0
 - Add the font infos to the TextBox object (Poppler 0.89.0)
