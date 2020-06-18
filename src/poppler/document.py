@@ -26,11 +26,26 @@ from poppler.toc import Toc
 from poppler.utilities import since
 
 from collections import namedtuple
-from functools import singledispatch
+from functools import singledispatch, wraps
 from pathlib import Path
 
 
 PDFId = namedtuple("PDFId", ["permanent_id", "update_id"])
+
+
+class LockedDocumentError(RuntimeError):
+    def __init__(self):
+        super().__init__("Cannot perform this operation on a locked document.")
+
+
+def ensure_unlocked(fct):
+    @wraps(fct)
+    def wrapper(self, *args, **kwargs):
+        if self._document.is_locked():
+            raise LockedDocumentError()
+        return fct(self, *args, **kwargs)
+
+    return wrapper
 
 
 class Document:
@@ -41,60 +56,74 @@ class Document:
     def __init__(self, poppler_document):
         self._document = poppler_document
 
+    @ensure_unlocked
     def create_font_iterator(self, page=0):
         return FontIterator(self._document.create_font_iterator(page))
 
+    @ensure_unlocked
     def create_toc(self):
         t = self._document.create_toc()
         return Toc(t) if t else None
 
+    @ensure_unlocked
     def create_page(self, index):
         return Page(self._document.create_page(index))
 
     @property
+    @ensure_unlocked
     def author(self):
         return str(self._document.get_author())
 
     @author.setter
+    @ensure_unlocked
     def author(self, author):
         self._document.set_author(ustring(author))
 
     @property
+    @ensure_unlocked
     def creation_date(self):
         timestamp = self._document.get_creation_date()
         return from_time_type(timestamp)
 
     @creation_date.setter
+    @ensure_unlocked
     def creation_date(self, creation_date):
         self._document.set_creation_date(to_time_type(creation_date))
 
     @property
+    @ensure_unlocked
     def creator(self):
         return str(self._document.get_creator())
 
     @creator.setter
+    @ensure_unlocked
     def creator(self, creator):
         self._document.set_creator(ustring(creator))
 
     @property
+    @ensure_unlocked
     def keywords(self):
         return str(self._document.get_keywords())
 
     @keywords.setter
+    @ensure_unlocked
     def keywords(self, keywords):
         self._document.set_keywords(ustring(keywords))
 
     @property
+    @ensure_unlocked
     def metadata(self):
         meta = self._document.metadata()
         return str(meta)
 
     @property
+    @ensure_unlocked
     def modification_date(self):
         timestamp = self._document.get_modification_date()
         return from_time_type(timestamp)
 
     @modification_date.setter
+    @ensure_unlocked
     def modification_date(self, modification_date):
         self._document.set_modification_date(to_time_type(modification_date))
 
@@ -107,63 +136,78 @@ class Document:
         return self._document.get_pdf_version()
 
     @property
+    @ensure_unlocked
     def producer(self):
         return str(self._document.get_producer())
 
     @producer.setter
+    @ensure_unlocked
     def producer(self, producer):
         self._document.set_producer(ustring(producer))
 
     @property
+    @ensure_unlocked
     def subject(self):
         return str(self._document.get_subject())
 
     @subject.setter
+    @ensure_unlocked
     def subject(self, subject):
         self._document.set_subject(ustring(subject))
 
     @property
+    @ensure_unlocked
     def title(self):
         return str(self._document.get_title())
 
     @title.setter
+    @ensure_unlocked
     def title(self, title):
         self._document.set_title(ustring(title))
 
     @property
+    @ensure_unlocked
     def pages(self):
         return self._document.pages()
 
     @since(0, 74)
+    @ensure_unlocked
     def create_destination_map(self):
         return {
             name: Destination(destination)
             for name, destination in self._document.create_destination_map().items()
         }
 
+    @ensure_unlocked
     def embedded_files(self):
         return [EmbeddedFile(f) for f in self._document.embedded_files()]
 
+    @ensure_unlocked
     def fonts(self):
         return [FontInfo(i) for i in self._document.fonts()]
 
+    @ensure_unlocked
     def has_embedded_files(self):
         return self._document.has_embedded_files()
 
     def has_permission(self, which):
         return self._document.has_permission(which)
 
+    @ensure_unlocked
     def info_date(self, key):
         timestamp = self._document.info_date(key)
         return from_time_type(timestamp)
 
+    @ensure_unlocked
     def set_info_date(self, key, val):
         return self._document.set_info_date(key, to_time_type(val))
 
+    @ensure_unlocked
     def info_key(self, key):
         info = self._document.info_key(key)
         return str(info)
 
+    @ensure_unlocked
     def infos(self):
         """Get the document info dictionary as a dict object."""
         info_dict = {}
@@ -174,9 +218,11 @@ class Document:
                 info_dict[key] = self.info_key(key)
         return info_dict
 
+    @ensure_unlocked
     def set_info_key(self, key, val):
         return self._document.set_info_key(key, ustring(val))
 
+    @ensure_unlocked
     def info_keys(self):
         return self._document.info_keys()
 
@@ -190,19 +236,24 @@ class Document:
         return self._document.is_locked()
 
     @property
+    @ensure_unlocked
     def page_layout(self):
         return self._document.page_layout()
 
     @property
+    @ensure_unlocked
     def page_mode(self):
         return self._document.page_mode()
 
+    @ensure_unlocked
     def remove_info(self):
         return self._document.remove_info()
 
+    @ensure_unlocked
     def save(self, file_name):
         return self._document.save(str(file_name))
 
+    @ensure_unlocked
     def save_a_copy(self, file_name):
         return self._document.save_a_copy(str(file_name))
 

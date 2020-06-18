@@ -18,6 +18,7 @@
 from poppler import Permission
 from poppler import document
 from poppler import version
+from poppler.document import LockedDocumentError
 
 import pytest
 
@@ -322,3 +323,122 @@ def test_fonts(pdf_document):
     fonts = pdf_document.fonts()
 
     assert len(fonts) == 1
+
+
+def test_create_page_with_locked_document(locked_document):
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.create_page(0)
+
+
+def test_page_count_with_locked_document(locked_document):
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.pages
+
+
+def test_create_font_iterator_with_locked_document(locked_document):
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.create_font_iterator()
+
+
+def test_create_toc_with_locked_document(locked_document):
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.create_toc()
+
+
+@pytest.mark.parametrize(
+    "prop",
+    (
+        "author",
+        "creation_date",
+        "creator",
+        "keywords",
+        "metadata",
+        "modification_date",
+        "producer",
+        "subject",
+        "title",
+        "page_layout",
+        "page_mode",
+    ),
+)
+def test_get_property_with_locked_document(prop, locked_document):
+    with pytest.raises(LockedDocumentError):
+        _ = getattr(locked_document, prop).fget()
+
+
+@pytest.mark.parametrize(
+    "prop",
+    (
+        "author",
+        "creation_date",
+        "creator",
+        "keywords",
+        "modification_date",
+        "producer",
+        "subject",
+        "title",
+    ),
+)
+def test_set_property_with_locked_document(prop, locked_document):
+    with pytest.raises(LockedDocumentError):
+        _ = getattr(locked_document, prop).fset("foobar")
+
+
+def test_pdf_id_of_locked_document(locked_document):
+    pdf_id = locked_document.pdf_id
+    assert pdf_id.permanent_id == "c2a52b07e1fd69cc3d4fed8a2ea67ab6"
+    assert pdf_id.update_id == "c2a52b07e1fd69cc3d4fed8a2ea67ab6"
+
+
+def test_get_pdf_version_of_locked_document(locked_document):
+    version = locked_document.pdf_version
+    assert version == (1, 5)
+
+
+@pytest.mark.skipif(version() < (0, 74, 0), reason="Requires at least Poppler 0.74.0")
+def test_create_destination_map_of_locked_document(locked_document):
+    # This one do not crash, but it doesn't make sense to query for locked document
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.create_destination_map()
+
+
+def test_embedded_files_of_locked_document(locked_document):
+    # This one do not crash, but it doesn't make sense to query for locked document
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.embedded_files()
+
+
+def test_fonts_of_locked_document(locked_document):
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.fonts()
+
+
+def test_locked_document_has_embedded_files(locked_document):
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.has_embedded_files()
+
+
+@pytest.mark.parametrize(
+    "permission",
+    [
+        Permission.print,
+        Permission.change,
+        Permission.copy,
+        Permission.add_notes,
+        Permission.fill_forms,
+        Permission.accessibility,
+        Permission.assemble,
+        Permission.print_high_resolution,
+    ],
+)
+def test_locked_document_permission(permission, locked_document):
+    assert locked_document.has_permission(permission)
+
+
+def test_locked_document_is_encrypted(locked_document):
+    # not sure why it returns False when the document is locked...
+    assert not locked_document.is_encrypted()
+
+
+def test_locked_document_is_linearized(locked_document):
+    assert not locked_document.is_linearized()
