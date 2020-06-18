@@ -107,25 +107,10 @@
 <dt id="poppler.PageRenderer">
 <em class="property">class </em><code class="sig-prename descclassname">poppler.</code><code class="sig-name descname">PageRenderer</code><a class="headerlink" href="#poppler.PageRenderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p><a class="reference internal" href="#poppler.PageRenderer" title="poppler.PageRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageRenderer</span></code></a> allows to render a <a class="reference internal" href="#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> object
-to an <a class="reference internal" href="#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.</p>
-<p>It is a wrapper for <a class="reference internal" href="poppler.cpp.html#poppler.cpp.page_renderer.page_renderer" title="poppler.cpp.page_renderer.page_renderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">poppler.cpp.page_renderer.page_renderer</span></code></a>.</p>
 <dl class="py method">
 <dt id="poppler.PageRenderer.can_render">
 <em class="property">static </em><code class="sig-name descname">can_render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poppler.PageRenderer.can_render" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tell whether poppler was compiled with the Splash render backend.</p>
-<p>This should always return True. If it returns False,
-<a class="reference internal" href="#poppler.PageRenderer.render_page" title="poppler.PageRenderer.render_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render_page()</span></code></a> will systematically return
-an invalid <a class="reference internal" href="#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether a render backend was compiled with poppler.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt id="poppler.PageRenderer.image_format">
@@ -804,25 +789,10 @@ an invalid <a class="reference internal" href="#poppler.image.Image" title="popp
 <dt id="poppler.pagerenderer.PageRenderer">
 <em class="property">class </em><code class="sig-prename descclassname">poppler.pagerenderer.</code><code class="sig-name descname">PageRenderer</code><a class="headerlink" href="#poppler.pagerenderer.PageRenderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p><a class="reference internal" href="#poppler.pagerenderer.PageRenderer" title="poppler.pagerenderer.PageRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageRenderer</span></code></a> allows to render a <a class="reference internal" href="#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> object
-to an <a class="reference internal" href="#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.</p>
-<p>It is a wrapper for <a class="reference internal" href="poppler.cpp.html#poppler.cpp.page_renderer.page_renderer" title="poppler.cpp.page_renderer.page_renderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">poppler.cpp.page_renderer.page_renderer</span></code></a>.</p>
 <dl class="py method">
 <dt id="poppler.pagerenderer.PageRenderer.can_render">
 <em class="property">static </em><code class="sig-name descname">can_render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poppler.pagerenderer.PageRenderer.can_render" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tell whether poppler was compiled with the Splash render backend.</p>
-<p>This should always return True. If it returns False,
-<a class="reference internal" href="#poppler.pagerenderer.PageRenderer.render_page" title="poppler.pagerenderer.PageRenderer.render_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render_page()</span></code></a> will systematically return
-an invalid <a class="reference internal" href="#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether a render backend was compiled with poppler.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt id="poppler.pagerenderer.PageRenderer.image_format">
@@ -854,12 +824,6 @@ an invalid <a class="reference internal" href="#poppler.image.Image" title="popp
 <code class="sig-name descname">set_render_hint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hint</span></em>, <em class="sig-param"><span class="n">on</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#poppler.pagerenderer.PageRenderer.set_render_hint" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="poppler.pagerenderer.RenderHint">
-<code class="sig-prename descclassname">poppler.pagerenderer.</code><code class="sig-name descname">RenderHint</code><a class="headerlink" href="#poppler.pagerenderer.RenderHint" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="poppler.cpp.html#poppler.cpp.page_renderer.render_hint" title="poppler.cpp.page_renderer.render_hint"><code class="xref py py-class docutils literal notranslate"><span class="pre">poppler.cpp.page_renderer.render_hint</span></code></a></p>
 </dd></dl>
 
 </div>
@@ -1120,7 +1084,7 @@ an invalid <a class="reference internal" href="#poppler.image.Image" title="popp
     
     <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler">GitHub</a></li>
     
-    <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler/issues">Issue tracker</a></li>
+    <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler/issues">Issues tracker</a></li>
     
     <li class="toctree-l1"><a href="https://pypi.org/project/python-poppler/">PyPI</a></li>
     

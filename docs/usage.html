@@ -59,18 +59,80 @@ and various methods to extract texts.</p>
 <p>Most used classes and functions are aliased directly in the <a class="reference internal" href="poppler.html#module-poppler" title="poppler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">poppler</span></code></a> module.
 Therefore, you usually do not need to import anything else than <a class="reference internal" href="poppler.html#module-poppler" title="poppler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">poppler</span></code></a>.</p>
 </div>
+<div class="section" id="working-with-documents">
+<h2>Working with documents<a class="headerlink" href="#working-with-documents" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="loading-document">
-<h2>Loading Document<a class="headerlink" href="#loading-document" title="Permalink to this headline">¶</a></h2>
+<h3>Loading Document<a class="headerlink" href="#loading-document" title="Permalink to this headline">¶</a></h3>
 <p>A poppler <a class="reference internal" href="poppler.html#poppler.document.Document" title="poppler.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> can be created from a file path
 using <a class="reference internal" href="poppler.html#poppler.load_from_file" title="poppler.load_from_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_from_file()</span></code></a>, from binary data using
 <a class="reference internal" href="poppler.html#poppler.load_from_data" title="poppler.load_from_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_from_data()</span></code></a>. There is also a more general <a class="reference internal" href="poppler.html#poppler.load" title="poppler.load"><code class="xref py py-func docutils literal notranslate"><span class="pre">load()</span></code></a>
 function, which can take either a file path, binary data, or a
 file-like object as argument.</p>
-<p>Encrypted document</p>
-<p>Document properties</p>
-<p>Loading page</p>
-<p>Extracting text</p>
-<p>Rendering image</p>
+</div>
+<div class="section" id="working-with-password-protected-documents">
+<h3>Working with password protected documents<a class="headerlink" href="#working-with-password-protected-documents" title="Permalink to this headline">¶</a></h3>
+<p>There are two kinds of passwords than can by applied to a PDF document:
+<em>User Password</em> and <em>Owner Password</em>.</p>
+<p>The <em>User Password</em>, or <em>Document open password</em>, prevents to open or view the document.</p>
+<p>The <em>Owner Password</em>, or <em>Permission password</em>, or <em>master password</em>, is used to set document restrictions,
+such as printing, copying contents, editing, extracting pages, commenting, etc.
+When this password is set, you need it to modify the document.</p>
+<p>A PDF document can have a <em>User Password</em>, a <em>Owner Password</em>, or both.
+When both passwords are set, you only need one of them to be able to open the document.
+However, you need the <em>Owner Password</em> to be able to modify the document.</p>
+<p>You can provide the password when loading the document, or later using the <a class="reference internal" href="poppler.html#poppler.document.Document.unlock" title="poppler.document.Document.unlock"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.unlock()</span></code></a> method.
+The <a class="reference internal" href="poppler.html#poppler.document.Document.is_locked" title="poppler.document.Document.is_locked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.is_locked()</span></code></a> property tells you if you have the permission to view the document.
+If you load a document with the wrong password, an error message is printed on the error console.</p>
+<p>The possible document restrictions are given by the <code class="xref py py-class docutils literal notranslate"><span class="pre">Permissions</span></code> enum.
+You can check each permission using the <a class="reference internal" href="poppler.html#poppler.document.Document.has_permission" title="poppler.document.Document.has_permission"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.has_permission()</span></code></a> method.
+If the document was opened with the right owner password, then each permission will be True.
+Otherwise, it will depend on the permissions set on the document itself.</p>
+</div>
+<div class="section" id="document-properties">
+<h3>Document properties<a class="headerlink" href="#document-properties" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="poppler.html#poppler.document.Document.infos" title="poppler.document.Document.infos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.infos()</span></code></a> method is a convenient way to get all the document meta infos as
+a Python dict. Otherwise, you can follow the poppler-cpp API, and retreive the list of available
+keys using <a class="reference internal" href="poppler.html#poppler.document.Document.info_keys" title="poppler.document.Document.info_keys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.info_keys()</span></code></a>, get individual key values using <a class="reference internal" href="poppler.html#poppler.document.Document.info_key" title="poppler.document.Document.info_key"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.info_key()</span></code></a>
+or <a class="reference internal" href="poppler.html#poppler.document.Document.info_date" title="poppler.document.Document.info_date"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.info_date()</span></code></a>, and set them using <a class="reference internal" href="poppler.html#poppler.document.Document.set_info_key" title="poppler.document.Document.set_info_key"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.set_info_key()</span></code></a> or <a class="reference internal" href="poppler.html#poppler.document.Document.set_info_date" title="poppler.document.Document.set_info_date"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.set_info_date()</span></code></a>.</p>
+<p>The infos are also available via individual properties: <a class="reference internal" href="poppler.html#poppler.document.Document.author" title="poppler.document.Document.author"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.author</span></code></a>, <a class="reference internal" href="poppler.html#poppler.document.Document.creation_date" title="poppler.document.Document.creation_date"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.creation_date</span></code></a>,
+<a class="reference internal" href="poppler.html#poppler.document.Document.creator" title="poppler.document.Document.creator"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.creator</span></code></a>, <a class="reference internal" href="poppler.html#poppler.document.Document.keywords" title="poppler.document.Document.keywords"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.keywords</span></code></a>, <a class="reference internal" href="poppler.html#poppler.document.Document.metadata" title="poppler.document.Document.metadata"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.metadata</span></code></a>, <a class="reference internal" href="poppler.html#poppler.document.Document.modification_date" title="poppler.document.Document.modification_date"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.modification_date</span></code></a>,
+<a class="reference internal" href="poppler.html#poppler.document.Document.producer" title="poppler.document.Document.producer"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.producer</span></code></a>, <a class="reference internal" href="poppler.html#poppler.document.Document.subject" title="poppler.document.Document.subject"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.subject</span></code></a>, and <a class="reference internal" href="poppler.html#poppler.document.Document.title" title="poppler.document.Document.title"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.title</span></code></a>.
+All those properties can be read or written.</p>
+</div>
+<div class="section" id="loading-pages">
+<h3>Loading pages<a class="headerlink" href="#loading-pages" title="Permalink to this headline">¶</a></h3>
+<p>You can query the number of pages a document has using <a class="reference internal" href="poppler.html#poppler.document.Document.pages" title="poppler.document.Document.pages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.pages</span></code></a>.
+Pages are indexed from 0.
+You can create a <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> object using the <a class="reference internal" href="poppler.html#poppler.document.Document.create_page" title="poppler.document.Document.create_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.create_page()</span></code></a> method.
+This method can take the page index, or a page label, as argument. However, it is more
+convenient to use an index, since you cannot know the label before the page is created.</p>
+</div>
+</div>
+<div class="section" id="working-with-pages">
+<h2>Working with pages<a class="headerlink" href="#working-with-pages" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> objects are used to extract text, and to query information about
+transitions.</p>
+<p>The <a class="reference internal" href="poppler.html#poppler.page.Page.label" title="poppler.page.Page.label"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Page.label</span></code></a> property gives you the page name; its usually the displayed page number.
+<a class="reference internal" href="poppler.html#poppler.page.Page.page_rect" title="poppler.page.Page.page_rect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.page_rect()</span></code></a> allows you to query the page about its size.</p>
+<p>Page transitions are mainly used for presentation softwares.
+<a class="reference internal" href="poppler.html#poppler.page.Page.transition" title="poppler.page.Page.transition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.transition()</span></code></a> gives you information about the kind of page transition,
+and <a class="reference internal" href="poppler.html#poppler.page.Page.duration" title="poppler.page.Page.duration"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Page.duration</span></code></a> gives you the duration of the transition.</p>
+<div class="section" id="extracting-text">
+<h3>Extracting text<a class="headerlink" href="#extracting-text" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="poppler.html#poppler.page.Page.text" title="poppler.page.Page.text"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.text()</span></code></a> method allows to query the <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a>
+about all the texts it contains, or about the texts in a given area.
+For more precise informations, <a class="reference internal" href="poppler.html#poppler.page.Page.text_list" title="poppler.page.Page.text_list"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.text_list()</span></code></a> allows
+to get the position of each text, and the position of each character
+in a text box. Finally, the <a class="reference internal" href="poppler.html#poppler.page.Page.search" title="poppler.page.Page.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.search()</span></code></a> method allows you
+to search for a given text in a <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a>.</p>
+</div>
+<div class="section" id="rendering-image">
+<h3>Rendering image<a class="headerlink" href="#rendering-image" title="Permalink to this headline">¶</a></h3>
+<p>Rendering is the process of converting a <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> to an <a class="reference internal" href="poppler.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.
+To render a <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a>, you first need to create a <a class="reference internal" href="poppler.html#poppler.PageRenderer" title="poppler.PageRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageRenderer</span></code></a> object.
+Then you give the <a class="reference internal" href="poppler.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> to the <a class="reference internal" href="poppler.html#poppler.PageRenderer.render_page" title="poppler.PageRenderer.render_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PageRenderer.render_page()</span></code></a>
+method to obtain an  <a class="reference internal" href="poppler.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object.</p>
+</div>
 </div>
 </div>
 
@@ -104,7 +166,18 @@ file-like object as argument.</p>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Using python-poppler</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#loading-document">Loading Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-documents">Working with documents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#loading-document">Loading Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-password-protected-documents">Working with password protected documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#document-properties">Document properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-pages">Loading pages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-pages">Working with pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extracting-text">Extracting text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rendering-image">Rendering image</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
@@ -116,7 +189,7 @@ file-like object as argument.</p>
     
     <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler">GitHub</a></li>
     
-    <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler/issues">Issue tracker</a></li>
+    <li class="toctree-l1"><a href="https://github.com/cbrunet/python-poppler/issues">Issues tracker</a></li>
     
     <li class="toctree-l1"><a href="https://pypi.org/project/python-poppler/">PyPI</a></li>
     

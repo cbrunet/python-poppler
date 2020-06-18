@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to python-poppler's documentation!
+python-poppler's documentation!
 ==========================================
 
 .. toctree::
@@ -88,7 +88,7 @@ Other poppler bindings
     of the complexity of the compilation. The binding is done using the sip library.
 
 `python-poppler-qt4 <https://pypi.org/project/python-poppler-qt4/>`_
-    Older version, using Qt4. You should use Qt5 version instead. Latest version from 2015...
+    Older version, using Qt4. You should use Qt5 version instead. Latest version is from 2015...
 
 `python-poppler <https://launchpad.net/poppler-python>`_
     Binding based on poppler-glib. Latest version is from 2009...

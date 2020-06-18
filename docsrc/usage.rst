@@ -35,15 +35,18 @@ Using a :class:`.PageRenderer`, you can convert a :class:`.Page` to an :class:`.
 Most used classes and functions are aliased directly in the :mod:`poppler` module.
 Therefore, you usually do not need to import anything else than :mod:`poppler`.
 
+Working with documents
+----------------------
 
 Loading Document
-----------------
+^^^^^^^^^^^^^^^^
 
 A poppler :class:`.Document` can be created from a file path
-using :func:`.load_from_file`, from binary data using
+using :func:`load_from_file`, from binary data using
 :func:`load_from_data`. There is also a more general :func:`load`
 function, which can take either a file path, binary data, or a
 file-like object as argument.
+
 
 Working with password protected documents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -61,15 +64,76 @@ A PDF document can have a *User Password*, a *Owner Password*, or both.
 When both passwords are set, you only need one of them to be able to open the document.
 However, you need the *Owner Password* to be able to modify the document.
 
+You can provide the password when loading the document, or later using the :meth:`.Document.unlock` method.
+The :meth:`.Document.is_locked` property tells you if you have the permission to view the document.
+If you load a document with the wrong password, an error message is printed on the error console.
 
-
-
+The possible document restrictions are given by the :class:`.Permissions` enum.
+You can check each permission using the :meth:`.Document.has_permission` method.
+If the document was opened with the right owner password, then each permission will be True.
+Otherwise, it will depend on the permissions set on the document itself.
 
 
 Document properties
+^^^^^^^^^^^^^^^^^^^
 
-Loading page
+The :meth:`.Document.infos` method is a convenient way to get all the document meta infos as
+a Python dict. Otherwise, you can follow the poppler-cpp API, and retreive the list of available
+keys using :meth:`.Document.info_keys`, get individual key values using :meth:`.Document.info_key`
+or :meth:`.Document.info_date`, and set them using :meth:`.Document.set_info_key` or :meth:`.Document.set_info_date`.
+
+The infos are also available via individual properties: :attr:`.Document.author`, :attr:`.Document.creation_date`,
+:attr:`.Document.creator`, :attr:`.Document.keywords`, :attr:`.Document.metadata`, :attr:`.Document.modification_date`,
+:attr:`.Document.producer`, :attr:`.Document.subject`, and :attr:`.Document.title`.
+All those properties can be read or written.
+
+
+Loading pages
+^^^^^^^^^^^^^
+
+You can query the number of pages a document has using :attr:`.Document.pages`.
+Pages are indexed from 0.
+You can create a :class:`.Page` object using the :meth:`.Document.create_page` method.
+This method can take the page index, or a page label, as argument. However, it is more
+convenient to use an index, since you cannot know the label before the page is created.
+
+
+Working with pages
+------------------
+
+:class:`.Page` objects are used to extract text, and to query information about
+transitions.
+
+The :attr:`.Page.label` property gives you the page name; its usually the displayed page number.
+:meth:`.Page.page_rect` allows you to query the page about its size.
+
+Page transitions are mainly used for presentation softwares.
+:meth:`.Page.transition` gives you information about the kind of page transition,
+and :attr:`.Page.duration` gives you the duration of the transition.
 
 Extracting text
+^^^^^^^^^^^^^^^
+
+The :meth:`.Page.text` method allows to query the :class:`.Page`
+about all the texts it contains, or about the texts in a given area.
+For more precise informations, :meth:`.Page.text_list` allows
+to get the position of each text, and the position of each character
+in a text box. Finally, the :meth:`.Page.search` method allows you
+to search for a given text in a :class:`.Page`.
+
 
 Rendering image
+^^^^^^^^^^^^^^^
+
+Rendering is the process of converting a :class:`.Page` to an :class:`.Image`.
+To render a :class:`.Page`, you first need to create a :class:`.PageRenderer` object.
+Then you give the :class:`.Page` to the :meth:`.PageRenderer.render_page`
+method to obtain an  :class:`.Image` object.
+
+
+Working with images
+-------------------
+
+Converting image to PIL or Tk image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
