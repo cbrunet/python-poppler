@@ -134,6 +134,62 @@ method to obtain an  :class:`.Image` object.
 Working with images
 -------------------
 
-Converting image to PIL or Tk image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Given that ``image`` object is an instance of :class:`.Image`,
+you can convert it to different formats,
+to interract with other libraries. Here are some examples.
+
+
+Converting to PIL or Tk image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:class:`.ImageFormat` can be converted to a string representation,
+compatible with the PIL raw importer:
+
+.. code-block:: python
+   
+   from PIL import Image, ImageTk
+
+   pil_image = Image.frombytes(
+       "RGBA",
+       (image.width, image.height),
+       image.data,
+       "raw",
+       str(image.format),
+    )
+    tk_image = ImageTk.PhotoImage(pil_image)
+
+Unfortunately, it is not possible to build a PIL image using the
+buffer interface. A copy of the image data in unavoidable.
+
+If you need to use the image with Tk, you creeate if from a PIL image.
+
+
+Converting to QImage
+^^^^^^^^^^^^^^^^^^^^
+
+There is no builtin map for the image formats,
+mainly to avoid introducing a dependency on Qt.
+However, it is easy to build it if needed, as in the following example:
+
+.. code-block:: python
+
+   P2QFormat = {
+       ImageFormat.invalid: QtGui.QImage.Format_Invalid,
+       ImageFormat.argb32: QtGui.QImage.Format_ARGB32,
+       ImageFormat.bgr24: QtGui.QImage.Format_BGR888,
+       ImageFormat.gray8: QtGui.QImage.Format_Grayscale8,
+       ImageFormat.mono: QtGui.QImage.Format_Mono,
+       ImageFormat.rgb24: QtGui.QImage.Format_RGB888,
+   }
+   qimg = QtGui.QImage(data, image.width, image.height,
+                       image.bytes_per_row,
+                       P2QFormat[image.format])
+
+
+Converting image to numpy image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Converting to OpenCV image
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 

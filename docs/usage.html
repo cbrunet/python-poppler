@@ -134,6 +134,57 @@ Then you give the <a class="reference internal" href="poppler.html#poppler.page.
 method to obtain an  <a class="reference internal" href="poppler.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object.</p>
 </div>
 </div>
+<div class="section" id="working-with-images">
+<h2>Working with images<a class="headerlink" href="#working-with-images" title="Permalink to this headline">¶</a></h2>
+<p>Given that <code class="docutils literal notranslate"><span class="pre">image</span></code> object is an instance of <a class="reference internal" href="poppler.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>,
+you can convert it to different formats,
+to interract with other libraries. Here are some examples.</p>
+<div class="section" id="converting-to-pil-or-tk-image">
+<h3>Converting to PIL or Tk image<a class="headerlink" href="#converting-to-pil-or-tk-image" title="Permalink to this headline">¶</a></h3>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageFormat</span></code> can be converted to a string representation,
+compatible with the PIL raw importer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageTk</span>
+
+<span class="n">pil_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">frombytes</span><span class="p">(</span>
+    <span class="s2">&quot;RGBA&quot;</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">),</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+    <span class="s2">&quot;raw&quot;</span><span class="p">,</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">format</span><span class="p">),</span>
+ <span class="p">)</span>
+ <span class="n">tk_image</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">pil_image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Unfortunately, it is not possible to build a PIL image using the
+buffer interface. A copy of the image data in unavoidable.</p>
+<p>If you need to use the image with Tk, you creeate if from a PIL image.</p>
+</div>
+<div class="section" id="converting-to-qimage">
+<h3>Converting to QImage<a class="headerlink" href="#converting-to-qimage" title="Permalink to this headline">¶</a></h3>
+<p>There is no builtin map for the image formats,
+mainly to avoid introducing a dependency on Qt.
+However, it is easy to build it if needed, as in the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">P2QFormat</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">invalid</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_Invalid</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">argb32</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_ARGB32</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">bgr24</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_BGR888</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">gray8</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_Grayscale8</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">mono</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_Mono</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">rgb24</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_RGB888</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">qimg</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+                    <span class="n">image</span><span class="o">.</span><span class="n">bytes_per_row</span><span class="p">,</span>
+                    <span class="n">P2QFormat</span><span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">format</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="converting-image-to-numpy-image">
+<h3>Converting image to numpy image<a class="headerlink" href="#converting-image-to-numpy-image" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="converting-to-opencv-image">
+<h3>Converting to OpenCV image<a class="headerlink" href="#converting-to-opencv-image" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
 
@@ -176,6 +227,13 @@ method to obtain an  <a class="reference internal" href="poppler.html#poppler.im
 <li class="toctree-l2"><a class="reference internal" href="#working-with-pages">Working with pages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#extracting-text">Extracting text</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rendering-image">Rendering image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-images">Working with images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#converting-to-pil-or-tk-image">Converting to PIL or Tk image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-to-qimage">Converting to QImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-image-to-numpy-image">Converting image to numpy image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-to-opencv-image">Converting to OpenCV image</a></li>
 </ul>
 </li>
 </ul>

@@ -42,6 +42,8 @@ Contents
 
 * :ref:`usage` section gives informations about how to actually use the python-poppler library.
 
+* :ref:`reference` lists all modules, classes, and methods. The reference section is still a work in progress...
+
 About poppler
 -------------
 
