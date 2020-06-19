@@ -4,6 +4,7 @@ Changelog
 - Bugfix: Fixed byte order in image format string used for Pillow
 - Bugfix: Prevent segmentation fault when performing some operations on locked documents (fixes #4)
 - Bugfix: Fix include paths in C++ (fixes #2)
+- Change namespace syntax to support old compilers (earlier than C++17) (fixes #6)
 
 0.2.0
 - Add the font infos to the TextBox object (Poppler 0.89.0)
