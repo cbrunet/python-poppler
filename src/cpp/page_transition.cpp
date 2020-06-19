@@ -17,7 +17,7 @@
  */
 
 #include <pybind11/pybind11.h>
-#include <poppler/cpp/poppler-page-transition.h>
+#include <poppler-page-transition.h>
 
 namespace py = pybind11;
 

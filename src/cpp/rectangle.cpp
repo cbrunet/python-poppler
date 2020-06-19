@@ -17,7 +17,7 @@
  */
 
 #include <pybind11/pybind11.h>
-#include <poppler/cpp/poppler-rectangle.h>
+#include <poppler-rectangle.h>
 
 namespace py = pybind11;
 

@@ -17,7 +17,7 @@
  */
 
 #include <pybind11/pybind11.h>
-#include <poppler/cpp/poppler-version.h>
+#include <poppler-version.h>
 
 namespace poppler::version
 {

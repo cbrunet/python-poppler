@@ -19,10 +19,10 @@
 #include "version.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include <poppler/cpp/poppler-global.h>
-#include <poppler/cpp/poppler-page.h>
-#include <poppler/cpp/poppler-page-transition.h>
-#include <poppler/cpp/poppler-rectangle.h>
+#include <poppler-global.h>
+#include <poppler-page.h>
+#include <poppler-page-transition.h>
+#include <poppler-rectangle.h>
 
 namespace py = pybind11;
 
