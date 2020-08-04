@@ -18,7 +18,7 @@
 
 #include "version.h"
 #include <pybind11/pybind11.h>
-#include <poppler/cpp/poppler-global.h>
+#include <poppler-global.h>
 #include <algorithm>
 
 namespace py = pybind11;

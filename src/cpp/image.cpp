@@ -19,8 +19,8 @@
 #include "version.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include <poppler/cpp/poppler-image.h>
-#include <poppler/cpp/poppler-rectangle.h>
+#include <poppler-image.h>
+#include <poppler-rectangle.h>
 
 namespace py = pybind11;
 

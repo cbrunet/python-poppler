@@ -18,7 +18,7 @@
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include <poppler/cpp/poppler-font.h>
+#include <poppler-font.h>
 
 namespace py = pybind11;
 

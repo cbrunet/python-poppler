@@ -17,10 +17,13 @@
  */
 
 #include <pybind11/pybind11.h>
-#include <poppler/cpp/poppler-version.h>
+#include <poppler-version.h>
 
-namespace poppler::version
+namespace poppler
 {
+namespace version
+{
+
 
 PYBIND11_MODULE(version, m)
 {
@@ -30,4 +33,5 @@ PYBIND11_MODULE(version, m)
     m.def("version_micro", &version_micro);
 }
 
-} // namespace poppler::version
+} // namespace version
+} // namespace poppler
