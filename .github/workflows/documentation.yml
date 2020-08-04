@@ -2,7 +2,7 @@ name: Build and publish documentation
 
 on:
   push:
-    branches: [ documentation ]
+    branches: [ master ]
 
 jobs:
   docs:
