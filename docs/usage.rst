@@ -186,10 +186,29 @@ However, it is easy to build it if needed, as in the following example:
                        P2QFormat[image.format])
 
 
-Converting image to numpy image
+Converting image to numpy array
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+:class:`.Image` supports buffer protocol through
+`memoryview <https://docs.python.org/3/library/stdtypes.html#memoryview>`_. 
+It allows to access the image buffer directly from Python, without
+copying it.
 
-Converting to OpenCV image
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can create a numpy array using the :meth:`.memoryview` method.
+If you modify the array, image data will be automaticall modified as well.
+
+.. code-block:: python
+
+   a = numpy.array(image.memoryview(), copy=False)
+   print(a[0, 0, 0])
+   print(image.data[0])  # Value of the first byte of the image
+
+   a[0, 0, 0] = 0
+   print(image.data[0])  # It is now 0
+
+
+
+
+.. Converting to OpenCV image
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^^
 

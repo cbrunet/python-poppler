@@ -1,0 +1,23 @@
+name: Build and publish documentation
+
+on:
+  push:
+    branches: [ documentation ]
+
+jobs:
+  docs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: pip install tox
+    - name: Build docs
+      run: tox -e docs
+    - name: Publish docs
+      run: git push "https://${GITHUB_ACTOR}:${{secrets.TOKEN}}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
