@@ -26,9 +26,9 @@ You can use python-poppler for a variaty of tasks. For example:
 * To build a simple PDF viewer to perform special operations using PDF documents
 
 This is a personal project, in the sense I'm not affiliated in any way
-to the Poppler library. I did this for own needs, because I didn't find
+to the Poppler library. I did this for my own needs, because I didn't find
 other Python library to *easily* display PDF files. I'm not aware of other
-Python library interfacing especially the poppler-cpp library.
+Python library interfacing especially the *poppler-cpp* library.
 
 python-poppler is licensed **GPL v2.0**. This is because Poppler itself
 (and the original xpdf code base) also is licensed using GPL.
