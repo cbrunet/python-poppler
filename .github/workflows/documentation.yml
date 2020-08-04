@@ -11,12 +11,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
         python-version: '3.8'
     - name: Install dependencies
-      run: pip install tox
+      run: |
+        sudo apt-get install libpoppler-cpp-dev libopenjp2-7-dev
+        python -m pip install --upgrade pip
+        pip install tox
     - name: Build docs
       run: tox -e docs
     - name: Publish docs
