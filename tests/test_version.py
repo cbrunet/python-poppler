@@ -22,7 +22,7 @@ from poppler.utilities import since
 
 
 def test_version_string():
-    assert version_string() == ".".join(map(str, version()))
+    assert tuple(map(int, version_string().split("."))) == version()
 
 
 def test_since_fct():
