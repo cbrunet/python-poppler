@@ -64,5 +64,5 @@ to lint your code.
 
 Please ensure that all tests pass, by running `tox`.
 
-Please provide unit tests covering the new feature, or prooving
+Please provide unit tests covering the new feature, or proving
 that a bug is corrected, when possible.

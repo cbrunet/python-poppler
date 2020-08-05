@@ -11,6 +11,7 @@ python-poppler's documentation!
 
    installation
    usage
+   contribution
    modules
 
 
@@ -38,9 +39,11 @@ of this license.
 Contents
 --------
 
-* :ref:`installation` section gives informations about installing or compiling python-poppler.
+* :ref:`installation` section is about installing or compiling python-poppler.
 
-* :ref:`usage` section gives informations about how to actually use the python-poppler library.
+* :ref:`usage` section is about how to actually use the python-poppler library.
+
+* :ref:`contributing` section is about submiting bugs or pull requests to the project.
 
 * :ref:`reference` lists all modules, classes, and methods. The reference section is still a work in progress...
 
