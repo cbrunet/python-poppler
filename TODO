@@ -1,11 +1,16 @@
+- Documentation:
+  - propagate version
+  - publish to github pages
+  - sync README and index
+  - custom directive for min poppler version, using @since decorator
+
+
 - Test methods with wrong arguments
 - test embedded file
 - test set_data_dir
 
 - implement set_debug_error_function
   - redirect to logger?
-
-- Add documentation
 
 - compile poppler on windows
 

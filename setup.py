@@ -92,6 +92,7 @@ setup(
     ],
     # keywords
     project_urls={
+        "Documentation": "https://cbrunet.github.io/python-poppler",
         "Source": "https://github.com/cbrunet/python-poppler",
         "Tracker": "https://github.com/cbrunet/python-poppler/issues",
     },

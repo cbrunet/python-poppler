@@ -1,0 +1,28 @@
+name: Build and publish documentation
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  docs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        sudo apt-get install libpoppler-cpp-dev libopenjp2-7-dev
+        python -m pip install --upgrade pip
+        pip install tox
+    - name: Build docs
+      run: tox -e docs
+    - name: Publish docs
+      run: git push -f "https://${GITHUB_ACTOR}:${{secrets.TOKEN}}@github.com/${GITHUB_REPOSITORY}.git" gh-pages:gh-pages
