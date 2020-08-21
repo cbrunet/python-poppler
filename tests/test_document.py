@@ -30,28 +30,33 @@ def locked_document(data_path):
     return document.load_from_file(data_path / "document.pdf")
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_from_data(data_path):
     file_data = (data_path / "document.pdf").read_bytes()
     pdf_document = document.load_from_data(file_data, "owner", "user")
     assert pdf_document.author == "Charles Brunet"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_with_path(data_path):
     pdf_document = document.load(data_path / "document.pdf", "owner", "user")
     assert pdf_document.author == "Charles Brunet"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_with_filename(data_path):
     pdf_document = document.load(str(data_path / "document.pdf"), "owner", "user")
     assert pdf_document.author == "Charles Brunet"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_with_bytes(data_path):
     data = (data_path / "document.pdf").read_bytes()
     pdf_document = document.load(data, "owner", "user")
     assert pdf_document.author == "Charles Brunet"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_with_file(data_path):
     with (data_path / "document.pdf").open("rb") as f:
         pdf_document = document.load(f, "owner", "user")
@@ -69,6 +74,7 @@ def test_load_with_invalid_type():
         document.load(42)
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_save(pdf_document, tmp_path):
     copy_document = tmp_path / "copy.pdf"
     pdf_document.author = "Valérie Tremblay"
@@ -78,6 +84,7 @@ def test_save(pdf_document, tmp_path):
     assert pdf_copy.author == "Valérie Tremblay"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_save_a_copy(pdf_document, tmp_path):
     copy_document = tmp_path / "copy.pdf"
     pdf_document.author = "Valérie Tremblay"
@@ -95,24 +102,29 @@ def test_embedded_file(pdf_document):
     assert pdf_document.embedded_files() == []
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_author(pdf_document):
     assert pdf_document.author == "Charles Brunet"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_creation_date(pdf_document):
     assert pdf_document.creation_date.astimezone(timezone.utc) == datetime(
         2020, 3, 26, 1, 19, 50, tzinfo=timezone.utc
     )
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_creator(pdf_document):
     assert pdf_document.creator == "Writer"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_keywords(pdf_document):
     assert pdf_document.keywords == ""
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_modification_date(pdf_document):
     assert pdf_document.modification_date is None
 
@@ -128,14 +140,17 @@ def test_get_pdf_version(pdf_document):
     assert version == (1, 5)
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_producer(pdf_document):
     assert pdf_document.producer == "LibreOffice 6.4"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_subject(pdf_document):
     assert pdf_document.subject == ""
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_title(pdf_document):
     assert pdf_document.title == ""
 
@@ -158,14 +173,22 @@ def test_has_permission(pdf_document):
 
 def test_info_date(pdf_document):
     date = pdf_document.info_date("CreationDate")
-    assert date.astimezone(timezone.utc) == datetime(
-        2020, 3, 26, 1, 19, 50, tzinfo=timezone.utc
-    )
+    if version() < (0, 46, 0):
+        assert date.astimezone(timezone.utc) == datetime(
+            2020, 3, 25, 21, 19, 50, tzinfo=timezone.utc
+        )
+    else:
+        assert date.astimezone(timezone.utc) == datetime(
+            2020, 3, 26, 1, 19, 50, tzinfo=timezone.utc
+        )
 
 
 def test_info_key(pdf_document):
     info = pdf_document.info_key("Author")
-    assert info == "Charles Brunet"
+    if version() < (0, 46, 0):
+        assert info == "Charles"
+    else:
+        assert info == "Charles Brunet"
 
 
 def test_info_keys(pdf_document):
@@ -190,65 +213,76 @@ def test_metadata(pdf_document):
     assert meta == ""
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_author(pdf_document):
     author = "Valérie Tremblay"
     pdf_document.author = author
     assert pdf_document.author == author
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_creation_date(pdf_document):
     d = datetime(1980, 7, 19, 10, 30, 50)
     pdf_document.creation_date = d
     assert pdf_document.creation_date == d
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_empty_creation_date(pdf_document):
     pdf_document.creation_date = None
     assert "CreationDate" not in pdf_document.info_keys()
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_creator(pdf_document):
     creator = "Me"
     pdf_document.creator = creator
     assert pdf_document.creator == creator
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_keywords(pdf_document):
     keywords = "one, two, three"
     pdf_document.keywords = keywords
     assert pdf_document.keywords == keywords
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_modification_date(pdf_document):
     d = datetime(1980, 7, 19, 10, 30, 50)
     pdf_document.modification_date = d
     assert pdf_document.modification_date == d
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_producer(pdf_document):
     producer = "Me"
     pdf_document.producer = producer
     assert pdf_document.producer == producer
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_subject(pdf_document):
     subject = "Me"
     pdf_document.subject = subject
     assert pdf_document.subject == subject
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_title(pdf_document):
     title = "The document title"
     pdf_document.title = title
     assert pdf_document.title == title
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_info_date(pdf_document):
     d = datetime(1980, 7, 19, 10, 30, 50)
     assert pdf_document.set_info_date("CreationDate", d) is True
     assert pdf_document.creation_date == d
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_set_info_key(pdf_document):
     author = "Valérie Tremblay"
     assert pdf_document.set_info_key("Author", author) is True
@@ -257,9 +291,13 @@ def test_set_info_key(pdf_document):
 
 def test_infos(pdf_document):
     infos = pdf_document.infos()
-    assert infos["Author"] == "Charles Brunet"
+    if version() < (0, 46, 0):
+        assert infos['Author'] == 'Charles'
+    else:
+        assert infos["Author"] == "Charles Brunet"
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_remove_info(pdf_document):
     pdf_document.remove_info()
     assert not pdf_document.infos()
