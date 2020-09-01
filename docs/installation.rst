@@ -12,7 +12,7 @@ This package is currently distributed as source only,
 and is currently tested on Linux only (using Arch Linux
 on my personal machine, and Ubuntu 18.04 using GitHub actions.
 
-It requires poppler version 0.62 or higher.
+It requires poppler version 0.26 or higher.
 Current poppler version is 0.89.
 Because we need to compile and link cpp files, you need
 the headers files for poppler and for python.
