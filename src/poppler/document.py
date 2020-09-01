@@ -70,42 +70,50 @@ class Document:
         return Page(self._document.create_page(index))
 
     @property
+    @since(0, 46)
     @ensure_unlocked
     def author(self):
         return str(self._document.get_author())
 
     @author.setter
+    @since(0, 46)
     @ensure_unlocked
     def author(self, author):
         self._document.set_author(ustring(author))
 
     @property
+    @since(0, 46)
     @ensure_unlocked
     def creation_date(self):
         timestamp = self._document.get_creation_date()
         return from_time_type(timestamp)
 
     @creation_date.setter
+    @since(0, 46)
     @ensure_unlocked
     def creation_date(self, creation_date):
         self._document.set_creation_date(to_time_type(creation_date))
 
     @property
+    @since(0, 46)
     @ensure_unlocked
     def creator(self):
         return str(self._document.get_creator())
 
     @creator.setter
+    @since(0, 46)
     @ensure_unlocked
     def creator(self, creator):
         self._document.set_creator(ustring(creator))
 
     @property
+    @since(0, 46)
     @ensure_unlocked
     def keywords(self):
         return str(self._document.get_keywords())
 
     @keywords.setter
+    @since(0, 46)
     @ensure_unlocked
     def keywords(self, keywords):
         self._document.set_keywords(ustring(keywords))
@@ -118,12 +126,14 @@ class Document:
 
     @property
     @ensure_unlocked
+    @since(0, 46)
     def modification_date(self):
         timestamp = self._document.get_modification_date()
         return from_time_type(timestamp)
 
     @modification_date.setter
     @ensure_unlocked
+    @since(0, 46)
     def modification_date(self, modification_date):
         self._document.set_modification_date(to_time_type(modification_date))
 
@@ -137,31 +147,37 @@ class Document:
 
     @property
     @ensure_unlocked
+    @since(0, 46)
     def producer(self):
         return str(self._document.get_producer())
 
     @producer.setter
     @ensure_unlocked
+    @since(0, 46)
     def producer(self, producer):
         self._document.set_producer(ustring(producer))
 
     @property
     @ensure_unlocked
+    @since(0, 46)
     def subject(self):
         return str(self._document.get_subject())
 
     @subject.setter
     @ensure_unlocked
+    @since(0, 46)
     def subject(self, subject):
         self._document.set_subject(ustring(subject))
 
     @property
     @ensure_unlocked
+    @since(0, 46)
     def title(self):
         return str(self._document.get_title())
 
     @title.setter
     @ensure_unlocked
+    @since(0, 46)
     def title(self, title):
         self._document.set_title(ustring(title))
 
@@ -245,14 +261,17 @@ class Document:
     def page_mode(self):
         return self._document.page_mode()
 
+    @since(0, 46)
     @ensure_unlocked
     def remove_info(self):
         return self._document.remove_info()
 
+    @since(0, 46)
     @ensure_unlocked
     def save(self, file_name):
         return self._document.save(str(file_name))
 
+    @since(0, 46)
     @ensure_unlocked
     def save_a_copy(self, file_name):
         return self._document.save_a_copy(str(file_name))
