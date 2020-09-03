@@ -70,53 +70,49 @@ class Document:
         return Page(self._document.create_page(index))
 
     @property
-    @since(0, 46)
     @ensure_unlocked
     def author(self):
-        return str(self._document.get_author())
+        return self._document.info_key("Author")
 
     @author.setter
     @since(0, 46)
     @ensure_unlocked
     def author(self, author):
-        self._document.set_author(ustring(author))
+        self._document.set_info_key("Author", author)
 
     @property
-    @since(0, 46)
     @ensure_unlocked
     def creation_date(self):
-        timestamp = self._document.get_creation_date()
+        timestamp = self._document.info_key("CreationDate")
         return from_time_type(timestamp)
 
     @creation_date.setter
     @since(0, 46)
     @ensure_unlocked
     def creation_date(self, creation_date):
-        self._document.set_creation_date(to_time_type(creation_date))
+        self._document.set_info_key("CreationDate", to_time_type(creation_date))
 
     @property
-    @since(0, 46)
     @ensure_unlocked
     def creator(self):
-        return str(self._document.get_creator())
+        return self._document.info_key("Creator")
 
     @creator.setter
     @since(0, 46)
     @ensure_unlocked
     def creator(self, creator):
-        self._document.set_creator(ustring(creator))
+        self._document.set_info_key("Creator", creator)
 
     @property
-    @since(0, 46)
     @ensure_unlocked
     def keywords(self):
-        return str(self._document.get_keywords())
+        return self._document.info_key("Keywords")
 
     @keywords.setter
     @since(0, 46)
     @ensure_unlocked
     def keywords(self, keywords):
-        self._document.set_keywords(ustring(keywords))
+        self._document.set_info_key("Keywords", keywords)
 
     @property
     @ensure_unlocked
@@ -126,16 +122,15 @@ class Document:
 
     @property
     @ensure_unlocked
-    @since(0, 46)
     def modification_date(self):
-        timestamp = self._document.get_modification_date()
+        timestamp = self._document.info_key("ModDate")
         return from_time_type(timestamp)
 
     @modification_date.setter
-    @ensure_unlocked
     @since(0, 46)
+    @ensure_unlocked
     def modification_date(self, modification_date):
-        self._document.set_modification_date(to_time_type(modification_date))
+        self._document.set_info_key("ModDate", to_time_type(modification_date))
 
     @property
     def pdf_id(self):
@@ -147,39 +142,36 @@ class Document:
 
     @property
     @ensure_unlocked
-    @since(0, 46)
     def producer(self):
-        return str(self._document.get_producer())
+        return self._document.info_key("Producer")
 
     @producer.setter
-    @ensure_unlocked
     @since(0, 46)
+    @ensure_unlocked
     def producer(self, producer):
-        self._document.set_producer(ustring(producer))
+        self._document.set_info_key("Producer", producer)
 
     @property
     @ensure_unlocked
-    @since(0, 46)
     def subject(self):
-        return str(self._document.get_subject())
+        return self._document.info_key("Subject")
 
     @subject.setter
-    @ensure_unlocked
     @since(0, 46)
+    @ensure_unlocked
     def subject(self, subject):
-        self._document.set_subject(ustring(subject))
+        self._document.set_info_key("Subject", subject)
 
     @property
     @ensure_unlocked
-    @since(0, 46)
     def title(self):
-        return str(self._document.get_title())
+        return self._document.info_key("Title")
 
     @title.setter
-    @ensure_unlocked
     @since(0, 46)
+    @ensure_unlocked
     def title(self, title):
-        self._document.set_title(ustring(title))
+        self._document.set_info_key("Title", title)
 
     @property
     @ensure_unlocked
@@ -209,11 +201,13 @@ class Document:
     def has_permission(self, which):
         return self._document.has_permission(which)
 
+    @since(0, 46)
     @ensure_unlocked
     def info_date(self, key):
         timestamp = self._document.info_date(key)
         return from_time_type(timestamp)
 
+    @since(0, 46)
     @ensure_unlocked
     def set_info_date(self, key, val):
         return self._document.set_info_date(key, to_time_type(val))
@@ -234,6 +228,7 @@ class Document:
                 info_dict[key] = self.info_key(key)
         return info_dict
 
+    @since(0, 46)
     @ensure_unlocked
     def set_info_key(self, key, val):
         return self._document.set_info_key(key, ustring(val))
