@@ -27,6 +27,7 @@ def test_page_duration(pdf_page):
     assert pdf_page.duration == -1.0
 
 
+@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_page_label(pdf_page):
     assert pdf_page.label == "1"
 
@@ -57,7 +58,12 @@ def test_page_rect_box(pdf_page, box):
 
 def test_text(pdf_page):
     text = pdf_page.text()
-    expected = "Page 1" if version() < (0, 88, 0) else "Page 1\n\x0c"
+    if version() < (0, 46, 0):
+        expected = "Page "
+    elif version() < (0, 88, 0):
+        expected = "Page 1"
+    else:
+        expected = "Page 1\n\x0c"
     assert text == expected
 
 
