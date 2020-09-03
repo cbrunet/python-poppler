@@ -28,9 +28,13 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        sudo apt-get install libpoppler-cpp-dev libopenjp2-7-dev
+        sudo apt-get install libopenjp2-7-dev
         python -m pip install --upgrade pip
         pip install tox
+    - name: Install libpoppler-cpp-dev
+      if: matrix.poppler-version == 'ubuntu'
+      run: |
+        sudo apt-get install libpoppler-cpp-dev
     - name: clone poppler
       if: matrix.poppler-version != 'ubuntu'
       run: |
