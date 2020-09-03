@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8]
-        poppler-version: [ubuntu, poppler-20.08.0, master]
+        poppler-version: [ubuntu, poppler-0.26.0, poppler-20.08.0, master]
 
     steps:
     - uses: actions/checkout@v2
