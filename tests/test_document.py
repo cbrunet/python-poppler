@@ -30,37 +30,47 @@ def locked_document(data_path):
     return document.load_from_file(data_path / "document.pdf")
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_from_data(data_path):
     file_data = (data_path / "document.pdf").read_bytes()
     pdf_document = document.load_from_data(file_data, "owner", "user")
-    assert pdf_document.author == "Charles Brunet"
+    if version() < (0, 46, 0):
+        assert pdf_document.author == "Charles"
+    else:
+        assert pdf_document.author == "Charles Brunet"
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_with_path(data_path):
     pdf_document = document.load(data_path / "document.pdf", "owner", "user")
-    assert pdf_document.author == "Charles Brunet"
+    if version() < (0, 46, 0):
+        assert pdf_document.author == "Charles"
+    else:
+        assert pdf_document.author == "Charles Brunet"
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_with_filename(data_path):
     pdf_document = document.load(str(data_path / "document.pdf"), "owner", "user")
-    assert pdf_document.author == "Charles Brunet"
+    if version() < (0, 46, 0):
+        assert pdf_document.author == "Charles"
+    else:
+        assert pdf_document.author == "Charles Brunet"
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_with_bytes(data_path):
     data = (data_path / "document.pdf").read_bytes()
     pdf_document = document.load(data, "owner", "user")
-    assert pdf_document.author == "Charles Brunet"
+    if version() < (0, 46, 0):
+        assert pdf_document.author == "Charles"
+    else:
+        assert pdf_document.author == "Charles Brunet"
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_load_with_file(data_path):
     with (data_path / "document.pdf").open("rb") as f:
         pdf_document = document.load(f, "owner", "user")
-    assert pdf_document.author == "Charles Brunet"
+    if version() < (0, 46, 0):
+        assert pdf_document.author == "Charles"
+    else:
+        assert pdf_document.author == "Charles Brunet"
 
 
 def test_load_with_file_not_bytes(data_path):
@@ -102,29 +112,37 @@ def test_embedded_file(pdf_document):
     assert pdf_document.embedded_files() == []
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_author(pdf_document):
-    assert pdf_document.author == "Charles Brunet"
+    if version() < (0, 46, 0):
+        assert pdf_document.author == "Charles"
+    else:
+        assert pdf_document.author == "Charles Brunet"
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_creation_date(pdf_document):
-    assert pdf_document.creation_date.astimezone(timezone.utc) == datetime(
-        2020, 3, 26, 1, 19, 50, tzinfo=timezone.utc
-    )
+    date = pdf_document.creation_date
+
+    if version() < (0, 46, 0):
+        assert date.astimezone(timezone.utc) == datetime(
+            2020, 3, 25, 21, 19, 50, tzinfo=timezone.utc
+        )
+    else:
+        assert date.astimezone(timezone.utc) == datetime(
+            2020, 3, 26, 1, 19, 50, tzinfo=timezone.utc
+        )
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_creator(pdf_document):
-    assert pdf_document.creator == "Writer"
+    if version() < (0, 46, 0):
+        assert pdf_document.creator == "Wri"
+    else:
+        assert pdf_document.creator == "Writer"
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_keywords(pdf_document):
     assert pdf_document.keywords == ""
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_modification_date(pdf_document):
     assert pdf_document.modification_date is None
 
@@ -140,17 +158,17 @@ def test_get_pdf_version(pdf_document):
     assert version == (1, 5)
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_producer(pdf_document):
-    assert pdf_document.producer == "LibreOffice 6.4"
+    if version() < (0, 46, 0):
+        assert pdf_document.producer == "LibreOf"
+    else:
+        assert pdf_document.producer == "LibreOffice 6.4"
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_subject(pdf_document):
     assert pdf_document.subject == ""
 
 
-@pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_get_title(pdf_document):
     assert pdf_document.title == ""
 

@@ -70,53 +70,48 @@ class Document:
         return Page(self._document.create_page(index))
 
     @property
-    @since(0, 46)
     @ensure_unlocked
     def author(self):
-        return str(self._document.get_author())
+        return self.info_key("Author")
 
     @author.setter
     @since(0, 46)
     @ensure_unlocked
     def author(self, author):
-        self._document.set_author(ustring(author))
+        self.set_info_key("Author", author)
 
     @property
-    @since(0, 46)
     @ensure_unlocked
     def creation_date(self):
-        timestamp = self._document.get_creation_date()
-        return from_time_type(timestamp)
+        return self.info_date("CreationDate")
 
     @creation_date.setter
     @since(0, 46)
     @ensure_unlocked
     def creation_date(self, creation_date):
-        self._document.set_creation_date(to_time_type(creation_date))
+        self.set_info_date("CreationDate", creation_date)
 
     @property
-    @since(0, 46)
     @ensure_unlocked
     def creator(self):
-        return str(self._document.get_creator())
+        return self.info_key("Creator")
 
     @creator.setter
     @since(0, 46)
     @ensure_unlocked
     def creator(self, creator):
-        self._document.set_creator(ustring(creator))
+        self.set_info_key("Creator", creator)
 
     @property
-    @since(0, 46)
     @ensure_unlocked
     def keywords(self):
-        return str(self._document.get_keywords())
+        return self.info_key("Keywords")
 
     @keywords.setter
     @since(0, 46)
     @ensure_unlocked
     def keywords(self, keywords):
-        self._document.set_keywords(ustring(keywords))
+        self.set_info_key("Keywords", keywords)
 
     @property
     @ensure_unlocked
@@ -126,16 +121,14 @@ class Document:
 
     @property
     @ensure_unlocked
-    @since(0, 46)
     def modification_date(self):
-        timestamp = self._document.get_modification_date()
-        return from_time_type(timestamp)
+        return self.info_date("ModDate")
 
     @modification_date.setter
-    @ensure_unlocked
     @since(0, 46)
+    @ensure_unlocked
     def modification_date(self, modification_date):
-        self._document.set_modification_date(to_time_type(modification_date))
+        self.set_info_date("ModDate", modification_date)
 
     @property
     def pdf_id(self):
@@ -147,39 +140,36 @@ class Document:
 
     @property
     @ensure_unlocked
-    @since(0, 46)
     def producer(self):
-        return str(self._document.get_producer())
+        return self.info_key("Producer")
 
     @producer.setter
-    @ensure_unlocked
     @since(0, 46)
+    @ensure_unlocked
     def producer(self, producer):
-        self._document.set_producer(ustring(producer))
+        self.set_info_key("Producer", producer)
 
     @property
     @ensure_unlocked
-    @since(0, 46)
     def subject(self):
-        return str(self._document.get_subject())
+        return self.info_key("Subject")
 
     @subject.setter
-    @ensure_unlocked
     @since(0, 46)
+    @ensure_unlocked
     def subject(self, subject):
-        self._document.set_subject(ustring(subject))
+        self.set_info_key("Subject", subject)
 
     @property
     @ensure_unlocked
-    @since(0, 46)
     def title(self):
-        return str(self._document.get_title())
+        return self.info_key("Title")
 
     @title.setter
-    @ensure_unlocked
     @since(0, 46)
+    @ensure_unlocked
     def title(self, title):
-        self._document.set_title(ustring(title))
+        self.set_info_key("Title", title)
 
     @property
     @ensure_unlocked
@@ -214,6 +204,7 @@ class Document:
         timestamp = self._document.info_date(key)
         return from_time_type(timestamp)
 
+    @since(0, 46)
     @ensure_unlocked
     def set_info_date(self, key, val):
         return self._document.set_info_date(key, to_time_type(val))
@@ -234,6 +225,7 @@ class Document:
                 info_dict[key] = self.info_key(key)
         return info_dict
 
+    @since(0, 46)
     @ensure_unlocked
     def set_info_key(self, key, val):
         return self._document.set_info_key(key, ustring(val))
