@@ -12,7 +12,7 @@ python-poppler's documentation!
    installation
    usage
    contribution
-   modules
+   api/modules
 
 
 **python-poppler** is a Python binding to the poppler-cpp library.
@@ -87,16 +87,22 @@ Here is a (non-exaustive) list of related Python library for working with PDF fi
 Other poppler bindings
 ^^^^^^^^^^^^^^^^^^^^^^
 
-`python-poppler-qt5 <https://pypi.org/project/python-poppler-qt5/>`_
-    This binding is based on poppler-qt5. This is probably the best poppler python binding,
+poppler-glib
+    Using `PyGObject <https://pygobject.readthedocs.io/en/latest/index.html>`__,
+    and `instrospection data <https://lazka.github.io/pgi-docs/#Poppler-0.18>`__,
+    you should be able to use the poppler-glib library directly from Python,
+    in a GTK+ 3 environment. No special python binding needed.
+
+`python-poppler-qt5 <https://pypi.org/project/python-poppler-qt5/>`__
+    This binding is based on poppler-qt5. This is another good poppler python binding,
     but I wansn't able to properly install it in a Python virtual environment, because
     of the complexity of the compilation. The binding is done using the sip library.
 
-`python-poppler-qt4 <https://pypi.org/project/python-poppler-qt4/>`_
+`python-poppler-qt4 <https://pypi.org/project/python-poppler-qt4/>`__
     Older version, using Qt4. You should use Qt5 version instead. Latest version is from 2015...
 
-`python-poppler <https://launchpad.net/poppler-python>`_
-    Binding based on poppler-glib. Latest version is from 2009...
+`python-poppler <https://launchpad.net/poppler-python>`__
+    Binding for GTK+ 2, based on poppler-glib. Latest version is from 2009...
 
 
 Indices and tables
