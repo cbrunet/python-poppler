@@ -13,7 +13,10 @@ and is currently tested on Linux only (using Arch Linux
 on my personal machine, and Ubuntu 18.04 using GitHub actions.
 
 It requires poppler version 0.26 or higher.
-Current poppler version is 0.89.
+Beware that poppler version scheme changed to date based version numbers,
+starting in August, 2020. Therefore, it jumped from 0.90 (July, 2020) to 20.08
+(August, 2020).
+
 Because we need to compile and link cpp files, you need
 the headers files for poppler and for python.
 For Arch Linux, the
@@ -81,7 +84,7 @@ to be sure all its dependencies are installed.
 Then you need to clone the poppler repository, and to checkout the
 desired version (or you can stay on the HEAD of master if this is what you want):
 
-.. code-block::bash
+.. code-block:: bash
 
     $ git clone https://gitlab.freedesktop.org/poppler/poppler.git
     $ cd poppler
@@ -91,7 +94,7 @@ Next, you need to compile poppler. This is done using cmake.
 You may want to specify the `CMAKE_INSTALL_PREFIX` path if you want
 to install it in another place than in the default `/usr/local`:
 
-.. code-block::bash
+.. code-block:: bash
 
     $ mkdir build
     $ cd build
@@ -114,7 +117,7 @@ to install it in another place than in the default `/usr/local`:
 Finally, you must install the lib. You may need `sudo` or not,
 depending on the install prefix path you used:
 
-.. code-block::bash
+.. code-block:: bash
 
     $ sudo make install
 
@@ -123,7 +126,7 @@ you just installed. poppler uses pkg_config. Therefore, you can set
 the `PKG_CONFIG_PATH` environment variable to the path where are located
 the pkg_config files. For instance:
 
-.. code-block::bash
+.. code-block:: bash
 
     export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
@@ -135,7 +138,7 @@ it is possible that python-poppler is not able to find it.
 you can use the `LD_LIBRARY_PATH` environment variable to tell
 the system where to search for the poppler shared libraries:
 
-.. code-block::bash
+.. code-block:: bash
 
     $ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 

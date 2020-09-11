@@ -122,6 +122,36 @@ in a text box. Finally, the :meth:`.Page.search` method allows you
 to search for a given text in a :class:`.Page`.
 
 
+Getting font information
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can get the list of fonts in a :class:`.Document` using :meth:`.Document.create_font_iterator`.
+It returns an object you can iterate to get the list of fonts:
+
+.. code-block:: python
+
+   font_iterator = document.create_font_iterator()
+   for page, fonts in font_iterator:
+       print(f"Fonts for page {page}")
+       for font in fonts:
+           print(f"- {font.name}"
+
+
+Since Poppler 0.89, yo can also get font information associated with a :class:`.TextBox`.
+To get the information, you need to pass the text_list_include_font option
+to the :meth:`.Page.text_list` method.
+
+.. code-block:: python
+
+    boxes = pdf_page.text_list(pdf_page.TextListOption.text_list_include_font)
+    box = boxes[0]
+
+    assert box.has_font_info
+    print(box.get_font_name())
+    print(box.get_font_size())
+
+
+
 Rendering image
 ^^^^^^^^^^^^^^^
 
