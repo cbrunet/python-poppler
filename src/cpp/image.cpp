@@ -50,7 +50,7 @@ py::buffer_info image_buffer_info(image &img)
         py::format_descriptor<char>::format(),
         3L,
         { static_cast<py::ssize_t>(img.height()), static_cast<py::ssize_t>(img.width()), bytes_per_color },
-        { static_cast<py::ssize_t>(img.bytes_per_row()), bytes_per_color, 1L }
+        { static_cast<py::ssize_t>(img.bytes_per_row()), bytes_per_color, static_cast<py::ssize_t>(1L) }
     );
 }
 
