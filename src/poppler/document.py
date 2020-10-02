@@ -53,8 +53,9 @@ class Document:
     PageLayout = document.page_layout_enum
     PageMode = document.page_mode_enum
 
-    def __init__(self, poppler_document):
+    def __init__(self, poppler_document, data=None):
         self._document = poppler_document
+        self._data = data
 
     @ensure_unlocked
     def create_font_iterator(self, page=0):
@@ -282,7 +283,8 @@ def load_from_file(file_name, owner_password=None, user_password=None):
 
 def load_from_data(file_data: bytes, owner_password=None, user_password=None):
     return Document(
-        document.load_from_data(file_data, owner_password or "", user_password or "")
+        document.load_from_data(file_data, owner_password or "", user_password or ""),
+        file_data
     )
 
 
