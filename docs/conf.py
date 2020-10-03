@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
+    'sphinx_issues',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,3 +68,9 @@ html_theme_options = {
         "PyPI": "https://pypi.org/project/python-poppler/",
     }
 }
+
+
+
+
+
+issues_github_path = "cbrunet/python-poppler"

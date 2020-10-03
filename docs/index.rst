@@ -12,6 +12,7 @@ python-poppler's documentation!
    installation
    usage
    contribution
+   changelog
    api/modules
 
 
@@ -44,6 +45,8 @@ Contents
 * :ref:`usage` section is about how to actually use the python-poppler library.
 
 * :ref:`contributing` section is about submiting bugs or pull requests to the project.
+
+* :ref:`changelog` section gives informations about releases of the project.
 
 * :ref:`reference` lists all modules, classes, and methods. The reference section is still a work in progress...
 
