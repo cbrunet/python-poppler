@@ -72,6 +72,7 @@ html_static_path = ['_static']
 
 html_theme_options = {
     'nav_title': "Python poppler",
+    'logo_icon': "&#x1F4D7",
     'base_url': "https://cbrunet.github.io/python-poppler",
     'repo_url': "https://github.com/cbrunet/python-poppler",
     'repo_name': "python-poppler",
