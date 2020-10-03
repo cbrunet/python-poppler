@@ -33,7 +33,8 @@ def from_time_type(timestamp):
         timestamp (int): a positive integer, to be interpreted as 32 bits complement 2.
 
     Returns:
-        Optional[datetime.datetime]: the date and time, or None if the timestamp is equivalent to -1.
+        Optional[datetime.datetime]: the date and time,
+                                     or None if the timestamp is equivalent to -1.
 
     """
     if timestamp == 2 ** 32 - 1:
@@ -42,7 +43,8 @@ def from_time_type(timestamp):
 
 
 def to_time_type(date_time):
-    """Convert a Python :class:`datetime.datetime` object to a timestamp compatible with poppler.
+    """Convert a Python :class:`datetime.datetime` object
+    to a timestamp compatible with poppler.
 
     Args:
         date_time (Optional[datetime.datetime]): the date and time, or None
