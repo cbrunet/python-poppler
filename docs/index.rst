@@ -6,16 +6,6 @@
 python-poppler's documentation!
 ==========================================
 
-.. toctree::
-   :hidden:
-
-   installation
-   usage
-   contribution
-   changelog
-   api/modules
-
-
 **python-poppler** is a Python binding to the poppler-cpp library.
 It allows to read PDF documents, render them, and to modify some
 informations inside the documents.
@@ -110,11 +100,21 @@ poppler-glib
     You should use poppler-glib directly instead (see above).
 
 
+Detailed Contents
+------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   installation
+   usage
+   contribution
+   changelog
+   api/modules
+
+
 Indices and tables
 ------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
-
-
