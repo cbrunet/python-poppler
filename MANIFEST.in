@@ -1,3 +1,4 @@
 include CMakeLists.txt
 graft src/cpp
 graft pybind11
+graft tests
