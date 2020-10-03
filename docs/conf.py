@@ -31,7 +31,9 @@ author = 'Charles Brunet'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.githubpages',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
+    'sphinx_issues',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -48,22 +50,50 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_material'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# html_theme_options = {
+#     'description': "Python binding to poppler-cpp library, to read and render PDF documents.",
+#     'github_button': True,
+#     'github_user': 'cbrunet',
+#     'github_repo': 'python-poppler',
+#     'badge_branch': 'master',
+#     'extra_nav_links': {
+#         "GitHub": "https://github.com/cbrunet/python-poppler",
+#         "Issues tracker": "https://github.com/cbrunet/python-poppler/issues",
+#         "PyPI": "https://pypi.org/project/python-poppler/",
+#     }
+# }
+
 html_theme_options = {
-    'description': "Python binding to poppler-cpp library, to read and render PDF documents.",
-    'github_button': True,
-    'github_user': 'cbrunet',
-    'github_repo': 'python-poppler',
-    'badge_branch': 'master',
-    'extra_nav_links': {
-        "GitHub": "https://github.com/cbrunet/python-poppler",
-        "Issues tracker": "https://github.com/cbrunet/python-poppler/issues",
-        "PyPI": "https://pypi.org/project/python-poppler/",
-    }
+    'nav_title': "Python poppler",
+    'logo_icon': "&#x1F4D7",
+    'base_url': "https://cbrunet.github.io/python-poppler",
+    'repo_url': "https://github.com/cbrunet/python-poppler",
+    'repo_name': "python-poppler",
+
+    'globaltoc_depth': 2,
+    'globaltoc_collapse': False,
+    'globaltoc_includehidden': True,
+
+    'nav_links': [
+        {'title': "Issues tracker", 'href': "https://github.com/cbrunet/python-poppler/issues", 'internal': False},
+        {'title': "PyPI", 'href': "https://pypi.org/project/python-poppler/", 'internal': False},
+    ],
+
 }
+
+html_sidebars = {
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
+}
+
+
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
+
+
+issues_github_path = "cbrunet/python-poppler"
