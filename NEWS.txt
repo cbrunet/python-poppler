@@ -2,6 +2,7 @@ Changelog
 
 0.2.2
 - Bugfix: Document can be corrupted by garbage collector when created from data (or from file handle) (fixes #19)
+- Feature: Lower minimum required Python version to 3.6
 
 0.2.1
 - Bugfix: Fixed byte order in image format string used for Pillow
