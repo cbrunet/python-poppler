@@ -16,7 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 __author__ = "Charles Brunet"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __version_info__ = tuple(map(int, __version__.split('.')))
 
 __all__ = ["__author__", "__version__", "__version_info__"]

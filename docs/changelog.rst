@@ -3,8 +3,8 @@
 Changelog
 =========
 
-0.2.2 (in development)
------------------------
+0.2.2 (2020-10-03)
+------------------
 
 - Bugfix: Document can be corrupted by garbage collector when created from data (or from file handle) (Fixes :issue:`19`)
 - Bugfix: Fix build with some compilers (Fixes :issue:`17`)
