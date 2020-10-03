@@ -6,7 +6,7 @@ Installation
 Requirements
 ------------
 
-python-poppler requires at least Python 3.7.
+python-poppler requires at least Python 3.6.
 
 This package is currently distributed as source only,
 and is currently tested on Linux only (using Arch Linux

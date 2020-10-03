@@ -303,16 +303,16 @@ def load(arg, owner_password=None, user_password=None):
         raise TypeError("Stream must be read as bytes.")
 
 
-@load.register
+@load.register(str)
 def _(arg: str, owner_password=None, user_password=None):
     return load_from_file(arg, owner_password, user_password)
 
 
-@load.register
+@load.register(Path)
 def _(arg: Path, owner_password=None, user_password=None):
     return load_from_file(arg, owner_password, user_password)
 
 
-@load.register
+@load.register(bytes)
 def _(arg: bytes, owner_password=None, user_password=None):
     return load_from_data(arg, owner_password, user_password)
