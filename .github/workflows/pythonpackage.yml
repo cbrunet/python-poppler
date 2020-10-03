@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8]
-        poppler-version: [ubuntu, poppler-0.26.0, poppler-20.08.0, master]
+        python-version: [3.6, 3.7, 3.8]
+        poppler-version: [ubuntu, poppler-0.26.0, poppler-20.10.0, master]
 
     steps:
     - uses: actions/checkout@v2
