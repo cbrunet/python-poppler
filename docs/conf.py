@@ -31,6 +31,7 @@ author = 'Charles Brunet'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.githubpages',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
     'sphinx_issues',
 ]
@@ -71,6 +72,8 @@ html_theme_options = {
 
 
 
+
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
 
 issues_github_path = "cbrunet/python-poppler"
