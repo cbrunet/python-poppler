@@ -32,7 +32,7 @@ jobs:
           cd build
           cmake \
             -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX:PATH=/usr/local \
+            -DCMAKE_INSTALL_PREFIX:PATH= ${{ github.workspace }}/local \
             -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
             -DBUILD_GTK_TESTS=OFF \
             -DBUILD_QT5_TESTS=OFF \
@@ -45,16 +45,13 @@ jobs:
             -DBUILD_SHARED_LIBS=ON \
             ..
           make
-          sudo make install
+          make install
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.poppler-version }}
-          path: |
-            /usr/local/include/poppler/
-            /usr/local/lib/libpoppler*
-            /usr/local/lib/pkgconfig/poppler*
-            
+          path: ${{ github.workspace }}/local/
+
 
   build:
     needs: build_poppler
@@ -94,11 +91,12 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: ${{ matrix.poppler-version }}
+        path: ${{ github.workspace }}/local/
     - name: set env
       if: matrix.poppler-version != 'ubuntu'
       run: |
-        echo '::set-env name=PKG_CONFIG_PATH::/usr/local/lib/pkgconfig'
-        echo '::set-env name=LD_LIBRARY_PATH::/usr/local/lib'
+        echo '::set-env name=PKG_CONFIG_PATH::${{ github.workspace }}/local/lib/pkgconfig'
+        echo '::set-env name=LD_LIBRARY_PATH::${{ github.workspace }}/local/lib'
     - name: Lint with flake8
       run: |
         tox -e lint
