@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        poppler-version: &poppler-version [poppler-0.26.0, poppler-20.11.0, master]
+        poppler-version: [poppler-0.26.0, poppler-20.11.0, master]
     steps:
       - name: Install dependencies
         run: sudo apt-get install libopenjp2-7-dev
@@ -59,7 +59,7 @@ jobs:
       matrix:
         os: [ubuntu-20.04]
         python-version: [3.6, 3.6, 3.8, 3.9]
-        poppler-version: *poppler-version
+        poppler-version: [poppler-0.26.0, poppler-20.11.0, master]
         include:
           - python-version: 3.6
             poppler-version: ubuntu
