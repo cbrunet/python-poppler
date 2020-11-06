@@ -50,7 +50,11 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.poppler-version }}
-          path: /usr/local/
+          path: |
+            /usr/local/include/poppler/
+            /usr/local/lib/libpoppler*
+            /usr/local/lib/pkgconfig/poppler*
+            
 
   build:
     needs: build_poppler
