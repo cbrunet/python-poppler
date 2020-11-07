@@ -33,7 +33,7 @@ jobs:
           cd build
           cmake \
             -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX:PATH= ${{ github.workspace }}/local/ \
+            -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/local \
             -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
             -DBUILD_GTK_TESTS=OFF \
             -DBUILD_QT5_TESTS=OFF \
