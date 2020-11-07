@@ -93,7 +93,7 @@ PYBIND11_MODULE(image, m)
         .value("bgr24", image::format_enum::format_bgr24)
 #endif
         .export_values()
-        .def("__str__", &format_to_str, "Image format used by PIL converters.");
+        .def("__str__", &format_to_str, "Image format used by PIL converters.", py::prepend());
 
     py::class_<image>(m, "image", py::buffer_protocol())
         .def(py::init<>())
