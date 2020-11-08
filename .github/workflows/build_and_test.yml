@@ -64,10 +64,10 @@ jobs:
         poppler-version: [poppler-0.26.0, poppler-20.11.0, master]
         include:
           - python-version: 3.6
-            poppler-version: ubuntu
+            poppler-version: system
             os: ubuntu-18.04
           - python-version: 3.8
-            poppler-version: ubuntu
+            poppler-version: system
             os: ubuntu-20.04
 
     steps:
@@ -84,17 +84,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
     - name: Install libpoppler-cpp-dev
-      if: matrix.poppler-version == 'ubuntu'
+      if: matrix.poppler-version == 'system'
       run: |
         sudo apt-get install libpoppler-cpp-dev
     - name: download artifacts
-      if: matrix.poppler-version != 'ubuntu'
+      if: matrix.poppler-version != 'system'
       uses: actions/download-artifact@v2
       with:
         name: ${{ matrix.poppler-version }}
         path: ${{ github.workspace }}/local/
     - name: set env
-      if: matrix.poppler-version != 'ubuntu'
+      if: matrix.poppler-version != 'system'
       run: |
         echo 'PKG_CONFIG_PATH=${{ github.workspace }}/local/lib/pkgconfig' >> $GITHUB_ENV
         echo 'LD_LIBRARY_PATH=${{ github.workspace }}/local/lib' >> $GITHUB_ENV
