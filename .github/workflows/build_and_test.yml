@@ -96,8 +96,8 @@ jobs:
     - name: set env
       if: matrix.poppler-version != 'ubuntu'
       run: |
-        echo '::set-env name=PKG_CONFIG_PATH::${{ github.workspace }}/local/lib/pkgconfig'
-        echo '::set-env name=LD_LIBRARY_PATH::${{ github.workspace }}/local/lib'
+        echo 'PKG_CONFIG_PATH=${{ github.workspace }}/local/lib/pkgconfig' >> $GITHUB_ENV
+        echo 'LD_LIBRARY_PATH=${{ github.workspace }}/local/lib' >> $GITHUB_ENV
     - name: Lint with flake8
       run: |
         tox -e lint
