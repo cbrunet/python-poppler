@@ -1,0 +1,7 @@
+poppler.pagetransition module
+=============================
+
+.. automodule:: poppler.pagetransition
+   :members:
+   :undoc-members:
+   :show-inheritance:

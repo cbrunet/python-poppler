@@ -1,0 +1,7 @@
+poppler.image module
+====================
+
+.. automodule:: poppler.image
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+poppler.destination module
+==========================
+
+.. automodule:: poppler.destination
+   :members:
+   :undoc-members:
+   :show-inheritance:

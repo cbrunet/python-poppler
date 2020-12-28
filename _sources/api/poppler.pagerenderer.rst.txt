@@ -1,0 +1,7 @@
+poppler.pagerenderer module
+===========================
+
+.. automodule:: poppler.pagerenderer
+   :members:
+   :undoc-members:
+   :show-inheritance:

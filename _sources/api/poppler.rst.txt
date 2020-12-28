@@ -1,0 +1,25 @@
+poppler package
+===============
+
+.. automodule:: poppler
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   poppler.destination
+   poppler.document
+   poppler.embeddedfile
+   poppler.font
+   poppler.image
+   poppler.page
+   poppler.pagerenderer
+   poppler.pagetransition
+   poppler.rectangle
+   poppler.toc
+   poppler.utilities
