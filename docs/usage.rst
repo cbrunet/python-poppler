@@ -23,11 +23,11 @@ Quickstart
 
 The pdf file is loaded into a :class:`.Document`.
 From the :class:`.Document`, you can extract general infos
-such as propertise and font infos.
+such as properties and font infos.
 You can also extract :class:`.Page` objects, using the :meth:`.Document.create_page`
 method.
 
-From the :class:`.Page`, you get informations about transitions and page orientation,
+From the :class:`.Page`, you get information about transitions and page orientation,
 and various methods to extract texts.
 
 Using a :class:`.PageRenderer`, you can convert a :class:`.Page` to an :class:`.Image`.
@@ -107,7 +107,7 @@ transitions.
 The :attr:`.Page.label` property gives you the page name; its usually the displayed page number.
 :meth:`.Page.page_rect` allows you to query the page about its size.
 
-Page transitions are mainly used for presentation softwares.
+Page transitions are mainly used for presentation software.
 :meth:`.Page.transition` gives you information about the kind of page transition,
 and :attr:`.Page.duration` gives you the duration of the transition.
 
@@ -116,7 +116,7 @@ Extracting text
 
 The :meth:`.Page.text` method allows to query the :class:`.Page`
 about all the texts it contains, or about the texts in a given area.
-For more precise informations, :meth:`.Page.text_list` allows
+For more precise information, :meth:`.Page.text_list` allows
 to get the position of each text, and the position of each character
 in a text box. Finally, the :meth:`.Page.search` method allows you
 to search for a given text in a :class:`.Page`.
@@ -166,7 +166,7 @@ Working with images
 
 Given that ``image`` object is an instance of :class:`.Image`,
 you can convert it to different formats,
-to interract with other libraries. Here are some examples.
+to interact with other libraries. Here are some examples.
 
 
 Converting to PIL or Tk image
@@ -191,7 +191,7 @@ compatible with the PIL raw importer:
 Unfortunately, it is not possible to build a PIL image using the
 buffer interface. A copy of the image data in unavoidable.
 
-If you need to use the image with Tk, you creeate if from a PIL image.
+If you need to use the image with Tk, you create if from a PIL image.
 
 
 Converting to QImage
@@ -225,7 +225,7 @@ It allows to access the image buffer directly from Python, without
 copying it.
 
 You can create a numpy array using the :meth:`.memoryview` method.
-If you modify the array, image data will be automaticall modified as well.
+If you modify the array, image data will be automatically modified as well.
 
 .. code-block:: python
 

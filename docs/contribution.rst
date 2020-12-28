@@ -16,7 +16,7 @@ When you report a bug, try to be as specific as possible, and provide all the re
 * Operating system name and version
 * Python version
 
-If an exception occured, provide the entire stack trace.
+If an exception occurred, provide the entire stack trace.
 
 Before submitting a new bug, please verify it is not already reported. If it is, verify if
 you can provide additional information.
@@ -42,16 +42,16 @@ we will certainly add it to python-poppler.
 
 .. _pull_request:
 
-Submiting a pull request
+Submitting a pull request
 -------------------------
 
-Pull requests are the prefered way for submitting patches, bug corrections, and new features.
+Pull requests are the preferred way for submitting patches, bug corrections, and new features.
 
 When you submit a pull request, verify the following points:
 
 * You agree that the submitted code is under GPL 2.0 license;
 * Code is formatted using `black <https://github.com/psf/black>`_. Ensure everything
-  is well formated, using `tox -e lint` command;
+  is well formatted, using `tox -e lint` command;
 * Please provide tests proving the bug is corrected, or covering the new feature, when it's possible;
 * Ensure that all unit tests pass, using the `tox` command;
 * Add a line to the changelog, in docs/changelog.rst;

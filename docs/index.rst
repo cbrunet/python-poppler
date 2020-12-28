@@ -3,9 +3,9 @@ python-poppler's documentation!
 
 **python-poppler** is a Python binding to the poppler-cpp library.
 It allows to read PDF documents, render them, and to modify some
-informations inside the documents.
+information inside the documents.
 
-You can use python-poppler for a variaty of tasks. For example:
+You can use python-poppler for a variety of tasks. For example:
 
 * To extract text from a PDF file
 * To render pages of a PDF document as images
@@ -29,9 +29,9 @@ Contents
 
 * :ref:`usage` section is about how to actually use the python-poppler library.
 
-* :ref:`contributing` section is about submiting bugs or pull requests to the project.
+* :ref:`contributing` section is about submitting bugs or pull requests to the project.
 
-* :ref:`changelog` section gives informations about releases of the project.
+* :ref:`changelog` section gives information about releases of the project.
 
 * :ref:`reference` lists all modules, classes, and methods. The reference section is still a work in progress...
 
@@ -70,7 +70,7 @@ Here are few useful links related to the Poppler library:
 Alternatives and related Python libraries
 -----------------------------------------
 
-Here is a (non-exaustive) list of related Python library for working with PDF files.
+Here is a (non-exhaustive) list of related Python library for working with PDF files.
 
 Other poppler bindings
 ^^^^^^^^^^^^^^^^^^^^^^
