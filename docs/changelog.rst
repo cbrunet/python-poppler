@@ -6,7 +6,7 @@ Changelog
 Next release
 ------------
 
-- Updated pybind11 to 2.6.0
+- Updated pybind11 to 2.6.2
 - Tested with Python 3.9 and Poppler 20.11.0
 
 0.2.2 (2020-10-03)
