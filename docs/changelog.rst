@@ -9,6 +9,7 @@ Next release
 - Updated pybind11 to 2.6.2
 - Tested with Python 3.9 and Poppler 20.11.0
 - Bugfix: Fixed typos in EmbeddedFile.modification_date and EmbeddedFile.is_valid
+- Bugfix: Fixed typo in page.search (Fixes :issue:`37`)  -- by Bohumír Zámečník
 
 0.2.2 (2020-10-03)
 ------------------
