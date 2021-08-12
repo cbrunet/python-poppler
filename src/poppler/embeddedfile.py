@@ -27,20 +27,12 @@ class EmbeddedFile:
         return self._file.checksum()
 
     @property
-    def checksum_bytes(self):
-        return self._file.checksum_bytes()
-
-    @property
     def creation_date(self):
         return from_time_type(self._file.creation_date())
 
     @property
     def data(self):
         return self._file.data()
-
-    @property
-    def data_bytes(self):
-        return self._file.data_bytes()
 
     @property
     def description(self):
