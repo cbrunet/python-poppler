@@ -28,9 +28,15 @@ namespace poppler
 PYBIND11_MODULE(embedded_file, m)
 {
     py::class_<embedded_file>(m, "embedded_file")
-        .def("checksum", &embedded_file::checksum)
+        .def("checksum", [](const embedded_file& self) {
+            const auto& data = self.checksum();
+            return py::bytes(&data[0], data.size());
+        })
         .def("creation_date", &embedded_file::creation_date)
-        .def("data", &embedded_file::data)
+        .def("data", [](const embedded_file& self) {
+            const auto& data = self.data();
+            return py::bytes(&data[0], data.size());
+        })
         .def("description", &embedded_file::description)
         .def("is_valid", &embedded_file::is_valid)
         .def("mime_type", &embedded_file::mime_type)
