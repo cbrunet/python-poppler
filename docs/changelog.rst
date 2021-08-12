@@ -10,6 +10,7 @@ Next release
 - Tested with Python 3.9 and Poppler 20.11.0
 - EmbeddedFile data() and checksum() now return bytes (See :pr:`32`) -- by Bence Cs
 - Bugfix: Fixed typos in EmbeddedFile.modification_date and EmbeddedFile.is_valid
+- Bugfix: Fixed typo in page.search (Fixes :issue:`37`)  -- by Bohumír Zámečník
 
 0.2.2 (2020-10-03)
 ------------------
