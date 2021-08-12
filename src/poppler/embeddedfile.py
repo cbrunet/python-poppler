@@ -40,7 +40,7 @@ class EmbeddedFile:
 
     @property
     def is_valid(self):
-        return self._file_is_valid()
+        return self._file.is_valid()
 
     @property
     def mime_type(self):
