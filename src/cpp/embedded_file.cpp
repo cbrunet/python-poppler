@@ -38,7 +38,7 @@ PYBIND11_MODULE(embedded_file, m)
         .def("description", &embedded_file::description)
         .def("is_valid", &embedded_file::is_valid)
         .def("mime_type", &embedded_file::mime_type)
-        .def("modification_data", &embedded_file::modification_date)
+        .def("modification_date", &embedded_file::modification_date)
         .def("name", &embedded_file::name)
         .def("size", &embedded_file::size)
         ;
