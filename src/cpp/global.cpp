@@ -68,8 +68,8 @@ PYBIND11_MODULE(global_, m)
     py::enum_<rotation_enum>(m, "rotation_enum")
         .value("rotate_0", rotation_enum::rotate_0)
         .value("rotate_90", rotation_enum::rotate_90)
-        .value("rotate18_0", rotation_enum::rotate_180)
-        .value("rotate27_0", rotation_enum::rotate_270)
+        .value("rotate_180", rotation_enum::rotate_180)
+        .value("rotate_270", rotation_enum::rotate_270)
         .export_values();
 
     py::class_<ustring>(m, "_ustring")
