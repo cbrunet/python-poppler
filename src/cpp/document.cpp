@@ -105,7 +105,10 @@ PYBIND11_MODULE(document, m)
         .def("create_page", (page * (document::*)(int)const) & document::create_page, py::arg("index"))
         .def("create_page", (page * (document::*)(const ustring &)const) & document::create_page, py::arg("label"))
         .def("create_toc", &document::create_toc)
-        .def("embedded_files", &document::embedded_files)
+        .def("embedded_files", [](const document& self) -> std::vector<std::unique_ptr<embedded_file, py::nodelete>> { 
+            auto result = self.embedded_files();
+            return {result.begin(), result.end()};
+         })
         .def("fonts", &document::fonts)
 #if HAS_VERSION(0, 46)
         .def("get_author", &document::get_author)
