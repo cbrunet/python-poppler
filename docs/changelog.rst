@@ -13,6 +13,7 @@ Next release
 - Bugfix: Fixed typo in page.search (Fixes :issue:`37`)  -- by Bohumír Zámečník
 - Bugfix: Fix underscore position in two attributes of the Rotation Enum, thereby
   making it consistent with the upstream ``poppler-cpp`` (:issue:`42` / :pr:`44`) -- by mara004
+- Bugfix: Fix numerous of defunct setter methods in PageRenderer (:pr:`46`) -- by mara004
 
 0.2.2 (2020-10-03)
 ------------------
