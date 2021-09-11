@@ -63,7 +63,7 @@ class PageRenderer:
         return self._renderer.paper_color()
 
     @paper_color.setter
-    def paper_color(self, color):
+    def set_paper_color(self, color):
         self._renderer.set_paper_color(color)
 
     @property
@@ -71,7 +71,7 @@ class PageRenderer:
         return self._renderer.render_hints()
 
     @render_hints.setter
-    def render_hints(self, hints):
+    def set_render_hints(self, hints):
         self._renderer.set_render_hints(hints)
 
     def render_page(
