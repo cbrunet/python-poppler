@@ -38,40 +38,32 @@ class PageRenderer:
     def __init__(self):
         self._renderer = page_renderer.page_renderer()
 
-    @property
     @since(0, 65)
     def image_format(self):
         return self._renderer.image_format()
 
-    @image_format.setter
     @since(0, 65)
-    def image_format(self, format):
+    def set_image_format(self, format):
         self._renderer.set_image_format(format)
 
-    @property
     @since(0, 65)
     def line_mode(self):
         return self._renderer.line_mode()
 
-    @line_mode.setter
     @since(0, 65)
-    def line_mode(self, mode):
+    def set_line_mode(self, mode):
         self._renderer.set_line_mode(mode)
 
-    @property
     def paper_color(self):
         return self._renderer.paper_color()
 
-    @paper_color.setter
-    def paper_color(self, color):
+    def set_paper_color(self, color):
         self._renderer.set_paper_color(color)
 
-    @property
     def render_hints(self):
         return self._renderer.render_hints()
 
-    @render_hints.setter
-    def render_hints(self, hints):
+    def set_render_hints(self, hints):
         self._renderer.set_render_hints(hints)
 
     def render_page(
