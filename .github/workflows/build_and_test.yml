@@ -60,13 +60,13 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04]
-        python-version: [3.6, 3.7, 3.8, 3.9, 3.10]
+        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
         poppler-version: [poppler-0.26.0, poppler-22.04.0, master]
         include:
-          - python-version: 3.6
+          - python-version: '3.6'
             poppler-version: system
             os: ubuntu-18.04
-          - python-version: 3.8
+          - python-version: '3.8'
             poppler-version: system
             os: ubuntu-20.04
 
@@ -75,7 +75,7 @@ jobs:
       with:
         submodules: true
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
