@@ -136,6 +136,7 @@ class Document:
         return PDFId(*self._document.get_pdf_id())
 
     @property
+    @ensure_unlocked
     def pdf_version(self):
         return self._document.get_pdf_version()
 

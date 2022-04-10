@@ -447,8 +447,8 @@ def test_pdf_id_of_locked_document(locked_document):
 
 
 def test_get_pdf_version_of_locked_document(locked_document):
-    version = locked_document.pdf_version
-    assert version == (1, 5)
+    with pytest.raises(LockedDocumentError):
+        _ = locked_document.pdf_version
 
 
 @pytest.mark.skipif(version() < (0, 74, 0), reason="Requires at least Poppler 0.74.0")
