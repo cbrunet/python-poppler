@@ -54,6 +54,9 @@ class Document:
     PageMode = document.page_mode_enum
 
     def __init__(self, poppler_document, data=None):
+        if poppler_document is None:
+            raise ValueError("Corrupted or invalid PDF document")
+
         self._document = poppler_document
         self._data = data
 
