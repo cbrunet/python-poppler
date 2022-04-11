@@ -84,6 +84,11 @@ def test_load_with_invalid_type():
         document.load(42)
 
 
+def test_load_not_a_pdf_document(data_path):
+    with pytest.raises(ValueError):
+        _ = document.load(str(data_path / "sample.tex"))
+
+
 @pytest.mark.skipif(version() < (0, 46, 0), reason="Requires at least Poppler 0.46.0")
 def test_save(pdf_document, tmp_path):
     copy_document = tmp_path / "copy.pdf"
