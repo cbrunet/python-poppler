@@ -6,13 +6,14 @@ Changelog
 Next release
 ------------
 
-- Updated pybind11 to 2.6.2
-- Tested with Python 3.9 and Poppler 20.11.0
+- Updated pybind11 to 2.69.2
+- Tested with Python 3.10 and Poppler 22.04.0
 - EmbeddedFile data() and checksum() now return bytes (See :pr:`32`) -- by Bence Cs
 - Bugfix: Fixed typos in EmbeddedFile.modification_date and EmbeddedFile.is_valid
 - Bugfix: Fixed typo in page.search (Fixes :issue:`37`)  -- by Bohumír Zámečník
 - Bugfix: Fix underscore position in two attributes of the Rotation Enum, thereby
   making it consistent with the upstream ``poppler-cpp`` (:issue:`42` / :pr:`44`) -- by mara004
+- Bugfix: Reading pdf_version now requires unlocked document (Fixes :issus:`39`)
 
 0.2.2 (2020-10-03)
 ------------------
