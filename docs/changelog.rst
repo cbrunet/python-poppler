@@ -6,7 +6,7 @@ Changelog
 0.3.0 (2022-04-12)
 ------------------
 
-- Updated pybind11 to 2.69.2
+- Updated pybind11 to 2.9.2
 - Tested with Python 3.10 and Poppler 22.04.0
 - EmbeddedFile data() and checksum() now return bytes (See :pr:`32`) -- by Bence Cs
 - Bugfix: Fixed typos in EmbeddedFile.modification_date and EmbeddedFile.is_valid
