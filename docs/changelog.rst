@@ -3,7 +3,7 @@
 Changelog
 =========
 
-Next release
+0.3.0 (2022-04-12)
 ------------
 
 - Updated pybind11 to 2.69.2
