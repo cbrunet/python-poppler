@@ -4,7 +4,7 @@ Changelog
 =========
 
 0.3.0 (2022-04-12)
-------------
+------------------
 
 - Updated pybind11 to 2.69.2
 - Tested with Python 3.10 and Poppler 22.04.0
