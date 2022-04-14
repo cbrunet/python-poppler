@@ -28,6 +28,7 @@ from poppler.utilities import since
 from collections import namedtuple
 from functools import singledispatch, wraps
 from pathlib import Path
+from typing import Union, List
 
 
 PDFId = namedtuple("PDFId", ["permanent_id", "update_id"])
@@ -58,24 +59,26 @@ class Document:
             raise ValueError("Corrupted or invalid PDF document")
 
         self._document = poppler_document
-        self._data = data
+        self._data: bytes = data
 
     @ensure_unlocked
-    def create_font_iterator(self, page=0):
+    def create_font_iterator(self, page: int=0) -> FontIterator:
         return FontIterator(self._document.create_font_iterator(page))
 
     @ensure_unlocked
-    def create_toc(self):
+    def create_toc(self) -> Union[Toc, None]:
         t = self._document.create_toc()
         return Toc(t) if t else None
 
     @ensure_unlocked
-    def create_page(self, index):
+    def create_page(self, index: int) -> Page:
+        if not isinstance(index, int):
+            raise TypeError("index MUST be int")
         return Page(self._document.create_page(index))
 
     @property
     @ensure_unlocked
-    def author(self):
+    def author(self) -> str:
         return self.info_key("Author")
 
     @author.setter
@@ -167,7 +170,7 @@ class Document:
 
     @property
     @ensure_unlocked
-    def title(self):
+    def title(self) -> str:
         return self.info_key("Title")
 
     @title.setter
@@ -178,7 +181,7 @@ class Document:
 
     @property
     @ensure_unlocked
-    def pages(self):
+    def pages(self) -> int:
         return self._document.pages()
 
     @since(0, 74)
@@ -190,7 +193,7 @@ class Document:
         }
 
     @ensure_unlocked
-    def embedded_files(self):
+    def embedded_files(self) -> List[EmbeddedFile]:
         return [EmbeddedFile(f) for f in self._document.embedded_files()]
 
     @ensure_unlocked
@@ -198,10 +201,10 @@ class Document:
         return [FontInfo(i) for i in self._document.fonts()]
 
     @ensure_unlocked
-    def has_embedded_files(self):
+    def has_embedded_files(self) -> bool:
         return self._document.has_embedded_files()
 
-    def has_permission(self, which):
+    def has_permission(self, which) -> bool:
         return self._document.has_permission(which)
 
     @ensure_unlocked
@@ -215,7 +218,7 @@ class Document:
         return self._document.set_info_date(key, to_time_type(val))
 
     @ensure_unlocked
-    def info_key(self, key):
+    def info_key(self, key) -> str:
         info = self._document.info_key(key)
         return str(info)
 
@@ -239,13 +242,13 @@ class Document:
     def info_keys(self):
         return self._document.info_keys()
 
-    def is_encrypted(self):
+    def is_encrypted(self) -> bool:
         return self._document.is_encrypted()
 
-    def is_linearized(self):
+    def is_linearized(self) -> bool:
         return self._document.is_linearized()
 
-    def is_locked(self):
+    def is_locked(self) -> bool:
         return self._document.is_locked()
 
     @property
@@ -277,17 +280,19 @@ class Document:
         return self._document.unlock(owner_password, user_password)
 
 
-def load_from_file(file_name, owner_password=None, user_password=None):
+def load_from_file(file_name: str, owner_password: str="", user_password: str="") -> Document:
+    if not isinstance(file_name, str):
+        raise TypeError("file_name MUST be str")
     return Document(
         document.load_from_file(
-            str(file_name), owner_password or "", user_password or ""
+            file_name, owner_password, user_password
         )
     )
 
 
-def load_from_data(file_data: bytes, owner_password=None, user_password=None):
+def load_from_data(file_data: bytes, owner_password: str="", user_password: str="") -> Document:
     return Document(
-        document.load_from_data(file_data, owner_password or "", user_password or ""),
+        document.load_from_data(file_data, owner_password, user_password),
         file_data
     )
 

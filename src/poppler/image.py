@@ -18,6 +18,7 @@
 from poppler.cpp import image
 from poppler.rectangle import Rectangle
 
+from typing import List
 
 class Image:
 
@@ -40,11 +41,11 @@ class Image:
         return cls(poppler_object=poppler_object)
 
     @property
-    def bytes_per_row(self):
+    def bytes_per_row(self) -> int:
         return self._image.bytes_per_row()
 
     @property
-    def const_data(self):
+    def const_data(self) -> bytes: 
         return self._image.data()
 
     def copy(self, rect=None):
@@ -52,7 +53,7 @@ class Image:
         return Image.from_object(image)
 
     @property
-    def data(self):
+    def data(self) -> bytes:
         return self._image.data()
 
     @data.setter
@@ -64,23 +65,24 @@ class Image:
         return self._image.format()
 
     @property
-    def height(self):
+    def height(self) -> int:
         return self._image.height()
 
     @property
-    def is_valid(self):
+    def is_valid(self) -> bool:
         return self._image.is_valid()
 
-    def save(self, file_name, out_format, dpi=-1):
+    def save(self, file_name, out_format, dpi=-1) -> None:
         return self._image.save(str(file_name), out_format, dpi)
 
     @property
-    def width(self):
+    def width(self) -> int:
         return self._image.width()
 
     def memoryview(self):
         return memoryview(self._image)
 
     @staticmethod
-    def supported_image_formats():
+    def supported_image_formats() -> List[str]:
         return image.supported_image_formats()
+
