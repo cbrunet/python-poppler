@@ -62,7 +62,7 @@ class Document:
         self._data: bytes = data
 
     @ensure_unlocked
-    def create_font_iterator(self, page: int=0) -> FontIterator:
+    def create_font_iterator(self, page: int = 0) -> FontIterator:
         return FontIterator(self._document.create_font_iterator(page))
 
     @ensure_unlocked
@@ -280,20 +280,22 @@ class Document:
         return self._document.unlock(owner_password, user_password)
 
 
-def load_from_file(file_name: str, owner_password: str="", user_password: str="") -> Document:
+def load_from_file(
+    file_name: str, owner_password: str = "", user_password: str = ""
+) -> Document:
     if not isinstance(file_name, str):
         raise TypeError("file_name MUST be str")
     return Document(
-        document.load_from_file(
-            file_name, owner_password, user_password
-        )
+        document.load_from_file(file_name, owner_password, user_password)
     )
 
 
-def load_from_data(file_data: bytes, owner_password: str="", user_password: str="") -> Document:
+def load_from_data(
+    file_data: bytes, owner_password: str = "", user_password: str = ""
+) -> Document:
     return Document(
         document.load_from_data(file_data, owner_password, user_password),
-        file_data
+        file_data,
     )
 
 
