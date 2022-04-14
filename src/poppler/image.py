@@ -20,6 +20,7 @@ from poppler.rectangle import Rectangle
 
 from typing import List
 
+
 class Image:
 
     Format = image.format_enum
@@ -45,7 +46,7 @@ class Image:
         return self._image.bytes_per_row()
 
     @property
-    def const_data(self) -> bytes: 
+    def const_data(self) -> bytes:
         return self._image.data()
 
     def copy(self, rect=None):
@@ -85,4 +86,3 @@ class Image:
     @staticmethod
     def supported_image_formats() -> List[str]:
         return image.supported_image_formats()
-
