@@ -279,7 +279,7 @@ class Document:
 
 
 def load_from_file(
-    file_name: Union[str, Path], owner_password: str = "", user_password: str = ""
+    file_name: Union[str, Path], owner_password: Union[str, None] = None, user_password: Union[str, None] = None
 ) -> Document:
     return Document(
         document.load_from_file(file_name, owner_password, user_password)
