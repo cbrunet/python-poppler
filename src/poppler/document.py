@@ -59,7 +59,7 @@ class Document:
             raise ValueError("Corrupted or invalid PDF document")
 
         self._document = poppler_document
-        self._data: bytes = data
+        self._data = data
 
     @ensure_unlocked
     def create_font_iterator(self, page: int = 0) -> FontIterator:
@@ -72,8 +72,6 @@ class Document:
 
     @ensure_unlocked
     def create_page(self, index: int) -> Page:
-        if not isinstance(index, int):
-            raise TypeError("index MUST be int")
         return Page(self._document.create_page(index))
 
     @property
@@ -281,17 +279,15 @@ class Document:
 
 
 def load_from_file(
-    file_name: str, owner_password: str = "", user_password: str = ""
+    file_name: Union[str, Path], owner_password: str = "", user_password: str = ""
 ) -> Document:
-    if not isinstance(file_name, str):
-        raise TypeError("file_name MUST be str")
     return Document(
         document.load_from_file(file_name, owner_password, user_password)
     )
 
 
 def load_from_data(
-    file_data: bytes, owner_password: str = "", user_password: str = ""
+    file_data: bytes, owner_password: Union[str, None] = None, user_password: Union[str, None] = ""
 ) -> Document:
     return Document(
         document.load_from_data(file_data, owner_password, user_password),
