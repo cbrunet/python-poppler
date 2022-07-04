@@ -242,3 +242,16 @@ If you modify the array, image data will be automatically modified as well.
 .. Converting to OpenCV image
 .. ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Suppressing error messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For some documents Poppler may produce a lot of error messages, by default sent
+to the stderr. If this is not desirable it's possible to disable them altogether.
+
+.. code-block:: python
+
+  # disable logging
+  poppler.enable_logging(False)
+
+  # enable logging to stderr again
+  poppler.enable_logging(True)
