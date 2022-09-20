@@ -40,3 +40,8 @@ def pdf_page(pdf_document):
 @pytest.fixture(scope="session")
 def sample_document(data_path):
     return load_from_file(data_path / "sample.pdf")
+
+
+@pytest.fixture()
+def document_with_error(data_path):
+    return load_from_file(data_path / "error_log.pdf")

@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
+import poppler
 from poppler import Permission
 from poppler import document
 from poppler import version
@@ -503,3 +503,30 @@ def test_locked_document_is_encrypted(locked_document):
 
 def test_locked_document_is_linearized(locked_document):
     assert not locked_document.is_linearized()
+
+
+@pytest.mark.skipif(version() < (0, 30, 0), reason="Requires at least Poppler 0.30.0")
+@pytest.mark.parametrize("logging_enabled", [[], [True], [False], [False, True]])
+def test_document_with_error(document_with_error, capfd, logging_enabled):
+    """
+    Tests that suppressing the error logging works.
+
+    Upon multiple invocations the last should be applied (by default enabled).
+
+    The capfd fixture allows to capture on the file descriptor since it's written
+    by the underlying C++ library.
+    """
+    is_enabled = True
+    for value in logging_enabled:
+        poppler.enable_logging(value)
+        is_enabled = value
+
+    _ = document_with_error.create_page(0).text()
+
+    actual = capfd.readouterr().err
+    # full output:
+    # "poppler/error (12375): Unknown compression method in flate stream\n"
+    if is_enabled:
+        assert "Unknown compression method in flate stream" in actual
+    else:
+        assert actual == ""
