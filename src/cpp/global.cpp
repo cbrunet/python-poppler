@@ -17,6 +17,7 @@
  */
 
 #include "version.h"
+#include <iostream>
 #include <pybind11/pybind11.h>
 #include <poppler-global.h>
 #include <algorithm>
@@ -38,6 +39,24 @@ poppler::ustring to_ustring(std::string str)
 {
     return poppler::ustring::from_utf8(str.data(), str.size());
 }
+
+#if HAS_VERSION(0, 30)
+void stderr_debug_function(const std::string &msg, void * /*data*/)
+{
+    std::cerr << "poppler/" << msg << std::endl;
+}
+
+void noop_debug_function(const std::string &, void *) { }
+
+void enable_logging(const bool verbose)
+{
+    if (verbose) {
+        poppler::set_debug_error_function(stderr_debug_function, nullptr);
+    } else{
+        poppler::set_debug_error_function(noop_debug_function, nullptr);
+    }
+}
+#endif
 
 PYBIND11_MODULE(global_, m)
 {
@@ -79,6 +98,10 @@ PYBIND11_MODULE(global_, m)
 
 #if HAS_VERSION(0, 73)
     m.def("set_data_dir", &set_data_dir, py::arg("new_data_dir"));
+#endif
+
+#if HAS_VERSION(0, 30)
+    m.def("enable_logging", &enable_logging);
 #endif
 }
 

@@ -71,6 +71,11 @@ __all__ = [
     "TransitionType",
 ]
 
+if version() >= (0, 30, 0):
+    from poppler.cpp.global_ import enable_logging  # noqa
+
+    __all__.append("enable_logging")
+
 if version() >= (0, 65, 0):
     from poppler.cpp.page_renderer import line_mode_enum as LineMode  # noqa
 
