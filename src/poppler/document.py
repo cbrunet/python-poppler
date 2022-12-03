@@ -59,7 +59,7 @@ class Document:
             raise ValueError("Corrupted or invalid PDF document")
 
         self._document = poppler_document
-        self._data = data
+        self._data = data  # just to prevent data from being GC'ed
 
     @ensure_unlocked
     def create_font_iterator(self, page: int = 0) -> FontIterator:
