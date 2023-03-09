@@ -28,6 +28,11 @@
 #include <poppler-page.h>
 #include <poppler-toc.h>
 
+#ifdef _MSC_VER
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#endif
+
 namespace py = pybind11;
 
 namespace poppler
