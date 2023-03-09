@@ -15,7 +15,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-
+#include "version.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <poppler-embedded-file.h>
@@ -32,7 +32,13 @@ PYBIND11_MODULE(embedded_file, m)
             const auto& data = self.checksum();
             return py::bytes(&data[0], data.size());
         })
+#if HAS_VERSION(22, 5)
+        .def("creation_date", &embedded_file::creation_date_t)
+        .def("modification_date", &embedded_file::modification_date_t)
+#else
         .def("creation_date", &embedded_file::creation_date)
+        .def("modification_date", &embedded_file::modification_date)
+#endif
         .def("data", [](const embedded_file& self) {
             const auto& data = self.data();
             return py::bytes(&data[0], data.size());
@@ -40,7 +46,6 @@ PYBIND11_MODULE(embedded_file, m)
         .def("description", &embedded_file::description)
         .def("is_valid", &embedded_file::is_valid)
         .def("mime_type", &embedded_file::mime_type)
-        .def("modification_date", &embedded_file::modification_date)
         .def("name", &embedded_file::name)
         .def("size", &embedded_file::size)
         ;
