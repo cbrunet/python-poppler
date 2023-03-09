@@ -26,6 +26,19 @@ import functools
 from poppler.cpp.version import version_major, version_minor, version_micro
 
 
+def version():
+    """Get poppler version, as a tuple
+
+    Returns:
+        Tuple[int, int, int]: (major, minor, micro)
+
+    """
+    return version_major(), version_minor(), version_micro()
+
+
+MINUS_ONE = -1 if version() >= (22, 5, 0) else 2**32 - 1
+
+
 def from_time_type(timestamp):
     """Convert a timestamp to a :class:`datetime.datetime` object.
 
@@ -37,7 +50,7 @@ def from_time_type(timestamp):
                                      or None if the timestamp is equivalent to -1.
 
     """
-    if timestamp == 2 ** 32 - 1:
+    if timestamp == MINUS_ONE:
         return None
     return datetime.fromtimestamp(timestamp)
 
@@ -53,17 +66,7 @@ def to_time_type(date_time):
         int: the timestamp
 
     """
-    return int(date_time.timestamp()) if date_time else 2 ** 32 - 1
-
-
-def version():
-    """Get poppler version, as a tuple
-
-    Returns:
-        Tuple[int, int, int]: (major, minor, micro)
-
-    """
-    return version_major(), version_minor(), version_micro()
+    return int(date_time.timestamp()) if date_time else MINUS_ONE
 
 
 def since(major, minor):
@@ -78,6 +81,7 @@ def since(major, minor):
         minor (int): minor version number
 
     """
+
     def wrapper(fct):
         @functools.wraps(fct)
         def wrapped(*args, **kwargs):

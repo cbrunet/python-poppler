@@ -15,7 +15,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-
+#include "version.h"
 #include <pybind11/pybind11.h>
 #include <poppler-page-transition.h>
 
@@ -55,7 +55,11 @@ PYBIND11_MODULE(page_transition, m)
         .def("alignment", &page_transition::alignment)
         .def("angle", &page_transition::angle)
         .def("direction", &page_transition::direction)
+#if HAS_VERSION(22, 5)
+        .def("duration", &page_transition::durationReal)
+#else
         .def("duration", &page_transition::duration)
+#endif
         .def("is_rectangular", &page_transition::is_rectangular)
         .def("scale", &page_transition::scale)
         .def("type", &page_transition::type)
