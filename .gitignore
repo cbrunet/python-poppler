@@ -3,6 +3,7 @@
 /docs/api
 __pycache__
 .idea
+.pytest_cache
 .tox
 .venv
 .vscode
@@ -10,3 +11,6 @@ __pycache__
 *.pyc
 *.egg-info
 *.so
+.mesonpy*
+/subprojects/packagecache/
+/subprojects/pybind11-*
