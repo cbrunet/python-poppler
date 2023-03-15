@@ -59,16 +59,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04]
-        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10', '3.11']
+        os: [ubuntu-22.04]
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
         poppler-version: [poppler-0.26.0, poppler-22.04.0, poppler-23.03.0]  #, master]
         include:
-          - python-version: '3.6'
-            poppler-version: system
-            os: ubuntu-18.04
           - python-version: '3.8'
             poppler-version: system
             os: ubuntu-20.04
+          - python-version: '3.10'
+            poppler-version: system
+            os: ubuntu-22.04
 
     steps:
     - uses: actions/checkout@v3

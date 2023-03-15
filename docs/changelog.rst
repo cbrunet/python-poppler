@@ -3,6 +3,12 @@
 Changelog
 =========
 
+0.4.0 ()
+--------
+
+- Minimal supported Python version is now 3.7.
+- Tested with Python 3.11 and Poppler 23.03.0.
+
 0.3.0 (2022-04-12)
 ------------------
 
