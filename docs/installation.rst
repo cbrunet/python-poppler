@@ -38,33 +38,27 @@ Ideally, you should install the package inside a Python virtual environment.
 
 .. code-block:: bash
 
-    pip install python-poppler
+    pip install --use-pep517 python-poppler
 
 
 
 Installing from git
 -------------------
 
-When you clone the repository, you must include submodules:
+First you msut clone the repository:
 
 .. code-block:: bash
 
-    git clone --recurse-submodules https://github.com/cbrunet/python-poppler.git
+    git clone https://github.com/cbrunet/python-poppler.git
 
-Alternatively, you can fetch the submodules later, using:
-
-.. code-block:: bash
-
-    git submodule update --init --recursive
-
-Then you simply need to use the ``setup.py`` script to perform
-the usual tasks. For instance:
+Then you simply need to use ``pip`` to compile and install it:
 
 .. code-block:: bash
 
-    python setup.py install
+    pip install --use-pep517 .
 
-The `setup.py` script will invoke cmake, compile the binding,
+Behind the scene, it will install required packages,
+compile the bindings,
 and install all the files at the right place.
 
 
