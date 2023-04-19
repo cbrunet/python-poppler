@@ -4,7 +4,8 @@ project(
     version: '0.4.0', 
     license: 'GNU General Public License v2 (GPLv2)', 
     # license_files: 'LICENSE.txt',
-    meson_version: '>=1.0.0'
+    meson_version: '>=1.0.0',
+    default_options : ['cpp_std=c++11']
 )
 
 poppler_dep = dependency('poppler-cpp', version: '>=0.26.0')
