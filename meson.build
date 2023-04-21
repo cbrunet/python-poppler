@@ -1,10 +1,10 @@
 project(
     'python-poppler', 
     'cpp', 
-    version: '0.4.0', 
+    version: '0.4.1', 
     license: 'GNU General Public License v2 (GPLv2)', 
-    # license_files: 'LICENSE.txt',
-    meson_version: '>=1.0.0',
+    license_files: 'LICENSE.txt',
+    meson_version: '>=1.1.0',
     default_options : ['cpp_std=c++11']
 )
 
