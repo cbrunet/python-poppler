@@ -3,7 +3,14 @@
 Changelog
 =========
 
-0.4.0 (2023-04-21)
+0.4.1 (2023-04-21)
+------------------
+
+- Fix non-pure build for meson-python (:issue:`74` / :pr:`75`)
+- Fix build on Mac OS (:issue:`76` / :pr:`77`)
+- Tested with Python 3.11 and Poppler 23.04.0
+
+0.4.0 (2023-03-21)
 ------------------
 
 - Minimal supported Python version is now 3.7
