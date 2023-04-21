@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Using python-poppler &#8212; python-poppler  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contribution.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#usage" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="python-poppler  documentation"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#x1F4D7</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Python poppler</span>
+          <span class="md-header-nav__topic"> Using python-poppler </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/cbrunet/python-poppler" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    python-poppler
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">python-poppler  documentation</a></li>
+            
+            <li class="md-tabs__item"><a href="https://github.com/cbrunet/python-poppler/issues" class="md-tabs__link">Issues tracker</a></li>
+            
+            <li class="md-tabs__item"><a href="https://pypi.org/project/python-poppler/" class="md-tabs__link">PyPI</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="python-poppler documentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#x1F4D7</i>
+      
+    </a>
+    <a href="index.html"
+       title="python-poppler documentation">Python poppler</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/cbrunet/python-poppler" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    python-poppler
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html" class="md-nav__link">Installation</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html#requirements" class="md-nav__link">Requirements</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html#installing-from-pypi" class="md-nav__link">Installing from PyPI</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html#installing-from-git" class="md-nav__link">Installing from git</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html#compiling-your-own-version-of-poppler" class="md-nav__link">Compiling your own version of Poppler</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Using python-poppler </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Using python-poppler</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#usage--page-root" class="md-nav__link">Using python-poppler</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#quickstart" class="md-nav__link">Quickstart</a>
+        </li>
+        <li class="md-nav__item"><a href="#working-with-documents" class="md-nav__link">Working with documents</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#loading-document" class="md-nav__link">Loading Document</a>
+        </li>
+        <li class="md-nav__item"><a href="#working-with-password-protected-documents" class="md-nav__link">Working with password protected documents</a>
+        </li>
+        <li class="md-nav__item"><a href="#document-properties" class="md-nav__link">Document properties</a>
+        </li>
+        <li class="md-nav__item"><a href="#loading-pages" class="md-nav__link">Loading pages</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#working-with-pages" class="md-nav__link">Working with pages</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#extracting-text" class="md-nav__link">Extracting text</a>
+        </li>
+        <li class="md-nav__item"><a href="#getting-font-information" class="md-nav__link">Getting font information</a>
+        </li>
+        <li class="md-nav__item"><a href="#rendering-image" class="md-nav__link">Rendering image</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#working-with-images" class="md-nav__link">Working with images</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#converting-to-pil-or-tk-image" class="md-nav__link">Converting to PIL or Tk image</a>
+        </li>
+        <li class="md-nav__item"><a href="#converting-to-qimage" class="md-nav__link">Converting to QImage</a>
+        </li>
+        <li class="md-nav__item"><a href="#converting-image-to-numpy-array" class="md-nav__link">Converting image to numpy array</a>
+        </li>
+        <li class="md-nav__item"><a href="#suppressing-error-messages" class="md-nav__link">Suppressing error messages</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/usage.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="#quickstart" class="md-nav__link">Quickstart</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#working-with-documents" class="md-nav__link">Working with documents</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#working-with-pages" class="md-nav__link">Working with pages</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#working-with-images" class="md-nav__link">Working with images</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="contribution.html" class="md-nav__link">Contributing</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="contribution.html#reporting-bugs" class="md-nav__link">Reporting bugs</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="contribution.html#requesting-features" class="md-nav__link">Requesting features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="contribution.html#submitting-a-pull-request" class="md-nav__link">Submitting a pull request</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html" class="md-nav__link">Changelog</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id2" class="md-nav__link">0.4.1 (2023-04-21)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id3" class="md-nav__link">0.4.0 (2023-03-21)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id4" class="md-nav__link">0.3.0 (2022-04-12)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id5" class="md-nav__link">0.2.2 (2020-10-03)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id6" class="md-nav__link">0.2.1 (2020-06-19)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id7" class="md-nav__link">0.2.0 (2020-06-04)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#x" class="md-nav__link">0.1.x</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="api/modules.html" class="md-nav__link">API Reference</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="api/poppler.html" class="md-nav__link">poppler package</a>
+      
+    
+    </li></ul>
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#usage--page-root" class="md-nav__link">Using python-poppler</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#quickstart" class="md-nav__link">Quickstart</a>
+        </li>
+        <li class="md-nav__item"><a href="#working-with-documents" class="md-nav__link">Working with documents</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#loading-document" class="md-nav__link">Loading Document</a>
+        </li>
+        <li class="md-nav__item"><a href="#working-with-password-protected-documents" class="md-nav__link">Working with password protected documents</a>
+        </li>
+        <li class="md-nav__item"><a href="#document-properties" class="md-nav__link">Document properties</a>
+        </li>
+        <li class="md-nav__item"><a href="#loading-pages" class="md-nav__link">Loading pages</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#working-with-pages" class="md-nav__link">Working with pages</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#extracting-text" class="md-nav__link">Extracting text</a>
+        </li>
+        <li class="md-nav__item"><a href="#getting-font-information" class="md-nav__link">Getting font information</a>
+        </li>
+        <li class="md-nav__item"><a href="#rendering-image" class="md-nav__link">Rendering image</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#working-with-images" class="md-nav__link">Working with images</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#converting-to-pil-or-tk-image" class="md-nav__link">Converting to PIL or Tk image</a>
+        </li>
+        <li class="md-nav__item"><a href="#converting-to-qimage" class="md-nav__link">Converting to QImage</a>
+        </li>
+        <li class="md-nav__item"><a href="#converting-image-to-numpy-array" class="md-nav__link">Converting image to numpy array</a>
+        </li>
+        <li class="md-nav__item"><a href="#suppressing-error-messages" class="md-nav__link">Suppressing error messages</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/usage.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="using-python-poppler">
+<span id="usage"></span><h1 id="usage--page-root">Using python-poppler<a class="headerlink" href="#usage--page-root" title="Permalink to this heading">¶</a></h1>
+<section id="quickstart">
+<h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">poppler</span> <span class="kn">import</span> <span class="n">load_from_file</span><span class="p">,</span> <span class="n">PageRenderer</span>
+
+<span class="n">pdf_document</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s2">"sample.pdf"</span><span class="p">)</span>
+<span class="n">page_1</span> <span class="o">=</span> <span class="n">pdf_document</span><span class="o">.</span><span class="n">create_page</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">page_1_text</span> <span class="o">=</span> <span class="n">page_1</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+
+<span class="n">renderer</span> <span class="o">=</span> <span class="n">PageRenderer</span><span class="p">()</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render_page</span><span class="p">(</span><span class="n">page_1</span><span class="p">)</span>
+<span class="n">image_data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>The pdf file is loaded into a <a class="reference internal" href="api/poppler.document.html#poppler.document.Document" title="poppler.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>.
+From the <a class="reference internal" href="api/poppler.document.html#poppler.document.Document" title="poppler.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>, you can extract general infos
+such as properties and font infos.
+You can also extract <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> objects, using the <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.create_page" title="poppler.document.Document.create_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.create_page()</span></code></a>
+method.</p>
+<p>From the <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a>, you get information about transitions and page orientation,
+and various methods to extract texts.</p>
+<p>Using a <a class="reference internal" href="api/poppler.html#poppler.PageRenderer" title="poppler.PageRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageRenderer</span></code></a>, you can convert a <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> to an <a class="reference internal" href="api/poppler.image.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.</p>
+<p>Most used classes and functions are aliased directly in the <a class="reference internal" href="api/poppler.html#module-poppler" title="poppler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">poppler</span></code></a> module.
+Therefore, you usually do not need to import anything else than <a class="reference internal" href="api/poppler.html#module-poppler" title="poppler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">poppler</span></code></a>.</p>
+</section>
+<section id="working-with-documents">
+<h2 id="working-with-documents">Working with documents<a class="headerlink" href="#working-with-documents" title="Permalink to this heading">¶</a></h2>
+<section id="loading-document">
+<h3 id="loading-document">Loading Document<a class="headerlink" href="#loading-document" title="Permalink to this heading">¶</a></h3>
+<p>A poppler <a class="reference internal" href="api/poppler.document.html#poppler.document.Document" title="poppler.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> can be created from a file path
+using <a class="reference internal" href="api/poppler.html#poppler.load_from_file" title="poppler.load_from_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_from_file()</span></code></a>, from binary data using
+<a class="reference internal" href="api/poppler.html#poppler.load_from_data" title="poppler.load_from_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_from_data()</span></code></a>. There is also a more general <a class="reference internal" href="api/poppler.html#poppler.load" title="poppler.load"><code class="xref py py-func docutils literal notranslate"><span class="pre">load()</span></code></a>
+function, which can take either a file path, binary data, or a
+file-like object as argument.</p>
+</section>
+<section id="working-with-password-protected-documents">
+<h3 id="working-with-password-protected-documents">Working with password protected documents<a class="headerlink" href="#working-with-password-protected-documents" title="Permalink to this heading">¶</a></h3>
+<p>There are two kinds of passwords than can by applied to a PDF document:
+<em>User Password</em> and <em>Owner Password</em>.</p>
+<p>The <em>User Password</em>, or <em>Document open password</em>, prevents to open or view the document.</p>
+<p>The <em>Owner Password</em>, or <em>Permission password</em>, or <em>master password</em>, is used to set document restrictions,
+such as printing, copying contents, editing, extracting pages, commenting, etc.
+When this password is set, you need it to modify the document.</p>
+<p>A PDF document can have a <em>User Password</em>, a <em>Owner Password</em>, or both.
+When both passwords are set, you only need one of them to be able to open the document.
+However, you need the <em>Owner Password</em> to be able to modify the document.</p>
+<p>You can provide the password when loading the document, or later using the <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.unlock" title="poppler.document.Document.unlock"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.unlock()</span></code></a> method.
+The <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.is_locked" title="poppler.document.Document.is_locked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.is_locked()</span></code></a> property tells you if you have the permission to view the document.
+If you load a document with the wrong password, an error message is printed on the error console.</p>
+<p>The possible document restrictions are given by the <code class="xref py py-class docutils literal notranslate"><span class="pre">Permissions</span></code> enum.
+You can check each permission using the <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.has_permission" title="poppler.document.Document.has_permission"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.has_permission()</span></code></a> method.
+If the document was opened with the right owner password, then each permission will be True.
+Otherwise, it will depend on the permissions set on the document itself.</p>
+</section>
+<section id="document-properties">
+<h3 id="document-properties">Document properties<a class="headerlink" href="#document-properties" title="Permalink to this heading">¶</a></h3>
+<p>The <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.infos" title="poppler.document.Document.infos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.infos()</span></code></a> method is a convenient way to get all the document meta infos as
+a Python dict. Otherwise, you can follow the poppler-cpp API, and retreive the list of available
+keys using <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.info_keys" title="poppler.document.Document.info_keys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.info_keys()</span></code></a>, get individual key values using <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.info_key" title="poppler.document.Document.info_key"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.info_key()</span></code></a>
+or <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.info_date" title="poppler.document.Document.info_date"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.info_date()</span></code></a>, and set them using <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.set_info_key" title="poppler.document.Document.set_info_key"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.set_info_key()</span></code></a> or <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.set_info_date" title="poppler.document.Document.set_info_date"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.set_info_date()</span></code></a>.</p>
+<p>The infos are also available via individual properties: <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.author" title="poppler.document.Document.author"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.author</span></code></a>, <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.creation_date" title="poppler.document.Document.creation_date"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.creation_date</span></code></a>,
+<a class="reference internal" href="api/poppler.document.html#poppler.document.Document.creator" title="poppler.document.Document.creator"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.creator</span></code></a>, <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.keywords" title="poppler.document.Document.keywords"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.keywords</span></code></a>, <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.metadata" title="poppler.document.Document.metadata"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.metadata</span></code></a>, <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.modification_date" title="poppler.document.Document.modification_date"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.modification_date</span></code></a>,
+<a class="reference internal" href="api/poppler.document.html#poppler.document.Document.producer" title="poppler.document.Document.producer"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.producer</span></code></a>, <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.subject" title="poppler.document.Document.subject"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.subject</span></code></a>, and <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.title" title="poppler.document.Document.title"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.title</span></code></a>.
+All those properties can be read or written.</p>
+</section>
+<section id="loading-pages">
+<h3 id="loading-pages">Loading pages<a class="headerlink" href="#loading-pages" title="Permalink to this heading">¶</a></h3>
+<p>You can query the number of pages a document has using <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.pages" title="poppler.document.Document.pages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.pages</span></code></a>.
+Pages are indexed from 0.
+You can create a <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> object using the <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.create_page" title="poppler.document.Document.create_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.create_page()</span></code></a> method.
+This method can take the page index, or a page label, as argument. However, it is more
+convenient to use an index, since you cannot know the label before the page is created.</p>
+</section>
+</section>
+<section id="working-with-pages">
+<h2 id="working-with-pages">Working with pages<a class="headerlink" href="#working-with-pages" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> objects are used to extract text, and to query information about
+transitions.</p>
+<p>The <a class="reference internal" href="api/poppler.page.html#poppler.page.Page.label" title="poppler.page.Page.label"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Page.label</span></code></a> property gives you the page name; its usually the displayed page number.
+<a class="reference internal" href="api/poppler.page.html#poppler.page.Page.page_rect" title="poppler.page.Page.page_rect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.page_rect()</span></code></a> allows you to query the page about its size.</p>
+<p>Page transitions are mainly used for presentation software.
+<a class="reference internal" href="api/poppler.page.html#poppler.page.Page.transition" title="poppler.page.Page.transition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.transition()</span></code></a> gives you information about the kind of page transition,
+and <a class="reference internal" href="api/poppler.page.html#poppler.page.Page.duration" title="poppler.page.Page.duration"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Page.duration</span></code></a> gives you the duration of the transition.</p>
+<section id="extracting-text">
+<h3 id="extracting-text">Extracting text<a class="headerlink" href="#extracting-text" title="Permalink to this heading">¶</a></h3>
+<p>The <a class="reference internal" href="api/poppler.page.html#poppler.page.Page.text" title="poppler.page.Page.text"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.text()</span></code></a> method allows to query the <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a>
+about all the texts it contains, or about the texts in a given area.
+For more precise information, <a class="reference internal" href="api/poppler.page.html#poppler.page.Page.text_list" title="poppler.page.Page.text_list"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.text_list()</span></code></a> allows
+to get the position of each text, and the position of each character
+in a text box. Finally, the <a class="reference internal" href="api/poppler.page.html#poppler.page.Page.search" title="poppler.page.Page.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.search()</span></code></a> method allows you
+to search for a given text in a <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a>.</p>
+</section>
+<section id="getting-font-information">
+<h3 id="getting-font-information">Getting font information<a class="headerlink" href="#getting-font-information" title="Permalink to this heading">¶</a></h3>
+<p>You can get the list of fonts in a <a class="reference internal" href="api/poppler.document.html#poppler.document.Document" title="poppler.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> using <a class="reference internal" href="api/poppler.document.html#poppler.document.Document.create_font_iterator" title="poppler.document.Document.create_font_iterator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.create_font_iterator()</span></code></a>.
+It returns an object you can iterate to get the list of fonts:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">font_iterator</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">create_font_iterator</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">page</span><span class="p">,</span> <span class="n">fonts</span> <span class="ow">in</span> <span class="n">font_iterator</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Fonts for page </span><span class="si">{</span><span class="n">page</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">fonts</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">font</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
+</pre></div>
+</div>
+<p>Since Poppler 0.89, yo can also get font information associated with a <code class="xref py py-class docutils literal notranslate"><span class="pre">TextBox</span></code>.
+To get the information, you need to pass the text_list_include_font option
+to the <a class="reference internal" href="api/poppler.page.html#poppler.page.Page.text_list" title="poppler.page.Page.text_list"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Page.text_list()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boxes</span> <span class="o">=</span> <span class="n">pdf_page</span><span class="o">.</span><span class="n">text_list</span><span class="p">(</span><span class="n">pdf_page</span><span class="o">.</span><span class="n">TextListOption</span><span class="o">.</span><span class="n">text_list_include_font</span><span class="p">)</span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">box</span><span class="o">.</span><span class="n">has_font_info</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">get_font_name</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">get_font_size</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="rendering-image">
+<h3 id="rendering-image">Rendering image<a class="headerlink" href="#rendering-image" title="Permalink to this heading">¶</a></h3>
+<p>Rendering is the process of converting a <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> to an <a class="reference internal" href="api/poppler.image.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.
+To render a <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a>, you first need to create a <a class="reference internal" href="api/poppler.html#poppler.PageRenderer" title="poppler.PageRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageRenderer</span></code></a> object.
+Then you give the <a class="reference internal" href="api/poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> to the <a class="reference internal" href="api/poppler.html#poppler.PageRenderer.render_page" title="poppler.PageRenderer.render_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PageRenderer.render_page()</span></code></a>
+method to obtain an  <a class="reference internal" href="api/poppler.image.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object.</p>
+</section>
+</section>
+<section id="working-with-images">
+<h2 id="working-with-images">Working with images<a class="headerlink" href="#working-with-images" title="Permalink to this heading">¶</a></h2>
+<p>Given that <code class="docutils literal notranslate"><span class="pre">image</span></code> object is an instance of <a class="reference internal" href="api/poppler.image.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>,
+you can convert it to different formats,
+to interact with other libraries. Here are some examples.</p>
+<section id="converting-to-pil-or-tk-image">
+<h3 id="converting-to-pil-or-tk-image">Converting to PIL or Tk image<a class="headerlink" href="#converting-to-pil-or-tk-image" title="Permalink to this heading">¶</a></h3>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageFormat</span></code> can be converted to a string representation,
+compatible with the PIL raw importer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageTk</span>
+
+<span class="n">pil_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">frombytes</span><span class="p">(</span>
+    <span class="s2">"RGBA"</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">),</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+    <span class="s2">"raw"</span><span class="p">,</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">format</span><span class="p">),</span>
+ <span class="p">)</span>
+ <span class="n">tk_image</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">pil_image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Unfortunately, it is not possible to build a PIL image using the
+buffer interface. A copy of the image data in unavoidable.</p>
+<p>If you need to use the image with Tk, you create if from a PIL image.</p>
+</section>
+<section id="converting-to-qimage">
+<h3 id="converting-to-qimage">Converting to QImage<a class="headerlink" href="#converting-to-qimage" title="Permalink to this heading">¶</a></h3>
+<p>There is no builtin map for the image formats,
+mainly to avoid introducing a dependency on Qt.
+However, it is easy to build it if needed, as in the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">P2QFormat</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">invalid</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_Invalid</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">argb32</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_ARGB32</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">bgr24</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_BGR888</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">gray8</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_Grayscale8</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">mono</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_Mono</span><span class="p">,</span>
+    <span class="n">ImageFormat</span><span class="o">.</span><span class="n">rgb24</span><span class="p">:</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="o">.</span><span class="n">Format_RGB888</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">qimg</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QImage</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+                    <span class="n">image</span><span class="o">.</span><span class="n">bytes_per_row</span><span class="p">,</span>
+                    <span class="n">P2QFormat</span><span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">format</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="converting-image-to-numpy-array">
+<h3 id="converting-image-to-numpy-array">Converting image to numpy array<a class="headerlink" href="#converting-image-to-numpy-array" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference internal" href="api/poppler.image.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> supports buffer protocol through
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#memoryview">memoryview</a>.
+It allows to access the image buffer directly from Python, without
+copying it.</p>
+<p>You can create a numpy array using the <a class="reference internal" href="api/poppler.image.html#poppler.image.Image.memoryview" title="poppler.image.Image.memoryview"><code class="xref py py-meth docutils literal notranslate"><span class="pre">memoryview()</span></code></a> method.
+If you modify the array, image data will be automatically modified as well.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">memoryview</span><span class="p">(),</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Value of the first byte of the image</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># It is now 0</span>
+</pre></div>
+</div>
+</section>
+<section id="suppressing-error-messages">
+<h3 id="suppressing-error-messages">Suppressing error messages<a class="headerlink" href="#suppressing-error-messages" title="Permalink to this heading">¶</a></h3>
+<p>For some documents Poppler may produce a lot of error messages, by default sent
+to the stderr. If this is not desirable it’s possible to disable them altogether.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># disable logging</span>
+<span class="n">poppler</span><span class="o">.</span><span class="n">enable_logging</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># enable logging to stderr again</span>
+<span class="n">poppler</span><span class="o">.</span><span class="n">enable_logging</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="installation.html" title="Installation"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Installation </span>
+              </div>
+            </a>
+          
+          
+            <a href="contribution.html" title="Contributing"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Contributing </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020, Charles Brunet.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

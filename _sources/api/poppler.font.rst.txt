@@ -1,0 +1,7 @@
+poppler.font module
+===================
+
+.. automodule:: poppler.font
+   :members:
+   :undoc-members:
+   :show-inheritance:

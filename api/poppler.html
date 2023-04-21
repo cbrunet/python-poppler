@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>poppler package &#8212; python-poppler  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="poppler.destination module" href="poppler.destination.html" />
+    <link rel="prev" title="API Reference" href="modules.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#api/poppler" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="python-poppler  documentation"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#x1F4D7</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Python poppler</span>
+          <span class="md-header-nav__topic"> poppler package </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/cbrunet/python-poppler" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    python-poppler
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">python-poppler  documentation</a></li>
+            
+            <li class="md-tabs__item"><a href="https://github.com/cbrunet/python-poppler/issues" class="md-tabs__link">Issues tracker</a></li>
+            
+            <li class="md-tabs__item"><a href="https://pypi.org/project/python-poppler/" class="md-tabs__link">PyPI</a></li>
+          <li class="md-tabs__item"><a href="modules.html" class="md-tabs__link">API Reference</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="python-poppler documentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#x1F4D7</i>
+      
+    </a>
+    <a href="../index.html"
+       title="python-poppler documentation">Python poppler</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/cbrunet/python-poppler" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    python-poppler
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="../installation.html" class="md-nav__link">Installation</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="../installation.html#requirements" class="md-nav__link">Requirements</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../installation.html#installing-from-pypi" class="md-nav__link">Installing from PyPI</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../installation.html#installing-from-git" class="md-nav__link">Installing from git</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../installation.html#compiling-your-own-version-of-poppler" class="md-nav__link">Compiling your own version of Poppler</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../usage.html" class="md-nav__link">Using python-poppler</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="../usage.html#quickstart" class="md-nav__link">Quickstart</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../usage.html#working-with-documents" class="md-nav__link">Working with documents</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../usage.html#working-with-pages" class="md-nav__link">Working with pages</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../usage.html#working-with-images" class="md-nav__link">Working with images</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../contribution.html" class="md-nav__link">Contributing</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="../contribution.html#reporting-bugs" class="md-nav__link">Reporting bugs</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../contribution.html#requesting-features" class="md-nav__link">Requesting features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../contribution.html#submitting-a-pull-request" class="md-nav__link">Submitting a pull request</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../changelog.html" class="md-nav__link">Changelog</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="../changelog.html#id2" class="md-nav__link">0.4.1 (2023-04-21)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../changelog.html#id3" class="md-nav__link">0.4.0 (2023-03-21)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../changelog.html#id4" class="md-nav__link">0.3.0 (2022-04-12)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../changelog.html#id5" class="md-nav__link">0.2.2 (2020-10-03)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../changelog.html#id6" class="md-nav__link">0.2.1 (2020-06-19)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../changelog.html#id7" class="md-nav__link">0.2.0 (2020-06-04)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../changelog.html#x" class="md-nav__link">0.1.x</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="modules.html" class="md-nav__link">API Reference</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> poppler package </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">poppler package</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#api-poppler--page-root" class="md-nav__link">poppler package</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#poppler.Alignment" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Alignment</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.CaseSensitivity" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CaseSensitivity</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.DestinationType" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">DestinationType</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Direction" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Direction</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.FontType" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FontType</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.ImageFormat" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">ImageFormat</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.LineMode" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">LineMode</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageBox" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageBox</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageLayout" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageLayout</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageMode" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageMode</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageOrientation" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageOrientation</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.can_render" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.can_render()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.image_format" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.image_format</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.line_mode" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.line_mode</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.paper_color" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.paper_color</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.render_hints" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.render_hints</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.render_page" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.render_page()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.set_render_hint" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.set_render_hint()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Permission" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Permission</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#poppler.Rectangle.as_tuple" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.as_tuple()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.bottom" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.bottom</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.from_object" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.from_object()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.height" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.height</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.is_empty" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.is_empty()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.left" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.left</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.right" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.right</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.top" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.top</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.width" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.width</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.x" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.x</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.y" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.y</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.RenderHint" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">RenderHint</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rotation" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rotation</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.SearchDirection" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">SearchDirection</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.TextLayout" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">TextLayout</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.TransitionType" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">TransitionType</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.enable_logging" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">enable_logging()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.load" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.load_from_data" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">load_from_data()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.load_from_file" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">load_from_file()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.set_data_dir" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">set_data_dir()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.version" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.version_string" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">version_string()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#submodules" class="md-nav__link">Submodules</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/api/poppler.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      
+    
+    </li></ul>
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#api-poppler--page-root" class="md-nav__link">poppler package</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#poppler.Alignment" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Alignment</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.CaseSensitivity" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CaseSensitivity</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.DestinationType" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">DestinationType</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Direction" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Direction</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.FontType" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FontType</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.ImageFormat" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">ImageFormat</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.LineMode" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">LineMode</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageBox" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageBox</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageLayout" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageLayout</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageMode" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageMode</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageOrientation" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageOrientation</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.can_render" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.can_render()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.image_format" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.image_format</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.line_mode" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.line_mode</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.paper_color" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.paper_color</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.render_hints" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.render_hints</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.render_page" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.render_page()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.PageRenderer.set_render_hint" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PageRenderer.set_render_hint()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Permission" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Permission</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#poppler.Rectangle.as_tuple" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.as_tuple()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.bottom" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.bottom</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.from_object" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.from_object()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.height" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.height</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.is_empty" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.is_empty()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.left" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.left</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.right" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.right</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.top" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.top</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.width" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.width</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.x" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.x</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rectangle.y" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rectangle.y</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.RenderHint" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">RenderHint</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.Rotation" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Rotation</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.SearchDirection" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">SearchDirection</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.TextLayout" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">TextLayout</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.TransitionType" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">TransitionType</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.enable_logging" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">enable_logging()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.load" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.load_from_data" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">load_from_data()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.load_from_file" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">load_from_file()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.set_data_dir" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">set_data_dir()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.version" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#poppler.version_string" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">version_string()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#submodules" class="md-nav__link">Submodules</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/api/poppler.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="module-poppler">
+<span id="poppler-package"></span><h1 id="api-poppler--page-root">poppler package<a class="headerlink" href="#api-poppler--page-root" title="Permalink to this heading">¶</a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.Alignment">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">Alignment</span></span><a class="headerlink" href="#poppler.Alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">alignment_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.CaseSensitivity">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">CaseSensitivity</span></span><a class="headerlink" href="#poppler.CaseSensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">case_sensitivity_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.DestinationType">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">DestinationType</span></span><a class="headerlink" href="#poppler.DestinationType" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">type_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.Direction">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">Direction</span></span><a class="headerlink" href="#poppler.Direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">direction_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.FontType">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">FontType</span></span><a class="headerlink" href="#poppler.FontType" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">type_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.ImageFormat">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">ImageFormat</span></span><a class="headerlink" href="#poppler.ImageFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">format_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.LineMode">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">LineMode</span></span><a class="headerlink" href="#poppler.LineMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">line_mode_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.PageBox">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">PageBox</span></span><a class="headerlink" href="#poppler.PageBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">page_box_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.PageLayout">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">PageLayout</span></span><a class="headerlink" href="#poppler.PageLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">page_layout_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.PageMode">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">PageMode</span></span><a class="headerlink" href="#poppler.PageMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">page_mode_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.PageOrientation">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">PageOrientation</span></span><a class="headerlink" href="#poppler.PageOrientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">orientation_enum</span></code></p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="poppler.PageRenderer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">PageRenderer</span></span><a class="headerlink" href="#poppler.PageRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p><a class="reference internal" href="#poppler.PageRenderer" title="poppler.PageRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageRenderer</span></code></a> allows to render a <a class="reference internal" href="poppler.page.html#poppler.page.Page" title="poppler.page.Page"><code class="xref py py-class docutils literal notranslate"><span class="pre">Page</span></code></a> object
+to an <a class="reference internal" href="poppler.image.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.</p>
+<p>It is a wrapper for <code class="xref py py-class docutils literal notranslate"><span class="pre">poppler.cpp.page_renderer.page_renderer</span></code>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="poppler.PageRenderer.can_render">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">can_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poppler.PageRenderer.can_render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell whether poppler was compiled with the Splash render backend.</p>
+<p>This should always return True. If it returns False,
+<a class="reference internal" href="#poppler.PageRenderer.render_page" title="poppler.PageRenderer.render_page"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render_page()</span></code></a> will systematically return
+an invalid <a class="reference internal" href="poppler.image.html#poppler.image.Image" title="poppler.image.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>whether a render backend was compiled with poppler.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.PageRenderer.image_format">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_format</span></span><a class="headerlink" href="#poppler.PageRenderer.image_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.PageRenderer.line_mode">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">line_mode</span></span><a class="headerlink" href="#poppler.PageRenderer.line_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.PageRenderer.paper_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">paper_color</span></span><a class="headerlink" href="#poppler.PageRenderer.paper_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.PageRenderer.render_hints">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">render_hints</span></span><a class="headerlink" href="#poppler.PageRenderer.render_hints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="poppler.PageRenderer.render_page">
+<span class="sig-name descname"><span class="pre">render_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xres=72.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yres=72.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate=&lt;rotation_enum.rotate_0:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poppler.PageRenderer.render_page" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="poppler.PageRenderer.set_render_hint">
+<span class="sig-name descname"><span class="pre">set_render_hint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poppler.PageRenderer.set_render_hint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.Permission">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">Permission</span></span><a class="headerlink" href="#poppler.Permission" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">permission_enum</span></code></p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="poppler.Rectangle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">Rectangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poppler_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poppler.Rectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="poppler.Rectangle.as_tuple">
+<span class="sig-name descname"><span class="pre">as_tuple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poppler.Rectangle.as_tuple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.Rectangle.bottom">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bottom</span></span><a class="headerlink" href="#poppler.Rectangle.bottom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="poppler.Rectangle.from_object">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poppler_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poppler.Rectangle.from_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.Rectangle.height">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#poppler.Rectangle.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="poppler.Rectangle.is_empty">
+<span class="sig-name descname"><span class="pre">is_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poppler.Rectangle.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.Rectangle.left">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#poppler.Rectangle.left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.Rectangle.right">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#poppler.Rectangle.right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.Rectangle.top">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">top</span></span><a class="headerlink" href="#poppler.Rectangle.top" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.Rectangle.width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">width</span></span><a class="headerlink" href="#poppler.Rectangle.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.Rectangle.x">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#poppler.Rectangle.x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="poppler.Rectangle.y">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#poppler.Rectangle.y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.RenderHint">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">RenderHint</span></span><a class="headerlink" href="#poppler.RenderHint" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">render_hint</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.Rotation">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">Rotation</span></span><a class="headerlink" href="#poppler.Rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">rotation_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.SearchDirection">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">SearchDirection</span></span><a class="headerlink" href="#poppler.SearchDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">search_direction_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.TextLayout">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">TextLayout</span></span><a class="headerlink" href="#poppler.TextLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">text_layout_enum</span></code></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="poppler.TransitionType">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">TransitionType</span></span><a class="headerlink" href="#poppler.TransitionType" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">type_enum</span></code></p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="poppler.enable_logging">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">enable_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#poppler.enable_logging" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="poppler.load">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poppler.load" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.11)"><span class="pre">bytes</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="poppler.load_from_data">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">load_from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.11)"><span class="pre">bytes</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poppler.load_from_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="poppler.load_from_file">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">load_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poppler.load_from_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="poppler.set_data_dir">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">set_data_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#poppler.set_data_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="poppler.version">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poppler.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get poppler version, as a tuple</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(major, minor, micro)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)">int</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="poppler.version_string">
+<span class="sig-prename descclassname"><span class="pre">poppler.</span></span><span class="sig-name descname"><span class="pre">version_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#poppler.version_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<section id="submodules">
+<h2 id="submodules">Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="poppler.destination.html">poppler.destination module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.document.html">poppler.document module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.document.html#poppler.document.Document"><code class="docutils literal notranslate"><span class="pre">Document</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.PageLayout"><code class="docutils literal notranslate"><span class="pre">Document.PageLayout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.PageMode"><code class="docutils literal notranslate"><span class="pre">Document.PageMode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.author"><code class="docutils literal notranslate"><span class="pre">Document.author</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.create_destination_map"><code class="docutils literal notranslate"><span class="pre">Document.create_destination_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.create_font_iterator"><code class="docutils literal notranslate"><span class="pre">Document.create_font_iterator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.create_page"><code class="docutils literal notranslate"><span class="pre">Document.create_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.create_toc"><code class="docutils literal notranslate"><span class="pre">Document.create_toc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.creation_date"><code class="docutils literal notranslate"><span class="pre">Document.creation_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.creator"><code class="docutils literal notranslate"><span class="pre">Document.creator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.embedded_files"><code class="docutils literal notranslate"><span class="pre">Document.embedded_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.fonts"><code class="docutils literal notranslate"><span class="pre">Document.fonts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.has_embedded_files"><code class="docutils literal notranslate"><span class="pre">Document.has_embedded_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.has_permission"><code class="docutils literal notranslate"><span class="pre">Document.has_permission()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.info_date"><code class="docutils literal notranslate"><span class="pre">Document.info_date()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.info_key"><code class="docutils literal notranslate"><span class="pre">Document.info_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.info_keys"><code class="docutils literal notranslate"><span class="pre">Document.info_keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.infos"><code class="docutils literal notranslate"><span class="pre">Document.infos()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.is_encrypted"><code class="docutils literal notranslate"><span class="pre">Document.is_encrypted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.is_linearized"><code class="docutils literal notranslate"><span class="pre">Document.is_linearized()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.is_locked"><code class="docutils literal notranslate"><span class="pre">Document.is_locked()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.keywords"><code class="docutils literal notranslate"><span class="pre">Document.keywords</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.metadata"><code class="docutils literal notranslate"><span class="pre">Document.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.modification_date"><code class="docutils literal notranslate"><span class="pre">Document.modification_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.page_layout"><code class="docutils literal notranslate"><span class="pre">Document.page_layout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.page_mode"><code class="docutils literal notranslate"><span class="pre">Document.page_mode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.pages"><code class="docutils literal notranslate"><span class="pre">Document.pages</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.pdf_id"><code class="docutils literal notranslate"><span class="pre">Document.pdf_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.pdf_version"><code class="docutils literal notranslate"><span class="pre">Document.pdf_version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.producer"><code class="docutils literal notranslate"><span class="pre">Document.producer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.remove_info"><code class="docutils literal notranslate"><span class="pre">Document.remove_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.save"><code class="docutils literal notranslate"><span class="pre">Document.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.save_a_copy"><code class="docutils literal notranslate"><span class="pre">Document.save_a_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.set_info_date"><code class="docutils literal notranslate"><span class="pre">Document.set_info_date()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.set_info_key"><code class="docutils literal notranslate"><span class="pre">Document.set_info_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.subject"><code class="docutils literal notranslate"><span class="pre">Document.subject</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.title"><code class="docutils literal notranslate"><span class="pre">Document.title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.Document.unlock"><code class="docutils literal notranslate"><span class="pre">Document.unlock()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.document.html#poppler.document.LockedDocumentError"><code class="docutils literal notranslate"><span class="pre">LockedDocumentError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.document.html#poppler.document.PDFId"><code class="docutils literal notranslate"><span class="pre">PDFId</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.PDFId.permanent_id"><code class="docutils literal notranslate"><span class="pre">PDFId.permanent_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.document.html#poppler.document.PDFId.update_id"><code class="docutils literal notranslate"><span class="pre">PDFId.update_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.document.html#poppler.document.ensure_unlocked"><code class="docutils literal notranslate"><span class="pre">ensure_unlocked()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.document.html#poppler.document.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.document.html#poppler.document.load_from_data"><code class="docutils literal notranslate"><span class="pre">load_from_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.document.html#poppler.document.load_from_file"><code class="docutils literal notranslate"><span class="pre">load_from_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.embeddedfile.html">poppler.embeddedfile module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.checksum"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.checksum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.creation_date"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.creation_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.data"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.description"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.is_valid"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.is_valid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.mime_type"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.mime_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.modification_date"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.modification_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.name"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.embeddedfile.html#poppler.embeddedfile.EmbeddedFile.size"><code class="docutils literal notranslate"><span class="pre">EmbeddedFile.size</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.font.html">poppler.font module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.font.html#poppler.font.FontInfo"><code class="docutils literal notranslate"><span class="pre">FontInfo</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.font.html#poppler.font.FontInfo.file"><code class="docutils literal notranslate"><span class="pre">FontInfo.file</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.font.html#poppler.font.FontInfo.is_embedded"><code class="docutils literal notranslate"><span class="pre">FontInfo.is_embedded</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.font.html#poppler.font.FontInfo.is_subset"><code class="docutils literal notranslate"><span class="pre">FontInfo.is_subset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.font.html#poppler.font.FontInfo.name"><code class="docutils literal notranslate"><span class="pre">FontInfo.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.font.html#poppler.font.FontInfo.type"><code class="docutils literal notranslate"><span class="pre">FontInfo.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.font.html#poppler.font.FontIterator"><code class="docutils literal notranslate"><span class="pre">FontIterator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.font.html#poppler.font.FontIterator.current_page"><code class="docutils literal notranslate"><span class="pre">FontIterator.current_page</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.font.html#poppler.font.FontIterator.has_next"><code class="docutils literal notranslate"><span class="pre">FontIterator.has_next</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.font.html#poppler.font.FontIterator.next_"><code class="docutils literal notranslate"><span class="pre">FontIterator.next_()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.image.html">poppler.image module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.image.html#poppler.image.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.Format"><code class="docutils literal notranslate"><span class="pre">Image.Format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.bytes_per_row"><code class="docutils literal notranslate"><span class="pre">Image.bytes_per_row</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.const_data"><code class="docutils literal notranslate"><span class="pre">Image.const_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.copy"><code class="docutils literal notranslate"><span class="pre">Image.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.data"><code class="docutils literal notranslate"><span class="pre">Image.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.format"><code class="docutils literal notranslate"><span class="pre">Image.format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.from_object"><code class="docutils literal notranslate"><span class="pre">Image.from_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.height"><code class="docutils literal notranslate"><span class="pre">Image.height</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.is_valid"><code class="docutils literal notranslate"><span class="pre">Image.is_valid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.memoryview"><code class="docutils literal notranslate"><span class="pre">Image.memoryview()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.save"><code class="docutils literal notranslate"><span class="pre">Image.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.supported_image_formats"><code class="docutils literal notranslate"><span class="pre">Image.supported_image_formats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.image.html#poppler.image.Image.width"><code class="docutils literal notranslate"><span class="pre">Image.width</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.page.html">poppler.page module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.page.html#poppler.page.Page"><code class="docutils literal notranslate"><span class="pre">Page</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.Orientation"><code class="docutils literal notranslate"><span class="pre">Page.Orientation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.PageBox"><code class="docutils literal notranslate"><span class="pre">Page.PageBox</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.SearchDirection"><code class="docutils literal notranslate"><span class="pre">Page.SearchDirection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.TextLayout"><code class="docutils literal notranslate"><span class="pre">Page.TextLayout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.TextListOption"><code class="docutils literal notranslate"><span class="pre">Page.TextListOption</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.duration"><code class="docutils literal notranslate"><span class="pre">Page.duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.label"><code class="docutils literal notranslate"><span class="pre">Page.label</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.orientation"><code class="docutils literal notranslate"><span class="pre">Page.orientation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.page_rect"><code class="docutils literal notranslate"><span class="pre">Page.page_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.search"><code class="docutils literal notranslate"><span class="pre">Page.search()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.text"><code class="docutils literal notranslate"><span class="pre">Page.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.text_list"><code class="docutils literal notranslate"><span class="pre">Page.text_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.page.html#poppler.page.Page.transition"><code class="docutils literal notranslate"><span class="pre">Page.transition()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.pagerenderer.html">poppler.pagerenderer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.PageRenderer"><code class="docutils literal notranslate"><span class="pre">PageRenderer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.PageRenderer.can_render"><code class="docutils literal notranslate"><span class="pre">PageRenderer.can_render()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.PageRenderer.image_format"><code class="docutils literal notranslate"><span class="pre">PageRenderer.image_format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.PageRenderer.line_mode"><code class="docutils literal notranslate"><span class="pre">PageRenderer.line_mode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.PageRenderer.paper_color"><code class="docutils literal notranslate"><span class="pre">PageRenderer.paper_color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.PageRenderer.render_hints"><code class="docutils literal notranslate"><span class="pre">PageRenderer.render_hints</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.PageRenderer.render_page"><code class="docutils literal notranslate"><span class="pre">PageRenderer.render_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.PageRenderer.set_render_hint"><code class="docutils literal notranslate"><span class="pre">PageRenderer.set_render_hint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.pagerenderer.html#poppler.pagerenderer.RenderHint"><code class="docutils literal notranslate"><span class="pre">RenderHint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.pagetransition.html">poppler.pagetransition module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition"><code class="docutils literal notranslate"><span class="pre">PageTransition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.Alignment"><code class="docutils literal notranslate"><span class="pre">PageTransition.Alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.Direction"><code class="docutils literal notranslate"><span class="pre">PageTransition.Direction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.Type"><code class="docutils literal notranslate"><span class="pre">PageTransition.Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.alignment"><code class="docutils literal notranslate"><span class="pre">PageTransition.alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.angle"><code class="docutils literal notranslate"><span class="pre">PageTransition.angle</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.direction"><code class="docutils literal notranslate"><span class="pre">PageTransition.direction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.duration"><code class="docutils literal notranslate"><span class="pre">PageTransition.duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.is_rectangular"><code class="docutils literal notranslate"><span class="pre">PageTransition.is_rectangular</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.scale"><code class="docutils literal notranslate"><span class="pre">PageTransition.scale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.pagetransition.html#poppler.pagetransition.PageTransition.type"><code class="docutils literal notranslate"><span class="pre">PageTransition.type</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.rectangle.html">poppler.rectangle module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle"><code class="docutils literal notranslate"><span class="pre">Rectangle</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.as_tuple"><code class="docutils literal notranslate"><span class="pre">Rectangle.as_tuple()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.bottom"><code class="docutils literal notranslate"><span class="pre">Rectangle.bottom</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.from_object"><code class="docutils literal notranslate"><span class="pre">Rectangle.from_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.height"><code class="docutils literal notranslate"><span class="pre">Rectangle.height</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.is_empty"><code class="docutils literal notranslate"><span class="pre">Rectangle.is_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.left"><code class="docutils literal notranslate"><span class="pre">Rectangle.left</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.right"><code class="docutils literal notranslate"><span class="pre">Rectangle.right</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.top"><code class="docutils literal notranslate"><span class="pre">Rectangle.top</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.width"><code class="docutils literal notranslate"><span class="pre">Rectangle.width</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.x"><code class="docutils literal notranslate"><span class="pre">Rectangle.x</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.rectangle.html#poppler.rectangle.Rectangle.y"><code class="docutils literal notranslate"><span class="pre">Rectangle.y</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.toc.html">poppler.toc module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.toc.html#poppler.toc.Toc"><code class="docutils literal notranslate"><span class="pre">Toc</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.toc.html#poppler.toc.Toc.root"><code class="docutils literal notranslate"><span class="pre">Toc.root</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.toc.html#poppler.toc.TocItem"><code class="docutils literal notranslate"><span class="pre">TocItem</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="poppler.toc.html#poppler.toc.TocItem.children"><code class="docutils literal notranslate"><span class="pre">TocItem.children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.toc.html#poppler.toc.TocItem.is_open"><code class="docutils literal notranslate"><span class="pre">TocItem.is_open</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="poppler.toc.html#poppler.toc.TocItem.title"><code class="docutils literal notranslate"><span class="pre">TocItem.title</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="poppler.utilities.html">poppler.utilities module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poppler.utilities.html#poppler.utilities.from_time_type"><code class="docutils literal notranslate"><span class="pre">from_time_type()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.utilities.html#poppler.utilities.since"><code class="docutils literal notranslate"><span class="pre">since()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.utilities.html#poppler.utilities.to_time_type"><code class="docutils literal notranslate"><span class="pre">to_time_type()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="poppler.utilities.html#poppler.utilities.version"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="modules.html" title="API Reference"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> API Reference </span>
+              </div>
+            </a>
+          
+          
+            <a href="poppler.destination.html" title="poppler.destination module"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> poppler.destination module </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020, Charles Brunet.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

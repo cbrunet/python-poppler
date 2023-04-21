@@ -1,0 +1,7 @@
+poppler.embeddedfile module
+===========================
+
+.. automodule:: poppler.embeddedfile
+   :members:
+   :undoc-members:
+   :show-inheritance:

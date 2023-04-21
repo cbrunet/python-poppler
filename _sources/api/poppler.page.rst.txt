@@ -1,0 +1,7 @@
+poppler.page module
+===================
+
+.. automodule:: poppler.page
+   :members:
+   :undoc-members:
+   :show-inheritance:

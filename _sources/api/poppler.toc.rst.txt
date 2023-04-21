@@ -1,0 +1,7 @@
+poppler.toc module
+==================
+
+.. automodule:: poppler.toc
+   :members:
+   :undoc-members:
+   :show-inheritance:

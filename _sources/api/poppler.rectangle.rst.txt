@@ -1,0 +1,7 @@
+poppler.rectangle module
+========================
+
+.. automodule:: poppler.rectangle
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Installation &#8212; python-poppler  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using python-poppler" href="usage.html" />
+    <link rel="prev" title="python-poppler’s documentation!" href="index.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#installation" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="python-poppler  documentation"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#x1F4D7</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Python poppler</span>
+          <span class="md-header-nav__topic"> Installation </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/cbrunet/python-poppler" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    python-poppler
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">python-poppler  documentation</a></li>
+            
+            <li class="md-tabs__item"><a href="https://github.com/cbrunet/python-poppler/issues" class="md-tabs__link">Issues tracker</a></li>
+            
+            <li class="md-tabs__item"><a href="https://pypi.org/project/python-poppler/" class="md-tabs__link">PyPI</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="python-poppler documentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#x1F4D7</i>
+      
+    </a>
+    <a href="index.html"
+       title="python-poppler documentation">Python poppler</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/cbrunet/python-poppler" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    python-poppler
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Installation </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Installation</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#installation--page-root" class="md-nav__link">Installation</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#requirements" class="md-nav__link">Requirements</a>
+        </li>
+        <li class="md-nav__item"><a href="#installing-from-pypi" class="md-nav__link">Installing from PyPI</a>
+        </li>
+        <li class="md-nav__item"><a href="#installing-from-git" class="md-nav__link">Installing from git</a>
+        </li>
+        <li class="md-nav__item"><a href="#compiling-your-own-version-of-poppler" class="md-nav__link">Compiling your own version of Poppler</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/installation.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="#requirements" class="md-nav__link">Requirements</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#installing-from-pypi" class="md-nav__link">Installing from PyPI</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#installing-from-git" class="md-nav__link">Installing from git</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#compiling-your-own-version-of-poppler" class="md-nav__link">Compiling your own version of Poppler</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="usage.html" class="md-nav__link">Using python-poppler</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="usage.html#quickstart" class="md-nav__link">Quickstart</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="usage.html#working-with-documents" class="md-nav__link">Working with documents</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="usage.html#working-with-pages" class="md-nav__link">Working with pages</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="usage.html#working-with-images" class="md-nav__link">Working with images</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="contribution.html" class="md-nav__link">Contributing</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="contribution.html#reporting-bugs" class="md-nav__link">Reporting bugs</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="contribution.html#requesting-features" class="md-nav__link">Requesting features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="contribution.html#submitting-a-pull-request" class="md-nav__link">Submitting a pull request</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html" class="md-nav__link">Changelog</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id2" class="md-nav__link">0.4.1 (2023-04-21)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id3" class="md-nav__link">0.4.0 (2023-03-21)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id4" class="md-nav__link">0.3.0 (2022-04-12)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id5" class="md-nav__link">0.2.2 (2020-10-03)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id6" class="md-nav__link">0.2.1 (2020-06-19)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#id7" class="md-nav__link">0.2.0 (2020-06-04)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="changelog.html#x" class="md-nav__link">0.1.x</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="api/modules.html" class="md-nav__link">API Reference</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="api/poppler.html" class="md-nav__link">poppler package</a>
+      
+    
+    </li></ul>
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#installation--page-root" class="md-nav__link">Installation</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#requirements" class="md-nav__link">Requirements</a>
+        </li>
+        <li class="md-nav__item"><a href="#installing-from-pypi" class="md-nav__link">Installing from PyPI</a>
+        </li>
+        <li class="md-nav__item"><a href="#installing-from-git" class="md-nav__link">Installing from git</a>
+        </li>
+        <li class="md-nav__item"><a href="#compiling-your-own-version-of-poppler" class="md-nav__link">Compiling your own version of Poppler</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/installation.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="installation">
+<span id="id1"></span><h1 id="installation--page-root">Installation<a class="headerlink" href="#installation--page-root" title="Permalink to this heading">¶</a></h1>
+<section id="requirements">
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
+<p>python-poppler requires at least Python 3.7.</p>
+<p>This package is currently distributed as source only,
+and is currently tested on Linux only (using Arch Linux
+on my personal machine, and Ubuntu 20.04 an 22.04 using GitHub actions.</p>
+<p>It requires poppler version 0.26 or higher.
+Beware that poppler version scheme changed to date based version numbers,
+starting in August, 2020. Therefore, it jumped from 0.90 (July, 2020) to 20.08
+(August, 2020).</p>
+<p>Because we need to compile and link cpp files, you need
+the headers files for poppler and for python.
+For Arch Linux, the
+<a class="reference external" href="https://security.archlinux.org/package/poppler">poppler</a>
+package should be sufficient.
+On Ubuntu, you need
+<a class="reference external" href="https://packages.ubuntu.com/bionic/libpoppler-cpp-dev">libpoppler-cpp-dev</a>.</p>
+<p>The cpp binding is done using pybind11, which is included with the package.
+To build the package, you need the usual development tools (gcc, cmake…)</p>
+</section>
+<section id="installing-from-pypi">
+<h2 id="installing-from-pypi">Installing from PyPI<a class="headerlink" href="#installing-from-pypi" title="Permalink to this heading">¶</a></h2>
+<p>Installing from PyPI is the easiest way to install python-poppler.
+Be sure to have all the requirements installed.
+Ideally, you should install the package inside a Python virtual environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--use-pep517<span class="w"> </span>python-poppler
+</pre></div>
+</div>
+</section>
+<section id="installing-from-git">
+<h2 id="installing-from-git">Installing from git<a class="headerlink" href="#installing-from-git" title="Permalink to this heading">¶</a></h2>
+<p>First you msut clone the repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cbrunet/python-poppler.git
+</pre></div>
+</div>
+<p>Then you simply need to use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to compile and install it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--use-pep517<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Behind the scene, it will install required packages,
+compile the bindings,
+and install all the files at the right place.</p>
+</section>
+<section id="compiling-your-own-version-of-poppler">
+<h2 id="compiling-your-own-version-of-poppler">Compiling your own version of Poppler<a class="headerlink" href="#compiling-your-own-version-of-poppler" title="Permalink to this heading">¶</a></h2>
+<p>If you want to use a poppler version more recent than
+what is provided by your distribution,
+you need to compile it from sources.</p>
+<p>First you need to install all the required libraries.
+A easy way to do it is to install the distribution version of poppler,
+to be sure all its dependencies are installed.</p>
+<p>Then you need to clone the poppler repository, and to checkout the
+desired version (or you can stay on the HEAD of master if this is what you want):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://gitlab.freedesktop.org/poppler/poppler.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>poppler
+$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>poppler-0.89.0
+</pre></div>
+</div>
+<p>Next, you need to compile poppler. This is done using cmake.
+You may want to specify the <cite>CMAKE_INSTALL_PREFIX</cite> path if you want
+to install it in another place than in the default <cite>/usr/local</cite>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+$<span class="w"> </span>cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_INSTALL_PREFIX:PATH<span class="o">=</span>/usr/local<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DENABLE_UNSTABLE_API_ABI_HEADERS<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DBUILD_GTK_TESTS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DBUILD_QT5_TESTS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DBUILD_CPP_TESTS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DENABLE_CPP<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DENABLE_GLIB<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DENABLE_GOBJECT_INTROSPECTION<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DENABLE_GTK_DOC<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DENABLE_QT5<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DBUILD_SHARED_LIBS<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>..
+$<span class="w"> </span>make
+</pre></div>
+</div>
+<p>Finally, you must install the lib. You may need <cite>sudo</cite> or not,
+depending on the install prefix path you used:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Before building python-poppler, you need to ensure it uses the version
+you just installed. poppler uses pkg_config. Therefore, you can set
+the <cite>PKG_CONFIG_PATH</cite> environment variable to the path where are located
+the pkg_config files. For instance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span>/usr/local/lib/pkgconfig
+</pre></div>
+</div>
+<p>Now you can install python-poppler, using either <cite>pip</cite> or from
+the git sources.</p>
+<p>If the poppler library is not located in a standard place,
+it is possible that python-poppler is not able to find it.
+you can use the <cite>LD_LIBRARY_PATH</cite> environment variable to tell
+the system where to search for the poppler shared libraries:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+</pre></div>
+</div>
+<p>Finally, you can test that everything is working by printing the poppler version:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">poppler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poppler</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+<span class="go">(0, 89, 0)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="index.html" title="python-poppler’s documentation!"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> python-poppler’s documentation! </span>
+              </div>
+            </a>
+          
+          
+            <a href="usage.html" title="Using python-poppler"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Using python-poppler </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020, Charles Brunet.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

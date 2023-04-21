@@ -1,0 +1,7 @@
+poppler.utilities module
+========================
+
+.. automodule:: poppler.utilities
+   :members:
+   :undoc-members:
+   :show-inheritance:
