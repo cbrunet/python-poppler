@@ -48,7 +48,7 @@ class Image:
         return self._image.data()
 
     def copy(self, rect=None):
-        image = self._image.copy(rect or Rectangle()._rect)
+        image = self._image.copy()
         return Image.from_object(image)
 
     @property
