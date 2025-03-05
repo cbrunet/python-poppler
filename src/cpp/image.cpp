@@ -102,7 +102,11 @@ PYBIND11_MODULE(image, m)
         .def(py::init<int, int, image::format_enum>(), py::arg("iwidth"), py::arg("iheight"), py::arg("iformat"))
         .def("bytes_per_row", &image::bytes_per_row)
         // .def("const_data", &image::const_data)
+#if POPPLER_VERSION_MAJOR >= 25
+        .def("copy", &image::copy)
+#else
         .def("copy", &image::copy, py::arg("rect") = rect())
+#endif
         .def("data", &data)
         .def("set_data", &set_data)
         .def("format", &image::format)
