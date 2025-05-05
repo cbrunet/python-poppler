@@ -16,7 +16,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from poppler.cpp import image
-from poppler.rectangle import Rectangle
 
 
 class Image:
@@ -47,8 +46,8 @@ class Image:
     def const_data(self):
         return self._image.data()
 
-    def copy(self, rect=None):
-        image = self._image.copy(rect or Rectangle()._rect)
+    def copy(self):
+        image = self._image.copy()
         return Image.from_object(image)
 
     @property
