@@ -160,6 +160,14 @@ To render a :class:`.Page`, you first need to create a :class:`.PageRenderer` ob
 Then you give the :class:`.Page` to the :meth:`.PageRenderer.render_page`
 method to obtain an  :class:`.Image` object.
 
+You can control the resulting resolution of the image,
+by specifying the ``xres`` and ``yres`` parameters:
+
+.. code-block:: python
+
+    if not PageRenderer().render_page(page, xres=dpi, yres=dpi).save(img_filepath, "JPEG"):
+        raise RuntimeError(f"Failed to save page as image: {img_filepath}")
+
 
 Working with images
 -------------------
@@ -189,7 +197,7 @@ compatible with the PIL raw importer:
     tk_image = ImageTk.PhotoImage(pil_image)
 
 Unfortunately, it is not possible to build a PIL image using the
-buffer interface. A copy of the image data in unavoidable.
+buffer interface. A copy of the image data is unavoidable.
 
 If you need to use the image with Tk, you create if from a PIL image.
 
